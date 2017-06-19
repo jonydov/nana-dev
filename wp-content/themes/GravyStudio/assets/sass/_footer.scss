@@ -1,0 +1,198 @@
+footer {
+  padding: 0px;
+
+  .footer-top {
+    padding: 90px 15px;
+    background-color: #f3f3f3;
+    width: calc(100% - 30px);
+    display: block;
+
+    .holder {
+      @include flexbox;
+    }
+
+    .col {
+      @include flexbox;
+      @include align-items(flex-start);
+
+      &.col-two,
+      &.col-three {
+        padding-top: 40px;
+      }
+    }
+
+    .links {
+      @include flexbox;
+      @include flex-direction(column);
+      padding: 10px 20px;
+
+      a {
+        margin: 0px 0 10px 0;
+        display: block;
+        font-family: $font-bold;
+        color: #393b3c;
+        text-transform: none;
+
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
+
+      .link {
+        @include flexbox;
+        @include align-items(center);
+
+        i {
+          float: right;
+          margin-left: 10px;
+          text-align: center;
+          width: 30px;
+        }
+
+        &.phone {
+
+        }
+
+        &.phone {
+
+        }
+      }
+    }
+
+    .title {
+      padding-left: 20px;
+      font-size: 2.4rem;
+      color: $green;
+      font-family: $font-bold;
+    }
+
+    a {
+      font-size: 1.4rem;
+    }
+  }
+
+  .footer-bottom {
+    background-color: #393b3c;
+    width: 100%;
+    color: #fff;
+    display: block;
+    padding: 0 15px;
+
+    .shell {
+      @include align-items(center);
+    }
+
+    .socials {
+
+      ul {
+        list-style: none;
+        padding-top: 20px;
+        @include flex;
+        text-align: left;
+        margin: 0 auto;
+
+        li {
+          display: inline-block;
+
+          a {
+            border-radius: 100%;
+            font-family: $icons;
+            width: 40px;
+            height: 40px;
+            position: relative;
+            display: block;
+            will-change: transform;
+            @include transition-all(.3s);
+            font-size: 2rem;
+
+            span {
+              position: absolute;
+              top: -15px;
+              left: 50%;
+              @include transform-translateX(-50%);
+              border-radius: 15px;
+              width: initial;
+              color: #fff;
+              display: none;
+              font-size: 12px;
+              padding: 5px 10px;
+              font-family: almoni-light;
+              white-space: nowrap;
+              z-index: 3;
+              direction: ltr;
+            }
+
+            &:hover {
+              z-index: 1;
+              @include transition-all(.1s);
+
+              span {
+                display: block;
+              }
+            }
+
+            &:before {
+              @include centerXY;
+              color: #fff;
+              position: absolute;
+              display: block;
+            }
+
+            &.ico-fb {
+
+              &:before {
+                content: '\f343';
+              }
+            }
+
+            &.ico-li {
+
+              &:before {
+                content: '\f3f8';
+              }
+            }
+
+            &.ico-gp {
+
+              &:before {
+                content: '\f34d';
+              }
+            }
+
+            &.ico-yt {
+
+              &:before {
+                content: '\f409';
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .shell {
+    @include flexbox;
+    @include justify-content(space-between);
+
+    &.cols {
+    }
+  }
+
+}
+
+@media (max-width: 480px) {
+
+  footer {
+    width: calc(100% - 30px);
+
+    .shell {
+      @include flex-direction(column);
+
+      .col {
+        padding: 15px;
+        text-align: center;
+      }
+    }
+  }
+}

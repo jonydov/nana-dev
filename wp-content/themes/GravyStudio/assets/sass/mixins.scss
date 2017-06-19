@@ -1,0 +1,235 @@
+@mixin transition($type, $timing, $effect) {
+  -webkit-transition: $type $timing $effect;
+  -moz-transition: $type $timing $effect;
+  -o-transition: $type $timing $effect;
+  -ms-transition: $type $timing $effect;
+  transition: $type $timing $effect;
+}
+
+@mixin transition-all($duration) {
+  @include transition(all, $duration, linear);
+}
+
+@mixin pseudoElement() {
+  position: absolute;
+  content: '';
+  display: block;
+}
+
+@mixin flexbox {
+
+  @media (min-width: 768px) {
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  @media (max-width: 768px) {
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: -webkit-box;
+    display: flex;
+  }
+}
+
+@mixin flex($fg: 1, $fs: null, $fb: null) {
+
+  // Set a variable to be used by box-flex properties
+  $fg-boxflex: $fg;
+
+  // Box-Flex only supports a flex-grow value so let's grab the
+  // first item in the list and just return that.
+  @if type-of($fg) == 'list' {
+    $fg-boxflex: nth($fg, 1);
+  }
+
+  -webkit-box-flex: $fg-boxflex;
+  -webkit-flex: $fg $fs $fb;
+  -moz-box-flex: $fg-boxflex;
+  -moz-flex: $fg $fs $fb;
+  -ms-flex: $fg $fs $fb;
+  flex: $fg $fs $fb;
+}
+
+@mixin align-items($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+  } @else if $value == flex-end {
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+  } @else {
+    -webkit-box-align: $value;
+    -ms-flex-align: $value;
+  }
+  -webkit-align-items: $value;
+  -moz-align-items: $value;
+  align-items: $value;
+}
+
+@mixin align-self($value: stretch) {
+  @if $value == flex-start {
+    -webkit-box-self: start;
+    -ms-flex-self: start;
+  } @else if $value == flex-end {
+    -webkit-box-self: end;
+    -ms-flex-self: end;
+  } @else {
+    -webkit-box-self: $value;
+    -ms-flex-self: $value;
+  }
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  align-self: $value;
+}
+
+@mixin transform-skewX($offsetX) {
+  -webkit-transform: skewX($offsetX);
+  -moz-transform: skewX($offsetX);
+  -ms-transform: skewX($offsetX);
+  -o-transform: skewX($offsetX);
+  transform: skewX($offsetX);
+}
+
+@mixin transform-skewY($offsetY) {
+  -webkit-transform: skewY($offsetY);
+  -moz-transform: skewY($offsetY);
+  -ms-transform: skewY($offsetY);
+  -o-transform: skewY($offsetY);
+  transform: skewY($offsetY);
+}
+
+@mixin transform-translateX($offsetX) {
+  -webkit-transform: translateX($offsetX);
+  -moz-transform: translateX($offsetX);
+  -ms-transform: translateX($offsetX);
+  -o-transform: translateX($offsetX);
+  transform: translateX($offsetX);
+}
+
+@mixin transform-translateY($offsetY) {
+  -webkit-transform: translateY($offsetY);
+  -moz-transform: translateY($offsetY);
+  -ms-transform: translateY($offsetY);
+  -o-transform: translateY($offsetY);
+  transform: translateY($offsetY);
+}
+
+@mixin transform-translate($offsetX, $offsetY) {
+  -webkit-transform: translate($offsetX, $offsetY);
+  -moz-transform: translate($offsetX, $offsetY);
+  -ms-transform: translate($offsetX, $offsetY);
+  -o-transform: translate($offsetX, $offsetY);
+  transform: translate($offsetX, $offsetY);
+}
+
+@mixin animation($value) {
+  -webkit-animation: $value;
+  -moz-animation: $value;
+  -o-animation: $value;
+  animation: $value;
+}
+
+@mixin centerXY() {
+  position: absolute;
+  @include transform-translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+}
+
+@mixin scale($percent1, $percent2) {
+  -webkit-transform: scale($percent1, $percent2) perspective(1000px) translateZ(0);
+  -moz-transform: scale($percent1, $percent2);
+  -ms-transform: scale($percent1, $percent2);
+  -o-transform: scale($percent1, $percent2);
+  transform: scale($percent1, $percent2) perspective(1000px) translateZ(0);
+}
+
+@mixin justify-content($value: flex-start) {
+  @if $value == flex-start {
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+  } @else if $value == flex-end {
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+  } @else if $value == space-between {
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+  } @else if $value == space-around {
+    -ms-flex-pack: distribute;
+  } @else {
+    -webkit-box-pack: $value;
+    -ms-flex-pack: $value;
+  }
+  -webkit-justify-content: $value;
+  -moz-justify-content: $value;
+  justify-content: $value;
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content
+  }
+  :-moz-placeholder {
+    @content
+  }
+  ::-moz-placeholder {
+    @content
+  }
+  :-ms-input-placeholder {
+    @content
+  }
+}
+
+@mixin flex-direction($value: row) {
+  @if $value == row-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+  } @else if $value == column {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+  } @else if $value == column-reverse {
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+  } @else {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+  }
+  -webkit-flex-direction: $value;
+  -moz-flex-direction: $value;
+  -ms-flex-direction: $value;
+  flex-direction: $value;
+}
+
+@mixin align-self($value: auto) {
+  // No Webkit Box Fallback.
+  -webkit-align-self: $value;
+  -moz-align-self: $value;
+  @if $value == flex-start {
+    -ms-flex-item-align: start;
+  } @else if $value == flex-end {
+    -ms-flex-item-align: end;
+  } @else {
+    -ms-flex-item-align: $value;
+  }
+  align-self: $value;
+}
+
+@mixin aspect-ratio($width, $height) {
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  > .holder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
