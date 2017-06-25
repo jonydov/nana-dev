@@ -19,46 +19,61 @@
 
 <div class="wrapper">
 
-    <header data-offset-top="0" data-spy="scroll" data-target=".white-section">
+    <header data-offset-top="0" data-spy="scroll">
+        <div class="bg-holder"></div>
         <div class="shell">
-            <a class="logo" href="<?php bloginfo('url'); ?>">
-                <img src="<?php bloginfo('template_url'); ?>/assets/images/logo-dg.png" />
-            </a>
 
             <nav class="navbar">
-                <div class="tagline">
-                    <span class="phone">0522-889776</span>
-                </div>
-                <div class="nav-holder">
-	                <?php
-	                wp_nav_menu(array(
-			                'theme_location' => 'main-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'main-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
 
-	                wp_nav_menu(array(
-			                'theme_location' => 'locations-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'locations-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
+                <a class="logo" href="<?php bloginfo('url'); ?>">
+                    <img src="<?php bloginfo('template_url'); ?>/assets/images/logo.png" />
+                </a>
 
-	                wp_nav_menu(array(
-			                'theme_location' => 'contact-menu',
-			                'depth' => 1,
-			                'container' => false,
-			                'fallback_cb' => 'wp_page_menu',
-			                'menu_class' => 'contact-nav cf',
-			                'walker' => new wp_bootstrap_navwalker())
-	                );
-	                ?>
-                </div>
+                <?php
+                    wp_nav_menu(array(
+                        'theme_location' => 'main-menu',
+                        'depth' => 2,
+                        'container' => false,
+                        'fallback_cb' => 'wp_page_menu',
+                        'menu_class' => 'main-nav cf',
+                        'walker' => new wp_bootstrap_navwalker())
+                    );
+                ?>
+
+                <ul class="socials hide-mobile">
+                    <?php if( get_field('youtube', 'option') != null ){ ?>
+                        <li>
+                            <a href="<?=get_field('youtube', 'option'); ?>">
+                                <i class="zmdi zmdi-youtube"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if( get_field('instagram', 'option') != null ){ ?>
+                        <li>
+                            <a href="<?=get_field('instagram', 'option'); ?>">
+                                <i class="zmdi zmdi-instagram"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if( get_field('facebook', 'option') != null ){ ?>
+                        <li>
+                            <a href="<?=get_field('facebook', 'option'); ?>">
+                                <i class="zmdi zmdi-facebook-box"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if( get_field('twitter', 'option') != null ){ ?>
+                        <li>
+                            <a href="<?=get_field('twitter', 'option'); ?>">
+                                <i class="zmdi zmdi-twitter"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                </ul>
+
+                <button class="btn btn-search hide-mobile">
+                    <i class="zmdi zmdi-search"></i>
+                </button>
             </nav>
 
             <button class="c-hamburger c-hamburger--htx show-mobile">

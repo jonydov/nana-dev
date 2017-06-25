@@ -54,39 +54,101 @@ var humanXtensions = {
 
 $(document).ready( function () {
 
+    /* Affix */
+
     $('header').affix({});
+
+
+    /* Magnific Popups */
+
+    $('.popup-yt').magnificPopup({
+        type : 'iframe',
+        iframe: {
+            markup: '<div class="mfp-iframe-scaler">'+
+            '<div class="mfp-close"></div>'+
+            '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>'+
+            '</div>', // HTML markup of popup, `mfp-close` will be replaced by the close button
+
+            patterns: {
+                youtube: {
+                    index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
+
+                    id: 'v=', // String that splits URL in a two parts, second part should be %id%
+                    // Or null - full URL will be returned
+                    // Or a function that should return %id%, for example:
+                    // id: function(url) { return 'parsed id'; }
+
+                    src: '//www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+                },
+                vimeo: {
+                    index: 'vimeo.com/',
+                    id: '/',
+                    src: '//player.vimeo.com/video/%id%?autoplay=1'
+                },
+                gmaps: {
+                    index: '//maps.google.',
+                    src: '%id%&output=embed'
+                }
+
+                // you may add here more sources
+
+            },
+
+            srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
+        }
+    });
+
 
     /* Sliders */
 
-    $('.texts-slider').slick({
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: false,
-        fade: true,
-        asNavFor: '.logos-slider'
-    });
-
-    $('.logos-slider').slick({
+    $('.shows-slider-holder').slick({
+        infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 0,
-        asNavFor: '.texts-slider',
-        arrows: false,
-        centerMode: false,
-        focusOnSelect: true
+        slidesToScroll: 4,
+        autoplay: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: false,
+        dots: false,
+        arrows: true,
     });
 
-    $('.slider').slick({
+    $('.slider-holder').slick({
+        asNavFor: '.slider-texts-holder',
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
+        autoplaySpeed: 5000,
         pauseOnFocus: false,
         pauseOnHover: false,
         fade: true,
-        autoplaySpeed: 3000,
+        dots: true,
         arrows: false,
-        nextArrow: '<i class="zmdi zmdi-chevron-right slick-next"></i>',
-        prevArrow: '<i class="zmdi zmdi-chevron-left slick-prev"></i>'
+    });
+
+    $('.slider-texts-holder').slick({
+        asNavFor: '.slider-holder',
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: true,
+        dots: false,
+        arrows: false,
+    });
+
+    $('.artists-slider').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        autoplay: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: false,
+        dots: false,
+        arrows: true,
     });
 
     /* Nav Menu */
@@ -94,7 +156,7 @@ $(document).ready( function () {
     $('.c-hamburger').click(function(evn){
         evn.preventDefault();
         $(this).toggleClass('is-active');
-        $('.main-nav-buttons').toggleClass('is-active');
+        $('.main-nav').toggleClass('is-active');
     });
 
     /**

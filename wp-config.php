@@ -20,7 +20,7 @@
 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define('DB_NAME', 'dynamo');
+define('DB_NAME', 'nana');
 
 /** MySQL database username */
 define('DB_USER', 'root');
@@ -66,7 +66,7 @@ define('NONCE_SALT',       'y3Fb6PzJVStHW1ry-anukVx#[9SZHt?[k7# mm*F$wrl)*>ZPp1x
  * You can have multiple installations in one database if you give each
  * a unique prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'dynamo_';
+$table_prefix  = 'nana_';
 
 /**
  * For developers: WordPress debugging mode.

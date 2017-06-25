@@ -19,15 +19,16 @@
         wp_enqueue_script('slick', get_template_directory_uri()."/assets/js/slick.min.js");
         wp_enqueue_script('skrollr', get_template_directory_uri()."/assets/js/skrollr.min.js");
         wp_enqueue_script('bootstrap', get_template_directory_uri()."/assets/js/bootstrap.min.js");
-	    wp_enqueue_script('midnight' , get_stylesheet_directory_uri() . '/assets/js/midnight.jquery.min', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
-	    wp_enqueue_script('functions_js' , get_stylesheet_directory_uri() . '/assets/js/functions.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
+	    wp_enqueue_script('magnific-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
+	    wp_enqueue_script('functions-js' , get_stylesheet_directory_uri() . '/assets/js/functions.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
     }
     add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
 
     if( !is_admin() ){
 
-        wp_enqueue_style('slick_css', get_template_directory_uri()."/assets/css/slick.min.css");
-        wp_enqueue_style('material_css', get_template_directory_uri()."/assets/css/material-design-iconic-font.min.css");
+        wp_enqueue_style('magnific-css', get_template_directory_uri()."/assets/css/magnific-popup.min.css");
+        wp_enqueue_style('slick-css', get_template_directory_uri()."/assets/css/slick.min.css");
+        wp_enqueue_style('material-css', get_template_directory_uri()."/assets/css/material-design-iconic-font.min.css");
         wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css', array(), 1.12345, false, 'all' );
     }
 
@@ -104,10 +105,22 @@ add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
 function gs_login_logo(){ ?>
     <style type="text/css">
 
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+        @font-face {
+            font-family: 'almoni_dl_aaaregular';
+            src: url('assets/fonts/almoni-dl-aaa-regular-webfont.eot');
+            src: url('assets/fonts/almoni-dl-aaa-regular-webfont.eot?#iefix') format('embedded-opentype'),
+            url('assets/fonts/almoni-dl-aaa-regular-webfont.woff2') format('woff2'),
+            url('assets/fonts/almoni-dl-aaa-regular-webfont.woff') format('woff'),
+            url('assets/fonts/almoni-dl-aaa-regular-webfont.ttf') format('truetype'),
+            url('assets/fonts/almoni-dl-aaa-regular-webfont.svg#almoni_dl_aaaregular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+
+        }
 
         body {
-            background: #405566 !important;
+            background: #87e4c2 !important;
+            font-family: 'almoni_dl_aaaregular';
         }
 
         .login #login_error, .login .message {
@@ -117,7 +130,6 @@ function gs_login_logo(){ ?>
 
         #login {
             direction: ltr;
-            font-family: 'Open Sans', sans-serif;
         }
 
         .login #backtoblog a, .login #nav a {
@@ -125,7 +137,7 @@ function gs_login_logo(){ ?>
         }
 
         .login form {
-            background-color: #232f38 !important;
+            background-color: #000 !important;
         }
 
         .login label {
@@ -148,7 +160,8 @@ function gs_login_logo(){ ?>
         }
 
         .wp-core-ui .button-primary {
-            background: #000 !important;
+            background: #87e4c2 !important;
+            color: #000 !important;
             box-shadow: none !important;
             text-shadow: none !important;
             border: none !important;

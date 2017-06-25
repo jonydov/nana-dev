@@ -2,11 +2,11 @@
 # BEGIN WordPress
 <IfModule mod_rewrite.c>
 RewriteEngine On
-RewriteBase /BrushGunz/dynamo-group/dynamo-group-dev/
+RewriteBase /nana/nana-dev/
 RewriteRule ^index\.php$ - [L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule . /BrushGunz/dynamo-group/dynamo-group-dev/index.php [L]
+RewriteRule . /nana/nana-dev/index.php [L]
 </IfModule>
 
 # END WordPress
