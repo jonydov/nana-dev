@@ -88,7 +88,7 @@ header {
 
         a {
           font-size: 16px;
-          color: #fff;
+          color: #000;
 
           &:hover {
             color: $green;
@@ -120,7 +120,7 @@ header {
         a {
           padding-top: 50px;
           position: relative;
-          color: #fff;
+          color: #000;
           font-size: 1.6rem;
 
           &:before {
@@ -138,6 +138,26 @@ header {
             &:before {
               width: 100%;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+.home {
+
+  header {
+
+    .navbar {
+
+      .main-nav,
+      .socials {
+
+        li {
+
+          a {
+            color: #fff;
           }
         }
       }
