@@ -4,7 +4,7 @@
 	Plugin URI: http://www.ground6.com/wordpress-plugins/wordpress-exporter/
 	Description: Export specific posts, pages, comments, custom fields, categories, tags and more to an export file.
 	Author: zourbuth
-	Version: 0.0.3
+	Version: 0.0.4
 	Author URI: http://zourbuth.com
 	License: Under GPL2
  
@@ -59,6 +59,7 @@ function wp_exporter_post_ids( $post_ids, $args ) {
 		switch ( $query ) :
 			case 'post' :
 			case 'page' :
+			case 'attachment' :
 				if( isset( $_GET['post-ids'] ) )
 					$post_ids = (array) $_GET['post-ids'];
 			break;
@@ -106,7 +107,7 @@ function wordpress_exporter_form_ajax() {
  * @since 0.0.1
  */
 function wordpress_exporter_form( $query ) {
-	if ( 'post' == $query || 'page' == $query ) {
+	if ( 'post' == $query || 'page' == $query || 'attachment' == $query ) {
 		
 		$posts = get_posts( array(
 			'posts_per_page' => 9999,
@@ -116,7 +117,7 @@ function wordpress_exporter_form( $query ) {
 		echo "<label>". __( 'Select one or more posts','wp-exporter' ) ."<br />
 			  <select name='post-ids[]' size='8' multiple='multiple'>";
 			foreach( $posts as $post )
-				echo "<option value='{$post->ID}'>{$post->post_title}</option>";
+				echo "<option value='{$post->ID}'>{$post->post_title} ({$post->ID})</option>";
 		echo "</select></label>";
 	}
 }
@@ -129,14 +130,16 @@ function wordpress_exporter_form( $query ) {
  */
 function wordpress_exporter_filters() {
 	$export_queries = apply_filters( 'wp_exporter_queries', array(
-		''		=> __( '&mdash; Select Query', 'wp-exporter' ),
-		'post'	=> __( 'Select Post(s)', 'wp-exporter' ),
-		'page'	=> __( 'Select Page(s)', 'wp-exporter' )
+		''			=> __( '-', 'wp-exporter' ),
+		'post'		=> __( 'Post', 'wp-exporter' ),
+		'page'		=> __( 'Page', 'wp-exporter' ),
+		'attachment'	=> __( 'Media/attachment', 'wp-exporter' ),
 	));
 	?>
 	<p><label><input type="radio" name="content" value="advanced" /> <?php _e( 'Custom Export', 'wp-exporter' ); ?></label></p>
 	<div class="export-filters" id="advanced-filters" style="margin-left: 23px;">
 		<p>
+			<label for="query"><?php _e( 'Select query','wp-exporter' ); ?></label>
 			<select class="smallfat" id="query" name="query" data-nonce="<?php echo wp_create_nonce( 'export-queries' ); ?>">
 				<?php foreach ( $export_queries as $key => $query ) { ?>
 					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $query ); ?></option>

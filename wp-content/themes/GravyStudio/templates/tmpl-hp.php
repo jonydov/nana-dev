@@ -1,6 +1,6 @@
 <?php
 /*
-    Template Name: Homepage
+    Template Name: עמוד הבית
 */
 
 get_header();
