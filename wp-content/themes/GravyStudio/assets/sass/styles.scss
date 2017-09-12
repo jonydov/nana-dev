@@ -499,57 +499,73 @@ section {
     justify-content: space-between;
     @include flex(1 1 10%);
 
+    nav#links {
+      position: absolute;
+      top: 0px;
+      right: -60px;
+    }
+
     .alphabet-scale {
       position: absolute;
-      width: 60px;
-      right: -60px;
+      @include transition-all(.1s);
       @include flexbox;
+
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
+      padding: 0;
+      margin: 0px;
+      width: 5px;
+      right: 0px;
+      list-style: none;
+    }
 
-      .text {
-        @include flex(0 0 100%);
-        color: $grey;
+    .letter {
+      @include flex(0 0 100%);
+      @include transition-all(.2s);
+      color: $grey;
+
+      a {
+        position: relative;
         @include transition-all(.2s);
+        padding: 7px 2px 5px 2px;
+        margin: 5px auto 2px;
+        line-height: 10px;
+        display: inline-block;
 
-        span {
-          position: relative;
-          @include transition-all(.2s);
-          padding: 7px 2px 5px 2px;
-          margin: 5px auto 2px;
-          line-height: 10px;
-          display: inline-block;
+        &:before {
+          @include pseudoElement;
+          height: 1px;
+          width: 100%;
+          bottom: -4px;
+          background-color: $grey;
+        }
+
+      }
+
+      &:last-child {
+
+        a {
 
           &:before {
-            @include pseudoElement;
-            height: 1px;
-            width: 100%;
-            bottom: -4px;
-            background-color: $grey;
-          }
-        }
-
-        &:last-child {
-
-          span {
-            border-bottom: none;
-          }
-        }
-
-        &:hover {
-
-          span {
-            cursor: pointer;
-            background-color: $green;
-            font-family: $font-black;
-            color: #000;
-
-            &:before {
-              background-color: #000;
-            }
+            display: none;
           }
         }
       }
+
+      &:hover {
+
+        span {
+          cursor: pointer;
+          background-color: $green;
+          font-family: $font-black;
+          color: #000;
+
+          &:before {
+            background-color: #000;
+          }
+        }
+      }
+
     }
 
     .section-title {
@@ -566,6 +582,18 @@ section {
     .section-body {
       position: relative;
       padding: 20px 0;
+
+      &.affix {
+
+        .alphabet-scale {
+          position: fixed;
+          right: auto;
+          top: 100px;
+        }
+      }
+    }
+
+    .items {
       @include flexbox;
       @include justify-content(space-between);
       -webkit-flex-flow: row wrap;
@@ -611,6 +639,35 @@ section {
     }
   }
 
+  &.section-about{
+    padding: 0px;
+    @include flexbox;
+    @include justify-content(space-between);
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    .section-title {
+
+      h2 {
+        background-color: #000;
+        color: #fff;
+        font-size: 3.9rem;
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+
+    .shell {
+      display: FLEX;
+
+      .shellr {
+        display: FLEX;
+        flex-flow: row wrap;
+        width: 50%;
+        background-color: green;
+
+      }
+    }
+  }
   &.section-banner {
     padding: 120px 0px 0px 0px;
     min-height: 640px;

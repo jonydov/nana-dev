@@ -19,7 +19,7 @@
 
 <div class="wrapper">
 
-    <header data-offset-top="0" data-spy="scroll">
+    <header data-offset-top="0" data-spy="affix">
         <div class="bg-holder"></div>
         <div class="shell">
 

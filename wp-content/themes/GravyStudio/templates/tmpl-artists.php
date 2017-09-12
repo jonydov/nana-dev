@@ -21,11 +21,56 @@ get_header();
                     <?php } ?>
                 </div>
 
-                <div class="section-body">
+                <div class="section-body affix-top" data-offset-top="150" data-spy="affix">
 
-                    <div class="alphabet-scale">
+                    <nav id="links">
+                        <ul class="alphabet-scale" >
+
+                            <?php
+                            $args = array(
+                                'posts_per_page'   => -1,
+                                'orderby'          => 'title',
+                                'order'            => 'ASC',
+                                'post_type'        => 'artists',
+                                'post_status'      => 'publish',
+                                'suppress_filters' => true
+
+                            );
+                            $posts_array = get_posts( $args );
+
+
+
+                            $i=0;
+
+                            foreach ($posts_array as $post){
+
+                                if ($i==0)  {
+                                    $first_letter= mb_substr($post->post_title,0,1);
+                                ?>
+                                    <li class="letter">
+                                        <a href="#index-<?php echo $first_letter ?>"><span class="letter"><?php echo $first_letter; ?></span></a>
+                                    </li>
+                                <?php } ;
+
+                                $index_letter = mb_substr($post->post_title,0,1);
+
+                                if (strcasecmp($index_letter,$first_letter) !=0)  {
+                                    $first_letter=$index_letter; ?>
+                                    <li class="letter">
+                                        <a href="#index-<?php echo $first_letter ?>"><span><?php echo $first_letter; ?></span></a>
+                                    </li>
+                                <?php } ; ?>
+
+                            <?php
+                                $i=$i+1; } ?>
+
+                        </ul>
+                    </nav>
+
+                    <div class="items">
 
                         <?php
+
                         $args = array(
                             'posts_per_page'   => -1,
                             'orderby'          => 'title',
@@ -35,67 +80,56 @@ get_header();
                             'suppress_filters' => true
 
                         );
+
                         $posts_array = get_posts( $args );
 
-                        $first_letter= mb_substr($post->post_title,0,1);
+                        mb_internal_encoding("UTF-8");
 
-                        foreach ($posts_array as $post){
+                        $i=0;
 
-                            $index_letter = mb_substr($post->post_title,0,1);
+                        foreach ($posts_array as $post){ ?>
 
-                            if (strcasecmp($index_letter,$first_letter) !=0){
-                                $first_letter=$index_letter; ?>
-                                <div class="text"><span><?php echo $first_letter ?></span></div>
+                            <?php
+                                if ($i == 0) {
 
-                            <?php } ; ?>
-                        <?php } ?>
+                                    $first_letter= mb_substr($post->post_title,0,1);
+
+                                    $index = 'name="#index-'.$first_letter.'"';
+
+                                }else{
+                                    $index_letter = mb_substr($post->post_title,0,1);
+
+                                    if (strcasecmp($index_letter,$first_letter) !=0){
+                                        $first_letter=$index_letter;
+
+                                        $index = 'name="#index-'.$first_letter.'"';
+                                    }else{
+
+                                        $index = '';
+                                    }
+                                }
+
+                                $img = get_the_post_thumbnail_url($post->ID);
+                            ?>
+
+                            <a href="<?php get_permalink($post->ID); ?>" class="item" <?=$index; ?>>
+
+                                <div class="image">
+                                    <div class="holder" <?php if( $img != null ){ echo 'style="background-image: url('.$img.');"'; } ?>></div>
+                                </div>
+
+
+                                <div class="text">
+                                    <span class="name-artist"><?=$post->post_title; ?></span>
+                                </div>
+                            </a>
+
+                            <?php
+                            $i=$i+1;
+                        } ?>
 
                     </div>
 
-                    <?php
-                    $args = array(
-                        'posts_per_page'   => -1,
-                        'orderby'          => 'title',
-                        'order'            => 'ASC',
-                        'post_type'        => 'artists',
-                        'post_status'      => 'publish',
-                        'suppress_filters' => true
-
-                    );
-                    $posts_array = get_posts( $args );
-
-
-                    mb_internal_encoding("UTF-8");
-
-                    $first_letter= mb_substr($post->post_title,0,1);
-
-                    foreach ($posts_array as $post){
-                        $img = get_the_post_thumbnail_url($post->ID);
-                    ?>
-
-                    <a href="<?=get_permalink($post->ID); ?>" class="item"
-
-                        <?php $index_letter = mb_substr($post->post_title,0,1);
-
-                        if (strcasecmp($index_letter,$first_letter) !=0){
-                            $first_letter=$index_letter; ?>
-                            name=index<?php echo $first_letter;  ?>
-                        <?php } ?> >
-
-                        <div class="image">
-                            <div class="holder" <?php if( $img != null ){ echo 'style="background-image: url('.$img.');"'; } ?>>
-                            </div>
-                        </div>
-
-
-                        <div class="text">
-                            <span class="name-artist"><?=$post->post_title; ?></span>
-                        </div>
-                    </a>
-
-
-
-                    <?php } ?>
                 </div>
 			</div>
 

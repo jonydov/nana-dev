@@ -52,7 +52,17 @@ var humanXtensions = {
     }
 };
 
+function scrollToAnchor(aid){
+    var aTag = $("a[name='"+ aid +"']");
+
+    $('html,body').animate({scrollTop: aTag.offset().top - 100 },200);
+}
+
 $(document).ready( function () {
+
+    $('#links a').on('click', function(e){
+        scrollToAnchor( $(this).attr('href') );
+    });
 
     /* Affix */
 
