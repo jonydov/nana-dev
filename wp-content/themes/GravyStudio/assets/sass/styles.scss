@@ -1148,6 +1148,184 @@ section {
       }
     }
   }
+
+  &.section-albums-by-year {
+    padding: 0px;
+
+    .section-title {
+
+      h2 {
+        background-color: #000;
+        color: #fff;
+        font-size: 3.9rem;
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+
+    .albums-slider{
+      width: 100%;
+      background-color: green;
+    }
+
+    .holder{
+      @include flexbox;
+      @include flex-flow(row wrap);
+
+    }
+    nav#nav-cat {
+      @include flex(1 1 100%);
+
+      width: 100%;
+      position: relative;
+      top: 0px;
+      right: 0px;
+
+    }
+
+    .cat-type {
+
+      padding: 0;
+      margin: 0px;
+      width: 100%;
+      right: 0px;
+      list-style: none;
+      background-color: red;
+    }
+
+    nav#links {
+      position: absolute;
+      top: 0px;
+      right: -60px;
+    }
+
+    .year-scale {
+      position: absolute;
+      @include transition-all(.1s);
+      @include flexbox;
+
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      padding: 0;
+      margin: 0px;
+      width: 5px;
+      right: 0px;
+      list-style: none;
+    }
+
+    .year {
+      @include flex(0 0 100%);
+      @include transition-all(.2s);
+      color: $grey;
+
+      a {
+        position: relative;
+        @include transition-all(.2s);
+        padding: 7px 2px 5px 2px;
+        margin: 5px auto 2px;
+        line-height: 10px;
+        display: inline-block;
+
+        &:before {
+          @include pseudoElement;
+          height: 1px;
+          width: 100%;
+          bottom: -4px;
+          background-color: $grey;
+        }
+
+      }
+
+      &:last-child {
+
+        a {
+
+          &:before {
+            display: none;
+          }
+        }
+      }
+
+      &:hover {
+
+        span {
+          cursor: pointer;
+          background-color: $green;
+          font-family: $font-black;
+          color: #000;
+
+          &:before {
+            background-color: #000;
+          }
+        }
+      }
+
+    }
+
+
+
+    .section-body {
+      position: relative;
+      padding: 20px 0;
+
+      &.affix {
+
+        .year-scale {
+          position: fixed;
+          right: auto;
+          top: 100px;
+        }
+      }
+    }
+
+    .items {
+
+    @include flex (1 1 100%);
+
+      @include flexbox;
+      @include justify-content(space-between);
+      @include flex-flow( row wrap) ;
+    }
+
+    .item {
+      margin: 0;
+      @include flex(0 0 21%);
+      overflow: hidden;
+
+      .image {
+        background-size: cover;
+        @include aspect-ratio(1, 1);
+
+        .holder {
+          background-size: cover;
+        }
+      }
+
+      .text {
+        padding: 10px 20px;
+        color: $grey;
+        @include flexbox;
+        @include align-items(center);
+        @include justify-content(center);
+
+        .name-artist {
+          font-family: $font-black;
+          font-size: 1.8rem;
+          color: $grey;
+          line-height: 2rem;
+        }
+      }
+
+      &:hover {
+
+        .name-artist {
+          color: #000;
+          background-color: $green;
+        }
+      }
+    }
+
+  }
 }
 
 .wpcf7-response-output {

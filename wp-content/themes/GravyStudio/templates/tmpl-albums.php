@@ -9,11 +9,12 @@ get_header();
 
 <?php if ( have_rows( 'content_blocks' ) ): while ( have_rows( 'content_blocks' ) ) : the_row(); ?>
 
-	<?php if ( get_row_layout() == 'artists_grid' ) { ?>
+	<?php if ( get_row_layout() == 'albums_grid' ) { ?>
 
-		<section class="section-artists">
-
+		<section class="section-albums-by-year">
 			<div class="shell">
+
+			<h2><?php get_sub_field('title'); ?></h2>
 
 				<div class="section-title">
 					<?php if( get_sub_field('title') != null ){ ?>
@@ -21,17 +22,26 @@ get_header();
 					<?php } ?>
 				</div>
 
+			</div>
+
+			<div class="albums-slider">
+				ttt
+			</div>
+
+
+			<div class="shell">
+
 				<div class="section-body affix-top" data-offset-top="150" data-spy="affix">
 
 					<nav id="links">
-						<ul class="alphabet-scale" >
+						<ul class="years-scale">
 
 							<?php
 							$args = array(
 								'posts_per_page'   => -1,
 								'orderby'          => 'title',
 								'order'            => 'ASC',
-								'post_type'        => 'artists',
+								'post_type'        => 'albums',
 								'post_status'      => 'publish',
 								'suppress_filters' => true
 
@@ -39,95 +49,109 @@ get_header();
 							$posts_array = get_posts( $args );
 
 
-
-							$i=0;
-
 							foreach ($posts_array as $post){
 
-								if ($i==0)  {
-									$first_letter= mb_substr($post->post_title,0,1);
-									?>
-									<li class="letter">
-										<a href="#index-<?php echo $first_letter ?>"><span class="letter"><?php echo $first_letter; ?></span></a>
-									</li>
-								<?php } ;
+								$album_name = $post->post_title;
+								?>
 
-								$index_letter = mb_substr($post->post_title,0,1);
+								<li class="year">
+									<a href="#index-<?php echo $year ?>"><span class="letter"></span></a>
+								</li>
 
-								if (strcasecmp($index_letter,$first_letter) !=0)  {
-									$first_letter=$index_letter; ?>
-									<li class="letter">
-										<a href="#index-<?php echo $first_letter ?>"><span><?php echo $first_letter; ?></span></a>
-									</li>
-								<?php } ; ?>
 
 								<?php
-								$i=$i+1; } ?>
+								 } ?>
 
 						</ul>
 					</nav>
+					<div class="holder">
+						<nav id="nav-cat">
 
-					<div class="items">
+							<ul class="cat-type">
+								<li class="cat cat-title">
+									מיון לפי
+								</li>
 
-						<?php
 
-						$args = array(
-							'posts_per_page'   => -1,
-							'orderby'          => 'title',
-							'order'            => 'ASC',
-							'post_type'        => 'artists',
-							'post_status'      => 'publish',
-							'suppress_filters' => true
+								<?php
+								$args = array(
+									'posts_per_page'   => -1,
+									'orderby'          => 'title',
+									'order'            => 'ASC',
+									'post_type'        => 'albums',
+									'post_status'      => 'publish',
+									'suppress_filters' => true
 
-						);
+								);
+								$posts_array = get_posts( $args );
 
-						$posts_array = get_posts( $args );
+								$argsCat = array(
+									'orderby'          => 'name',
+									'order'            => 'ASC',
+									'separator'           => ',',
+									'show_count'          => 0,
+									'show_option_all'     => '',
+									'show_option_none'    => __( 'No categories' ),
+									'style'               => 'list',
+									'taxonomy'            => 'categories',
+									'title_li'            => __( 'Categories' ),
+									'use_desc_for_title'  => 1
+								);
 
-						mb_internal_encoding("UTF-8");
+								var_dump($argsCat);
+								echo $argsCat->name;
 
-						$i=0;
+									foreach ($posts_array as $post){
+									?>
 
-						foreach ($posts_array as $post){ ?>
+									<li class="cat">
+										<a href="#index-<?php echo $year ?>"><span class="year"></span></a>
+									</li>
+
+
+									<?php
+								} ?>
+
+							</ul>
+						</nav>
+						<div class="items">
 
 							<?php
-							if ($i == 0) {
 
-								$first_letter= mb_substr($post->post_title,0,1);
+							$args = array(
+								'posts_per_page'   => -1,
+								'orderby'          => 'title',
+								'order'            => 'ASC',
+								'post_type'        => 'albums',
+								'post_status'      => 'publish',
+								'suppress_filters' => true
 
-								$index = 'name="#index-'.$first_letter.'"';
+							);
 
-							}else{
-								$index_letter = mb_substr($post->post_title,0,1);
 
-								if (strcasecmp($index_letter,$first_letter) !=0){
-									$first_letter=$index_letter;
+							$posts_array = get_posts( $args );
 
-									$index = 'name="#index-'.$first_letter.'"';
-								}else{
+							foreach ($posts_array as $post){
 
-									$index = '';
-								}
-							}
+								$img = get_the_post_thumbnail_url($post->ID);
 
-							$img = get_the_post_thumbnail_url($post->ID);
-							?>
 
-							<a href="<?php get_permalink($post->ID); ?>" class="item" <?=$index; ?>>
+	?>
+								<a href="<?php get_permalink($post->ID); ?>"  class="item ">
+
 
 								<div class="image">
 									<div class="holder" <?php if( $img != null ){ echo 'style="background-image: url('.$img.');"'; } ?>></div>
 								</div>
 
+								</a>
 
-								<div class="text">
-									<span class="name-artist"><?=$post->post_title; ?></span>
-								</div>
-							</a>
+								<?php
+								} ?>
 
-							<?php
-							$i=$i+1;
-						} ?>
 
+
+						</div>
 					</div>
 
 				</div>

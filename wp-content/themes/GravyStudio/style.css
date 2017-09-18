@@ -649,7 +649,7 @@ section {
             display: block;
             content: "";
             width: 100%;
-            padding-top: 44.44444%; }
+            padding-top: 44.4444444444%; }
           section.section-feed-2cols .col.video-clips .items .item .image > .holder {
             position: absolute;
             top: 0;
@@ -1533,6 +1533,228 @@ section {
           cursor: pointer; }
       section.section-banner .slick-dots .slick-active button {
         background-color: #fff; }
+  section.section-albums-by-year {
+    padding: 0px; }
+    section.section-albums-by-year .section-title h2 {
+      background-color: #000;
+      color: #fff;
+      font-size: 3.9rem;
+      display: inline-block;
+      padding: 0 5px; }
+    section.section-albums-by-year .albums-slider {
+      width: 100%;
+      background-color: green; }
+    section.section-albums-by-year .holder {
+      -webkit-box-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      -moz-box-flex-flow: row wrap;
+      -moz-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      @media (min-width: 768px) {
+        section.section-albums-by-year .holder {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        section.section-albums-by-year .holder {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+    section.section-albums-by-year nav#nav-cat {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 100%;
+      -moz-box-flex: 1;
+      -moz-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      width: 100%;
+      position: relative;
+      top: 0px;
+      right: 0px; }
+    section.section-albums-by-year .cat-type {
+      padding: 0;
+      margin: 0px;
+      width: 100%;
+      right: 0px;
+      list-style: none;
+      background-color: red; }
+    section.section-albums-by-year nav#links {
+      position: absolute;
+      top: 0px;
+      right: -60px; }
+    section.section-albums-by-year .year-scale {
+      position: absolute;
+      -webkit-transition: all 0.1s linear;
+      -moz-transition: all 0.1s linear;
+      -o-transition: all 0.1s linear;
+      -ms-transition: all 0.1s linear;
+      transition: all 0.1s linear;
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      padding: 0;
+      margin: 0px;
+      width: 5px;
+      right: 0px;
+      list-style: none; }
+      @media (min-width: 768px) {
+        section.section-albums-by-year .year-scale {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        section.section-albums-by-year .year-scale {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+    section.section-albums-by-year .year {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 100%;
+      -moz-box-flex: 0;
+      -moz-flex: 0 0 100%;
+      -ms-flex: 0 0 100%;
+      flex: 0 0 100%;
+      -webkit-transition: all 0.2s linear;
+      -moz-transition: all 0.2s linear;
+      -o-transition: all 0.2s linear;
+      -ms-transition: all 0.2s linear;
+      transition: all 0.2s linear;
+      color: #808285; }
+      section.section-albums-by-year .year a {
+        position: relative;
+        -webkit-transition: all 0.2s linear;
+        -moz-transition: all 0.2s linear;
+        -o-transition: all 0.2s linear;
+        -ms-transition: all 0.2s linear;
+        transition: all 0.2s linear;
+        padding: 7px 2px 5px 2px;
+        margin: 5px auto 2px;
+        line-height: 10px;
+        display: inline-block; }
+        section.section-albums-by-year .year a:before {
+          position: absolute;
+          content: '';
+          display: block;
+          height: 1px;
+          width: 100%;
+          bottom: -4px;
+          background-color: #808285; }
+      section.section-albums-by-year .year:last-child a:before {
+        display: none; }
+      section.section-albums-by-year .year:hover span {
+        cursor: pointer;
+        background-color: #87e4c2;
+        font-family: "almoni_dl_aaablack";
+        color: #000; }
+        section.section-albums-by-year .year:hover span:before {
+          background-color: #000; }
+    section.section-albums-by-year .section-body {
+      position: relative;
+      padding: 20px 0; }
+      section.section-albums-by-year .section-body.affix .year-scale {
+        position: fixed;
+        right: auto;
+        top: 100px; }
+    section.section-albums-by-year .items {
+      -webkit-box-flex: 1;
+      -webkit-flex: 1 1 100%;
+      -moz-box-flex: 1;
+      -moz-flex: 1 1 100%;
+      -ms-flex: 1 1 100%;
+      flex: 1 1 100%;
+      -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+      -webkit-justify-content: space-between;
+      -moz-justify-content: space-between;
+      justify-content: space-between;
+      -webkit-box-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      -moz-box-flex-flow: row wrap;
+      -moz-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      @media (min-width: 768px) {
+        section.section-albums-by-year .items {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        section.section-albums-by-year .items {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+    section.section-albums-by-year .item {
+      margin: 0;
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 21%;
+      -moz-box-flex: 0;
+      -moz-flex: 0 0 21%;
+      -ms-flex: 0 0 21%;
+      flex: 0 0 21%;
+      overflow: hidden; }
+      section.section-albums-by-year .item .image {
+        background-size: cover;
+        position: relative; }
+        section.section-albums-by-year .item .image:before {
+          display: block;
+          content: "";
+          width: 100%;
+          padding-top: 100%; }
+        section.section-albums-by-year .item .image > .holder {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0; }
+        section.section-albums-by-year .item .image .holder {
+          background-size: cover; }
+      section.section-albums-by-year .item .text {
+        padding: 10px 20px;
+        color: #808285;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        -webkit-justify-content: center;
+        -moz-justify-content: center;
+        justify-content: center; }
+        @media (min-width: 768px) {
+          section.section-albums-by-year .item .text {
+            display: -webkit-flex;
+            display: -webkit-box;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex; } }
+        @media (max-width: 768px) {
+          section.section-albums-by-year .item .text {
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: -webkit-box;
+            display: flex; } }
+        section.section-albums-by-year .item .text .name-artist {
+          font-family: "almoni_dl_aaablack";
+          font-size: 1.8rem;
+          color: #808285;
+          line-height: 2rem; }
+      section.section-albums-by-year .item:hover .name-artist {
+        color: #000;
+        background-color: #87e4c2; }
 
 .wpcf7-response-output {
   border: none !important;
@@ -1571,11 +1793,11 @@ header {
     height: 70px;
     opacity: 0;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */
-    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+    background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
     /* FF3.6-15 */
-    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+    background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
     /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
     /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b3000000', endColorstr='#00000000',GradientType=0 );
     /* IE6-9 */ }
