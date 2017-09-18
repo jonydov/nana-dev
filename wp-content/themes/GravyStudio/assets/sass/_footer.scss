@@ -7,18 +7,19 @@ footer {
   z-index: -1;
 
   .shell {
-    max-width: 320px;
+    max-width: 420px;
   }
 
   .form-holder {
-    padding: 5px 0;
+    padding: 0px 0;
     @include flexbox;
     @include align-items(center);
 
     h3 {
       color: $green;
       font-size: 1.8rem;
-      @include flex(0 0 40%);
+      @include flex(1 1 100%);
+      margin-top: 0px;
     }
 
     .field {
@@ -32,9 +33,9 @@ footer {
     input {
       border: none;
       background-color: #fff;
-      padding: 0px 5px;
-      width: calc(100% - 10px);
+      width: 100%;
       line-height: 20px;
+      margin-bottom: 4px;
     }
 
     input[type="submit"] {
@@ -60,40 +61,163 @@ footer {
     }
   }
 
-  .socials {
-    position: relative;
-    margin: 0px;
-    padding: 0px 0px 0px 15px;
+
+
+  .holder {
+
+    padding-top: 0px ;
     @include flexbox;
-    @include align-items(flex-end);
-    @include flex(0 0 15%);
-    @include justify-content(space-between);
+    @include flex-direction(row nowrap);
 
-    li {
+  }
 
-      a {
-        font-size: 2rem;
-        color: #fff;
 
-        &:hover {
-          color: $green;
+  .col{
+
+    @include flex(0 0 50%);
+
+    @include flexbox;
+    @include flex-flow(row wrap);
+    padding: 0 ;
+
+    &.col-right{
+
+      border-left: 2px solid $grey;
+      padding-right: 10px;
+
+      .holder-col{
+
+        @include flex(1 1 100%);
+
+        @include justify-content(space-between);
+
+        &.holder-text{
+          align-self: flex-start;
+        }
+
+        &.holder-social{
+          align-self: flex-end;
         }
       }
+
+
+      .footer-text {
+        position: relative;
+        width: 60%;
+
+        font-size: 1.3rem;
+        font-family: $font-bold;
+        text-align: right;
+        color: $grey;
+        ;
+      }
+
+      .socials {
+        @include flex(1 1 100%);
+
+        padding-bottom: 0px;
+        position: relative;
+        margin: 0px;
+        padding: 0px 0px 0px 10px;
+
+        list-style:none;
+
+        @include flexbox;
+        @include justify-content(space-between);
+
+        li {
+          @include flex(0 0 10%);
+
+          a {
+            font-size: 2rem;
+            color: #fff;
+
+            &:hover {
+              color: $green;
+            }
+          }
+        }
+      }
+     }
+
+    &.col-left{
+
+      .newsletter-form {
+        @include flex(1 1 100%);
+        padding:0 10px;
+
+        .form-holder {
+          @include flexbox;
+          @include flex-flow(row wrap);
+          padding: 0px 0 ;
+
+          .field {
+            @include flexbox;
+            @include flex(1 1 100%);
+
+            @include flex-flow(row nowrap);
+
+            span {
+              width: 100%;
+            }
+
+
+            &.form-submit {
+
+              .email {
+                @include flex(0 0 70%);
+                width:100%;
+
+                input {
+                  max-width: 100%;
+                  line-height: 1.6rem;
+                }
+              }
+
+              input[type="submit"] {
+                @include flex(0 0 30%);
+                padding: 0;
+                line-height: 1.6rem;
+
+              }
+            }
+
+            &.field-name {
+              @include flex(0 0 70%);
+
+              input {
+                max-width: 100%;
+                line-height: 1.6rem;
+              }
+
+            }
+          }
+        }
+
+        .field-desc {
+          @include flex(1 1 100%);
+
+          margin-bottom: 4px;
+          justify-content: right;
+          color: $grey;
+          font-size: 1rem;
+        }
+
+      }
+
     }
   }
 
-  .footer-text {
-    font-size: 1.1rem;
-    font-family: $font-light;
-    text-align: center;
-    color: #fff;
-    letter-spacing: 1px;
-  }
+
+
+
 }
 
 @media (max-width: 480px) {
 
   footer {
+
+
     width: calc(100% - 30px);
 
     .shell {

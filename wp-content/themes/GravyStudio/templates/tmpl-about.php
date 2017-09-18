@@ -14,14 +14,15 @@ get_header();
 
 			<div class="shell">
 
-                <div class="shellR">
+                <div class="col col-right">
+                    <div class="holder">
 
                   <div class="section-title">
 
                     <?php if( get_sub_field('title') != null ){ ?>
                         <h2><?php the_sub_field('title'); ?></h2>
                     <?php } ?>
-                </div>
+                  </div>
 
                   <div class="section-body">
 
@@ -31,21 +32,76 @@ get_header();
                         </div>
                     <?php } ?>
                   </div>
+                    </div>
 
                 </div>
 
-                <div class="shellL">
+                <div class="col col-left">
 
-                    <div class="contact-form">
+                    <div class="holder">
 
-                    <?php if( get_sub_field('contact_form') != null ){ ?>
+                        <?php if( get_sub_field('newsletter_form') != null ){ ?>
+                            <div class="newsletter-form">
+                                <span>
+                                    <?php echo do_shortcode( get_sub_field('newsletter_form', 'option') ); ?>
+                                </span>
+                            </div>
+                        <?php } ?>
+
+                        <?php if( get_sub_field('contact_form') != null ){ ?>
                         <div class="contact-form">
-                            <span><?php the_sub_field('contact_form'); ?></span>
+                            <span>
+                                <?php echo do_shortcode( get_sub_field('contact_form', 'option') ); ?>
+                            </span>
                         </div>
                     <?php } ?>
 
-                    </div>
+                        <div class="section-footer">
 
+                            <ul class="socials">
+                                <?php if ( get_field( 'youtube', 'option' ) != null ) { ?>
+                                    <li>
+                                        <a href="<?= get_field( 'youtube', 'option' ); ?>">
+                                            <i class="zmdi zmdi-youtube"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ( get_field( 'instagram', 'option' ) != null ) { ?>
+                                    <li>
+                                        <a href="<?= get_field( 'instagram', 'option' ); ?>">
+                                            <i class="zmdi zmdi-instagram"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ( get_field( 'facebook', 'option' ) != null ) { ?>
+                                    <li>
+                                        <a href="<?= get_field( 'facebook', 'option' ); ?>">
+                                            <i class="zmdi zmdi-facebook-box"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ( get_field( 'twitter', 'option' ) != null ) { ?>
+                                    <li>
+                                        <a href="<?= get_field( 'twitter', 'option' ); ?>">
+                                            <i class="zmdi zmdi-twitter"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                            </ul>
+
+
+
+
+                            <?php if( get_sub_field('section_footer_text', 'option') != null ){ ?>
+                                <div class="section-footer-text">
+
+                                    <?php echo get_sub_field('section_footer_text', 'option'); ?>
+                                </div>
+                            <?php } ?>
+
+                        </div>
+
+                    </div>
                 </div>
 			</div>
 

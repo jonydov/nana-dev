@@ -69,6 +69,15 @@
   align-items: $value;
 }
 
+@mixin flex-flow($value) {
+  -webkit-box-flex-flow: $value;
+  -webkit-flex-flow: $value;
+  -moz-box-flex-flow: $value;
+  -moz-flex-flow: $value;
+  -ms-flex-flow: $value;
+  flex-flow: $value;
+}
+
 @mixin align-self($value: stretch) {
   @if $value == flex-start {
     -webkit-box-self: start;
