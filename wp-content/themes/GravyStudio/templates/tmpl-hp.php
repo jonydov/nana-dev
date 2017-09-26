@@ -169,7 +169,6 @@ get_header();
                         $posts = get_posts($args);
 
                         foreach ($posts as $post){
-
                             $artist = get_field('assigned_artist', $post->ID);
 	                        $venue = get_field('venue', $post->ID);
                             $img = get_the_post_thumbnail_url($post->ID);

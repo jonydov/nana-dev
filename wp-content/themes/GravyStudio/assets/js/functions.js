@@ -203,7 +203,28 @@ $(document).ready( function () {
         ]
     });
 
-    $('.section-albums-slider .items').slick({
+    $('.section-albums-slider .albums-slider-holder').slick({
+        infinite: true,
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        autoplay: false,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: false,
+        dots: false,
+        arrows: true,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+
+    $('.section-albums-banner-slider .items').slick({
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,

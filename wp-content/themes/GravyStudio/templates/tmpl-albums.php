@@ -11,7 +11,7 @@ get_header();
 
 	<?php if ( get_row_layout() == 'albums_slider' ) { ?>
 
-        <section class="section-albums-slider">
+        <section class="section-albums-banner-slider">
 
 	        <?php if ( get_sub_field( 'title' ) != null ) { ?>
                 <div class="shell">

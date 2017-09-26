@@ -1,5 +1,6 @@
 <?php
     get_header();
+    $id = get_queried_object()->ID;
 ?>
 
 <section class="section-artist-bio">
@@ -10,13 +11,68 @@
         </div>
 
         <div class="section-body">
-            <div class="text">
-                <?php the_content(); ?>
-            </div>
             <div class="image">
                 <?php if ( has_post_thumbnail() ) { ?>
-	                <img src="<?php the_post_thumbnail_url(); ?>" />
+                    <img src="<?php the_post_thumbnail_url(); ?>" />
                 <?php } ?>
+                <div class="socials">
+
+                    <?php $socials = get_field('links'); ?>
+
+                    <?php if( $socials['facebook'] != null ){ ?>
+                        <a href="<?=$socials['facebook']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-facebook-box"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['instagram'] != null ){ ?>
+                        <a href="<?=$socials['instagram']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-instagram"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['twitter'] != null ){ ?>
+                        <a href="<?=$socials['twitter']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-twitter"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['itunes'] != null ){ ?>
+                        <a href="<?=$socials['itunes']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-itunes"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['apple_music'] != null ){ ?>
+                        <a target="_blank" href="<?=$socials['apple_music']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-apple"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['facebook'] != null ){ ?>
+                        <a target="_blank" href="<?=$socials['facebook']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-facebook"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['spotify'] != null ){ ?>
+                        <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-spotify"></i>
+                        </a>
+                    <?php } ?>
+
+                    <?php if( $socials['youtube'] != null ){ ?>
+                        <a target="_blank" href="<?=$socials['youtube']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-youtube"></i>
+                        </a>
+                    <?php } ?>
+
+                </div>
+            </div>
+            <div class="text">
+                <div class="holder">
+                    <?php the_content(); ?>
+                </div>
             </div>
         </div>
 
@@ -39,39 +95,31 @@
                     'orderby'          => 'title',
                     'order'            => 'ASC',
                     'post_type'        => 'shows',
-
-                    'meta_query'	=> array(
-	                    'relation'		=> 'AND',
-	                    array(
-		                    'key'	 	=> 'assigned_artist',
-		                    'value'	  	=> array($post->ID),
-	                    )
-                    ),
                 );
 
                 $posts_array = get_posts( $args );
             ?>
 
             <?php foreach ( $posts_array as $post ) { ?>
+                <?php if (in_array($id, get_field('assigned_artist')) ) { ?>
 
-                <?php
-                    $date = get_field('date', $post->ID);
-                    $date = new DateTime($date);
-	                $date = $date->format('j.m');
-                ?>
+                    <?php
+                        $date = get_field('date', $post->ID);
+                        $date = new DateTime($date);
+                        $date = $date->format('j.m');
+                    ?>
 
-                <?php if (strtotime($today) <= strtotime( get_field('date', $post->ID) ) ) { ?>
-                    <a href="<?php the_field('link', $post->ID); ?>" target="_blank">
-                        <span class="date"><?=$date; ?></span>
-                        <span class="time"><?=get_field('time', $post->ID); ?></span>
-                        <span class="venue"><?=get_field('venue', $post->ID); ?></span>
-                        <span class="venue"><?=get_the_title($post->ID); ?></span>
-                    </a>
+                    <?php if (strtotime($today) <= strtotime(get_field('date', $post->ID)) ) { ?>
+                        <a href="<?php the_field('link', $post->ID); ?>" target="_blank">
+                            <span class="date"><?=$date; ?>,</span>
+                            <span class="time"><?=get_field('time', $post->ID); ?></span>
+                            <span class="venue"><?=get_field('venue', $post->ID); ?></span>
+                            <span class="desc">, <?=get_the_title($post->ID); ?></span>
+                        </a>
+                    <?php } ?>
+
                 <?php } ?>
-
-            <?php }
-            wp_reset_postdata();
-            ?>
+            <?php } wp_reset_postdata(); ?>
         </div>
 
 	</div>
@@ -84,34 +132,24 @@
             <h3>אלבומים</h3>
         </div>
 
-        <div class="section-body">
-
-          <div class="albums-slider-holder">
-
+        <div class="section-body albums-slider-holder">
             <?php
             $args = array(
                 'post_type' => 'albums',
-                'posts_per_page' => 4,
+                'posts_per_page' => -1,
                 'orderby' => 'title',
                 'order' => 'DESC',
                 'post_status'      => 'publish',
-                'suppress_filters' => true,
-                'meta_query'	=> array(
-                    'relation'		=> 'AND',
-                    array(
-                        'key'	 	=> 'assigned_artist',
-                        'value'	  	=> array($post->ID),
-                    )
-                ),
-
+                'suppress_filters' => true
             );
 
             $albums = get_posts( $args );
 
             foreach ( $albums as $post ) {
-
+                //var_dump(get_field('assigned_artist', $post->ID));
+                if ( in_array($id, get_field('assigned_artist', $post->ID)) ) {
                 $img = get_the_post_thumbnail_url( $post->ID );
-                ?>
+            ?>
 
                 <a href="<?=get_permalink($post->ID); ?>" class="item">
 
@@ -126,10 +164,7 @@
                     </div>
                 </a>
 
-            <?php }
-              wp_reset_postdata();
-              ?>
-          </div>
+            <?php } } wp_reset_postdata(); ?>
         </div>
     </div>
 </section>
@@ -151,7 +186,6 @@
                         'posts_per_page' => 2,
                         'orderby' => 'date',
                         'order' => 'DESC',
-
                         'meta_query'	=> array(
                             'relation'		=> 'AND',
                             array(
@@ -197,18 +231,9 @@
                     <h3>מוזיקה</h3>
                 </div>
 
-                <div class="music">
-                    <?php if( get_sub_field('spotify') != null ){?>
-                        <a class="spotify" href="<?=get_sub_field('spotify'); ?>">
-                            <?=get_sub_field('spotify'); ?></a>
-                    <?php } ?>
-                    <?php if( get_sub_field('apple music') != null ){ ?>
-                        <a class="apple" href="<?=get_sub_field('apple'); ?>">
-                            <?=get_sub_field('apple'); ?></a>
-                    <?php } ?>
+                <div class="section-body">
+                    <?php the_field('music'); ?>
                 </div>
-
-                <?php wp_reset_postdata(); ?>
 
             </div>
          </div>
@@ -230,7 +255,6 @@
                         'posts_per_page' => 2,
                         'orderby' => 'date',
                         'order' => 'DESC',
-
                         'meta_query'	=> array(
                             'relation'		=> 'AND',
                             array(
