@@ -74,6 +74,7 @@ get_header();
 	            endif;
 	            ?>
             </div>
+
             <div class="slider-holder">
 
 		        <?php

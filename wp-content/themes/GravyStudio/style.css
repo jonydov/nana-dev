@@ -796,7 +796,7 @@ section {
             display: block;
             content: "";
             width: 100%;
-            padding-top: 44.44444%; }
+            padding-top: 44.4444444444%; }
           section.section-feed-2cols .col.video-clips .items .item .image > .holder {
             position: absolute;
             top: 0;
@@ -1185,42 +1185,6 @@ section {
         background-color: #32faca; }
       section.section-artists .item:hover .image .holder {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
-  section.section-albums-slider {
-    padding-top: 40px; }
-    section.section-albums-slider .slick-dots {
-      bottom: 15px; }
-    section.section-albums-slider .section-title {
-      margin-bottom: 20px; }
-      section.section-albums-slider .section-title h2 {
-        background-color: #000;
-        color: #fff;
-        display: inline-block;
-        font-size: 4rem;
-        padding: 0 5px; }
-    section.section-albums-slider .items {
-      direction: ltr; }
-      section.section-albums-slider .items .item {
-        height: 55vh;
-        width: 100%;
-        background-size: cover;
-        background-position: center; }
-        section.section-albums-slider .items .item a {
-          position: absolute;
-          left: 50%;
-          -webkit-transform: translateX(-50%);
-          -moz-transform: translateX(-50%);
-          -ms-transform: translateX(-50%);
-          -o-transform: translateX(-50%);
-          transform: translateX(-50%);
-          background-color: #32faca;
-          color: #000;
-          padding: 0px 15px;
-          font-size: 2rem;
-          font-family: "almoni_dl_aaablack";
-          bottom: 60px; }
-          section.section-albums-slider .items .item a:hover {
-            background-color: #000;
-            color: #32faca; }
   section.section-about {
     padding: 40px 0px;
     -webkit-box-pack: justify;
@@ -1944,6 +1908,47 @@ section {
       section.section-albums-list .item:hover .name-artist {
         color: #000;
         background-color: #32faca; }
+  section.section-albums-slider {
+    padding-top: 40px; }
+    section.section-albums-slider .albums-slider-holder {
+      direction: ltr; }
+    section.section-albums-slider .slick-dots {
+      bottom: 15px; }
+    section.section-albums-slider .section-title {
+      margin-bottom: 20px; }
+      section.section-albums-slider .section-title h2 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        font-size: 2.2rem;
+        background-color: #32faca;
+        color: #000;
+        display: inline-block;
+        padding: 0 5px;
+        margin-bottom: 30px; }
+    section.section-albums-slider .items {
+      direction: ltr; }
+      section.section-albums-slider .items .item {
+        height: 55vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center; }
+        section.section-albums-slider .items .item a {
+          position: absolute;
+          left: 50%;
+          -webkit-transform: translateX(-50%);
+          -moz-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+          -o-transform: translateX(-50%);
+          transform: translateX(-50%);
+          background-color: #32faca;
+          color: #000;
+          padding: 0px 15px;
+          font-size: 2rem;
+          font-family: "almoni_dl_aaablack";
+          bottom: 60px; }
+          section.section-albums-slider .items .item a:hover {
+            background-color: #000;
+            color: #32faca; }
 
 .wpcf7-response-output {
   border: none !important;
@@ -2240,11 +2245,11 @@ header {
 
 .home header.affix .bg-holder {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */ }
