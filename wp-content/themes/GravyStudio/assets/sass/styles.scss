@@ -723,54 +723,6 @@ section {
     }
   }
 
-  &.section-albums-slider {
-    padding-top: 40px;
-
-    .slick-dots {
-      bottom: 15px;
-    }
-
-    .section-title {
-      margin-bottom: 20px;
-
-      h2 {
-        background-color: #000;
-        color: #fff;
-        display: inline-block;
-        font-size: 4rem;
-        padding: 0 5px;
-      }
-    }
-
-    .items {
-      direction: ltr;
-
-      .item {
-        height: 55vh;
-        width: 100%;
-        background-size: cover;
-        background-position: center;
-
-        a {
-          position: absolute;
-          left: 50%;
-          @include transform-translateX(-50%);
-          background-color: $green;
-          color: #000;
-          padding: 0px 15px;
-          font-size: 2rem;
-          font-family: $font-black;
-          bottom: 60px;
-
-          &:hover {
-            background-color: #000;
-            color: $green;
-          }
-        }
-      }
-    }
-  }
-
   &.section-about {
     padding: 40px 0px;
     @include flexbox;
@@ -1464,6 +1416,64 @@ section {
     }
 
   }
+
+  &.section-albums-slider {
+    padding-top: 40px;
+
+    .albums-slider-holder {
+      direction: ltr;
+    }
+
+
+    .slick-dots {
+      bottom: 15px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+
+      h2 {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        font-size: 2.2rem;
+        background-color: $green;
+        color: #000;
+        display: inline-block;
+        padding: 0 5px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .items {
+      direction: ltr;
+
+      .item {
+        height: 55vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+
+        a {
+          position: absolute;
+          left: 50%;
+          @include transform-translateX(-50%);
+          background-color: $green;
+          color: #000;
+          padding: 0px 15px;
+          font-size: 2rem;
+          font-family: $font-black;
+          bottom: 60px;
+
+          &:hover {
+            background-color: #000;
+            color: $green;
+          }
+        }
+      }
+    }
+  }
+
+
 }
 
 .wpcf7-response-output {

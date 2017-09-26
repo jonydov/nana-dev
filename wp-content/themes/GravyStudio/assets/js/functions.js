@@ -216,6 +216,19 @@ $(document).ready( function () {
         arrows: false,
     });
 
+    $('.albums-slider-holder .items').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: true,
+        dots: true,
+        arrows: false,
+    });
+
     $('.slider-holder').slick({
         asNavFor: '.slider-texts-holder',
         infinite: true,
