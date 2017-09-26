@@ -16,24 +16,22 @@ get_header();
 
                 <div class="col col-right">
                     <div class="holder">
+                      <div class="section-title">
 
-                  <div class="section-title">
+                        <?php if( get_sub_field('title') != null ){ ?>
+                            <h2><?php the_sub_field('title'); ?></h2>
+                        <?php } ?>
+                      </div>
 
-                    <?php if( get_sub_field('title') != null ){ ?>
-                        <h2><?php the_sub_field('title'); ?></h2>
-                    <?php } ?>
-                  </div>
+                      <div class="section-body">
 
-                  <div class="section-body">
-
-                    <?php if( get_sub_field('about_text') != null ){ ?>
-                        <div class="text-about">
-                            <span><?php the_sub_field('about_text'); ?></span>
-                        </div>
-                    <?php } ?>
-                  </div>
+                        <?php if( get_sub_field('about_text') != null ){ ?>
+                            <div class="text-about">
+                                <span><?php the_sub_field('about_text'); ?></span>
+                            </div>
+                        <?php } ?>
+                      </div>
                     </div>
-
                 </div>
 
                 <div class="col col-left">

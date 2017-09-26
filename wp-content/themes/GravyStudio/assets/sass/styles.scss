@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 /* Variables */
-$green: #87e4c2;
+$green: #32faca;
 $grey: #808285;
 $icons: 'Material-Design-Iconic-Font';
 $font-light: 'almoni_dl_aaalight';
@@ -22,7 +22,7 @@ body {
   background-color: #fff;
   font-family: $font-reg;
   margin: 0;
-  padding: 150px 0 0px 0;
+  padding: 100px 0 0px 0;
   margin-bottom: 150px;
   color: #000;
   width: 100%;
@@ -38,6 +38,10 @@ a {
   text-decoration: none;
   color: #000;
   @include transition-all(.2s);
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 .wrapper {
@@ -64,7 +68,8 @@ a {
 }
 
 .shell {
-  max-width: 960px;
+  position: relative;
+  max-width: 1200px;
   width: 100%;
   margin: auto;
 }
@@ -76,6 +81,39 @@ h4,
 h5,
 h6 {
   font-family: $font-black;
+}
+
+.slick-dots {
+  position: absolute;
+  bottom: 55px;
+  left: 50%;
+  @include transform-translateX(-50%);
+  list-style: none;
+  @include flexbox;
+  padding: 0;
+
+  button {
+    margin: 0 5px;
+    background: none;
+    font-size: 0px;
+    border-radius: 100%;
+    border: none;
+    width: 15px;
+    height: 15px;
+    background-color: $green;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .slick-active button {
+    background-color: #fff;
+  }
 }
 
 .wrapper {
@@ -99,7 +137,7 @@ section {
   width: 100%;
   display: block;
   position: relative;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   padding: 80px 0;
   z-index: 1;
   background-color: #fff;
@@ -125,7 +163,7 @@ section {
     position: relative;
     margin: auto;
     width: 100%;
-    max-width: 735px;
+    max-width: 975px;
     padding: 0 15px;
 
     h2 {
@@ -263,7 +301,7 @@ section {
 
     .col {
       @include flex(0 0 50%);
-      max-width: calc(50% - 35px);
+      max-width: 50%;
 
       h2 {
         background-color: #000;
@@ -296,6 +334,10 @@ section {
           @include flexbox;
           border-bottom: 1px solid #939597;
 
+          h3 {
+            @include transition-all(.2s);
+          }
+
           &:first-child {
             padding-top: 0px;
           }
@@ -303,6 +345,13 @@ section {
           &:last-child {
             padding-bottom: 0px;
             border-bottom: none;
+          }
+
+          &:hover {
+
+            h3 {
+              color: $green;
+            }
           }
         }
 
@@ -409,7 +458,7 @@ section {
   }
 
   &.section-albums {
-    padding: 0px;
+    padding: 40px 0px;
 
     .section-title {
 
@@ -492,19 +541,10 @@ section {
     }
   }
 
-  &.section-artists {
-
-    padding: 0px;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    @include flex(1 1 10%);
-
-    nav#links {
-      position: absolute;
-      top: 0px;
-      right: -60px;
-    }
+  nav#links {
+    position: absolute;
+    top: 0px;
+    right: -60px;
 
     .alphabet-scale {
       position: absolute;
@@ -518,56 +558,84 @@ section {
       width: 5px;
       right: 0px;
       list-style: none;
-    }
 
-    .letter {
-      @include flex(0 0 100%);
-      @include transition-all(.2s);
-      color: $grey;
-
-      a {
+      .lang-toggle {
+        color: $grey;
         position: relative;
-        @include transition-all(.2s);
-        padding: 7px 2px 5px 2px;
-        margin: 5px auto 2px;
-        line-height: 10px;
-        display: inline-block;
+        left: 5px;
 
-        &:before {
-          @include pseudoElement;
-          height: 1px;
-          width: 100%;
-          bottom: -4px;
-          background-color: $grey;
+        &:hover {
+          cursor: pointer;
         }
-
       }
 
-      &:last-child {
+      .letter {
+        @include flex(0 0 100%);
+        @include transition-all(.2s);
+        color: $grey;
+        display: none;
+
+        &.active {
+          display: inline-block;
+
+          .letter {
+            display: inline-block;
+          }
+        }
 
         a {
+          color: $grey;
+          position: relative;
+          @include transition-all(.2s);
+          padding: 7px 2px 5px 2px;
+          margin: 5px auto 2px;
+          line-height: 10px;
+          display: inline-block;
 
           &:before {
-            display: none;
+            @include pseudoElement;
+            height: 1px;
+            width: 100%;
+            bottom: -4px;
+            background-color: $grey;
+          }
+
+        }
+
+        &:last-child {
+
+          a {
+
+            &:before {
+              display: none;
+            }
           }
         }
-      }
 
-      &:hover {
+        &:hover {
 
-        span {
-          cursor: pointer;
-          background-color: $green;
-          font-family: $font-black;
-          color: #000;
+          span {
+            cursor: pointer;
+            background-color: $green;
+            font-family: $font-black;
+            color: #000;
 
-          &:before {
-            background-color: #000;
+            &:before {
+              background-color: #000;
+            }
           }
         }
-      }
 
+      }
     }
+  }
+
+  &.section-artists {
+    padding: 0px 0px 40px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    @include flex(1 1 10%);
 
     .section-title {
 
@@ -596,27 +664,36 @@ section {
 
     .items {
       @include flexbox;
-      @include justify-content(space-between);
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
     }
 
     .item {
       margin: 0;
-      @include flex(0 0 21%);
+      @include flex(0 0 25%);
+      @include flexbox;
+      @include justify-content(center);
       overflow: hidden;
+
+      .holder {
+        width: calc(100% - 25px);
+        height: calc(100% - 15px);
+      }
 
       .image {
         background-size: cover;
         @include aspect-ratio(1, 1);
 
         .holder {
+          @include transition-all(.2s);
+          width: 100%;
+          height: 100%;
           background-size: cover;
         }
       }
 
       .text {
-        padding: 10px 20px;
+        padding: 5px 20px 15px 20px;
         color: $grey;
         @include flexbox;
         @include align-items(center);
@@ -625,8 +702,10 @@ section {
         .name-artist {
           font-family: $font-black;
           font-size: 1.8rem;
+          padding: 0 5px;
           color: $grey;
           line-height: 2rem;
+          @include transition-all(.2s);
         }
       }
 
@@ -635,6 +714,58 @@ section {
         .name-artist {
           color: #000;
           background-color: $green;
+        }
+
+        .image .holder {
+          box-shadow: 0 0 10px rgba(0,0,0,.5);
+        }
+      }
+    }
+  }
+
+  &.section-albums-slider {
+    padding-top: 40px;
+
+    .slick-dots {
+      bottom: 15px;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+
+      h2 {
+        background-color: #000;
+        color: #fff;
+        display: inline-block;
+        font-size: 4rem;
+        padding: 0 5px;
+      }
+    }
+
+    .items {
+      direction: ltr;
+
+      .item {
+        height: 55vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+
+        a {
+          position: absolute;
+          left: 50%;
+          @include transform-translateX(-50%);
+          background-color: $green;
+          color: #000;
+          padding: 0px 15px;
+          font-size: 2rem;
+          font-family: $font-black;
+          bottom: 60px;
+
+          &:hover {
+            background-color: #000;
+            color: $green;
+          }
         }
       }
     }
@@ -646,6 +777,10 @@ section {
     @include justify-content(space-between);
     -webkit-flex-flow: row wrap;
     flex-flow: row wrap;
+
+    .holder {
+      padding-left: 40px;
+    }
 
     .section-title {
 
@@ -701,6 +836,7 @@ section {
             justify-content: flex-start;
             padding: 0px;
             margin-top: 0px;
+            margin-bottom: 0px;
           }
 
           @include placeholder {
@@ -747,7 +883,7 @@ section {
 
       .newsletter-form {
         padding-bottom: 30px;
-        border-bottom: 2px solid $green;
+        border-bottom: 1px solid $green;
 
         .form-holder {
 
@@ -778,9 +914,11 @@ section {
         }
 
         .field-desc {
-          margin-bottom: 10px;
           justify-content: center;
           @include flex(0 0 100%);
+          line-height: 1.6rem;
+          color: #fff;
+          margin-bottom: 20px;
         }
 
         .field-name {
@@ -792,106 +930,116 @@ section {
         .field-send-email {
           justify-content: flex-start;
           padding: 0px 0px 3px;
-
           @include flexbox;
           flex-flow: row nowrap;
-
           margin-bottom: 20px;
-
-          border-bottom: 2px solid $green;
-
+          border-bottom: 1px solid $green;
         }
       }
 
-      .contact-form {
-        padding-top: 14px;
-        @include flex-flow(row wrap);
-        padding-bottom: 15px;
-        border-bottom: 2px solid $green;
+      .col-left {
 
-        h3 {
-          margin-top: 0px;
-          margin-bottom: 5px;
-        }
+        .contact-form {
+          padding-top: 14px;
+          @include flex-flow(row wrap);
+          padding-bottom: 15px;
+          border-bottom: 1px solid $green;
 
-        .field {
-          position: relative;
-          width: 100%;
-          margin-bottom: 10px;
+          .form-holder {
 
-          &.form-submit {
-            margin-bottom: 0px;
+            h3 {
+              margin-top: 0px;
+              margin-bottom: 5px;
+            }
           }
 
-          &.nl-checkbox {
+          .field {
+            position: relative;
+            width: 100%;
+            margin-bottom: 10px;
 
-            .custom-checkbox {
-              position: absolute;
-              width: 15px;
-              height: 15px;
-              display: block;
-              background-color: #fff;
-              content: '';
-              top: 2px;
+            &.form-submit {
+              margin-bottom: 0px;
             }
 
-            .newsletter {
-              width: 100%;
-              display: block;
+            &.field-message {
+              margin-bottom: 0px;
+            }
 
-              .wpcf7-list-item {
-                width: 100%;
-                margin: 0px;
+            &.nl-checkbox {
+              margin: 0px;
+
+              .custom-checkbox {
+                position: absolute;
+                width: 15px;
+                height: 15px;
+                display: block;
+                background-color: #fff;
+                content: '';
+                top: 2px;
               }
 
-              label {
-                @include flexbox;
-                margin: 0px;
-                position: relative;
+              .newsletter {
+                width: 100%;
+                display: block;
 
-                input {
-                  @include flex(0 0 15px);
-                  opacity: 0;
-                  position: initial;
-                  z-index: 1;
+                .wpcf7-list-item {
+                  width: 100%;
+                  margin: 0px;
+                }
 
-                  &:checked {
+                label {
+                  @include flexbox;
+                  margin: 0px;
+                  position: relative;
 
-                    + .wpcf7-list-item-label {
+                  input {
+                    @include flex(0 0 15px);
+                    opacity: 0;
+                    position: initial;
+                    z-index: 1;
 
-                      &:before {
-                        background-color: $green;
+                    &:checked {
+
+                      + .wpcf7-list-item-label {
+
+                        &:before {
+                          background-color: $green;
+                        }
                       }
                     }
                   }
-                }
 
-                .wpcf7-list-item-label {
-                  @include flex(0 0 calc(100% - 15px));
-                  padding-right: 10px;
-                  position: relative;
+                  .wpcf7-list-item-label {
+                    @include flex(0 0 calc(100% - 15px));
+                    padding-right: 10px;
+                    position: relative;
+                    color: #fff;
+                    font-size: 1.4rem;
+                    font-weight: 100;
 
-                  &:before {
-                    content: '';
-                    display: block;
-                    width: 14px;
-                    height: 14px;
-                    position: absolute;
-                    right: -15px;
-                    top: 2px;
-                    background-color: #fff;
+                    &:before {
+                      content: '';
+                      display: block;
+                      width: 14px;
+                      height: 14px;
+                      position: absolute;
+                      right: -15px;
+                      top: 2px;
+                      background-color: #fff;
+                    }
                   }
                 }
               }
             }
           }
-        }
 
-        .wpcf7-textarea {
-          height: 80px;
-          width: 100%;
-          font-size: 1rem;
-          resize: none;
+          .wpcf7-textarea {
+            height: 80px;
+            width: 100%;
+            font-size: 1rem;
+            resize: none;
+          }
         }
       }
 
@@ -912,8 +1060,8 @@ section {
         a {
           color: $green;
         }
-        .section-footer-text{
-          color: $grey;
+        .section-footer-text {
+          color: #fff;
           font-size: 1.2rem;
           font-family: $font-bold;
           text-align: right;
@@ -921,15 +1069,33 @@ section {
 
         }
       }
-
-
-
     }
-
   }
+
   &.section-banner {
     padding: 120px 0px 0px 0px;
-    min-height: 640px;
+    min-height: 680px;
+
+    .slick-dots {
+
+      &:after {
+        content: '';
+        width: 40px;
+        height: 40px;
+        background: url('assets/images/ico-arrow.png') no-repeat center;
+        display: block;
+        position: absolute;
+        bottom: -70px;
+        left: 50%;
+        z-index: 1;
+        -webkit-transform: translateX(-50%) translateY(-20px) rotate(90deg);
+        transform: translateX(-50%) translateY(-20px) rotate(90deg);
+
+        &:hover {
+          transform: translateX(-50%) translateY(-25px) rotate(90deg);
+        }
+      }
+    }
 
     .slider-texts-holder {
       direction: ltr;
@@ -1016,9 +1182,9 @@ section {
     .artists {
       direction: ltr;
       margin: auto;
-      max-width: 530px;
+      max-width: 730px;
       position: relative;
-      height: 170px;
+      height: 200px;
       z-index: 2;
       display: block;
       padding: 15px 100px 0;
@@ -1096,61 +1262,10 @@ section {
         }
       }
     }
-
-    .slick-dots {
-      position: absolute;
-      bottom: 55px;
-      left: 50%;
-      @include transform-translateX(-50%);
-      list-style: none;
-      @include flexbox;
-      padding: 0;
-
-      &:after {
-        content: '';
-        width: 40px;
-        height: 40px;
-        background: url('assets/images/ico-arrow.png') no-repeat center;
-        display: block;
-        position: absolute;
-        bottom: -70px;
-        left: 50%;
-        z-index: 1;
-        -webkit-transform: translateX(-50%) translateY(-20px) rotate(90deg);
-        transform: translateX(-50%) translateY(-20px) rotate(90deg);
-
-        &:hover {
-          transform: translateX(-50%) translateY(-25px) rotate(90deg);
-        }
-      }
-
-      button {
-        margin: 0 5px;
-        background: none;
-        font-size: 0px;
-        border-radius: 100%;
-        border: none;
-        width: 15px;
-        height: 15px;
-        background-color: $green;
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .slick-active button {
-        background-color: #fff;
-      }
-    }
   }
 
-  &.section-albums-by-year {
-    padding: 0px;
+  &.section-albums-list {
+    padding: 0px 0px 60px 0px;
 
     .section-title {
 
@@ -1163,54 +1278,77 @@ section {
       }
     }
 
-    .albums-slider{
+    .albums-slider {
       width: 100%;
       background-color: green;
     }
 
-    .holder{
-      @include flexbox;
-      @include flex-flow(row wrap);
-
+    .holder {
+      display: block;
     }
-    nav#nav-cat {
-      @include flex(1 1 100%);
 
+    .nav-cat {
+      @include flex(1 1 100%);
       width: 100%;
       position: relative;
       top: 0px;
       right: 0px;
 
+      span {
+        float: right;
+        font-size: 2rem;
+        line-height: 2rem;
+        color: $grey;
+      }
     }
 
-    .cat-type {
-
+    .cat-types {
+      @include flexbox;
       padding: 0;
-      margin: 0px;
-      width: 100%;
-      right: 0px;
+      margin: 0px 0px 15px 0;
       list-style: none;
-      background-color: red;
+
+      .cat {
+        padding: 0 5px;
+        margin: 0 5px;
+        font-size: 2rem;
+        font-family: $font-reg;
+        background-color: $green;
+        line-height: 2rem;
+        @include transition-all(.1s);
+
+        &.cat-title {
+          background-color: transparent;
+          color: $grey;
+          margin-right: 0px;
+          padding-right: 0px;
+        }
+
+        &.is-checked,
+        &:hover {
+          color: #fff;
+          background-color: #000;
+          cursor: pointer;
+        }
+      }
     }
 
     nav#links {
       position: absolute;
-      top: 0px;
+      top: 50px;
       right: -60px;
     }
 
-    .year-scale {
+    .years {
       position: absolute;
-      @include transition-all(.1s);
       @include flexbox;
-
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      padding: 0;
-      margin: 0px;
-      width: 5px;
-      right: 0px;
+      @include flex-flow(row wrap);
       list-style: none;
+      padding: 0px;
+
+      * {
+        @include transition-all(.1s);
+      }
     }
 
     .year {
@@ -1218,27 +1356,18 @@ section {
       @include transition-all(.2s);
       color: $grey;
 
-      a {
+      span {
         position: relative;
         @include transition-all(.2s);
         padding: 7px 2px 5px 2px;
-        margin: 5px auto 2px;
+        margin: 2px auto 2px;
         line-height: 10px;
         display: inline-block;
-
-        &:before {
-          @include pseudoElement;
-          height: 1px;
-          width: 100%;
-          bottom: -4px;
-          background-color: $grey;
-        }
-
       }
 
       &:last-child {
 
-        a {
+        span {
 
           &:before {
             display: none;
@@ -1246,6 +1375,7 @@ section {
         }
       }
 
+      &.is-checked,
       &:hover {
 
         span {
@@ -1259,10 +1389,7 @@ section {
           }
         }
       }
-
     }
-
-
 
     .section-body {
       position: relative;
@@ -1279,22 +1406,33 @@ section {
     }
 
     .items {
-
-    @include flex (1 1 100%);
-
-      @include flexbox;
-      @include justify-content(space-between);
-      @include flex-flow( row wrap) ;
+      display: block;
     }
 
     .item {
-      margin: 0;
-      @include flex(0 0 21%);
+      display: block;
+      width: 25%;
+      padding: 0px;
+      float: right;
       overflow: hidden;
+
+      &:hover {
+
+        .image {
+          box-shadow: 0 0 10px rgba(0,0,0,.5);
+        }
+      }
+
+      &:nth-child(4n){
+        padding-right: 0px;
+      }
 
       .image {
         background-size: cover;
+        width: calc(100% - 25px);
+        margin-bottom: 25px;
         @include aspect-ratio(1, 1);
+        @include transition-all(.2s);
 
         .holder {
           background-size: cover;

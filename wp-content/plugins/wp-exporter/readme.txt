@@ -4,14 +4,14 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: export, exporter, import, importer, xml, rss, wxr, posts, pages, media, attachment, comments, custom fields, categories, tags, terms, author
 Requires at least: 3.0
 Tested up to: 4.8
-Stable tag: 0.0.4
+Stable tag: 0.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Export single or multiple posts, pages, comments, custom fields, categories, tags and more to an export file.
 
 == Description ==
-Export a single post or page with its comments, custom fields and terms easily. This plugin will add custom export queries at the WordPress export administration page. You can create your own export with custom post queries and import it to your WordPress site with <a target="_blank" href="http://wordpress.org/plugins/wordpress-importer/">WordPress Importer</a>.
+Export a single post or page with its comments, custom fields and terms easily. This plugin will add custom export queries at the WordPress export administration page. Use <a target="_blank" href="http://wordpress.org/plugins/wordpress-importer/">WordPress Importer</a> to import into WordPress site. Ability to create advanced export with custom post queries.
 
 <h3>Key Features & Options</h3>
 <ul>
@@ -19,6 +19,8 @@ Export a single post or page with its comments, custom fields and terms easily. 
 	<li>Export single or multiple pages.</li>
 	<li>Export single or multiple media or attachment.</li>
 	<li>Export comments, custom fields and terms.</li>
+	<li>Export menu at admin bar for each edit page.</li>
+	<li>Export post status option.</li>
 	<li>Custom export query. Read more how to <a href="http://www.ground6.com/wordpress-plugins/wordpress-exporter/creating-custom-export-query/">create custom export query</a>.</li>
 </ul>
 
@@ -35,13 +37,29 @@ You can use the built in installer and upgrader, or you can install the plugin m
 <li>Click 'install'</li>
 </ul>
 
+To show export menu at admin bar, put this defined constant in wp-config.php or theme functions.php<br />
+<pre>define('WP_EXPORTER_ADMIN_BAR', true);</pre>
+
+To change exported post status (i.e. to draft), put this defined constant in wp-config.php or theme functions.php<br />
+<pre>define('WP_EXPORTER_POST_STATUS', 'draft');</pre><br />
+
+For more post statuses please read this documentation <a href="https://codex.wordpress.org/Post_Status#Default_Statuses">Post Status</a>
+
+Read more about <a href="https://codex.wordpress.org/Editing_wp-config.php" target="_blank">editing wp-config.php</a>.
+
+
 == Frequently Asked Questions ==
 http://www.ground6.com/wordpress-plugins/wordpress-exporter/supports/
 
 == Screenshots ==
-http://www.ground6.com/wordpress-plugins/wordpress-exporter/screenshots/
+1. Advanced export interface
+2. Admin bar export menu at edit page
 
 == Changelog ==
+= 0.0.5 =
+- Updated WXR
+- Added admin bar export menu at edit post/page
+- Added export post status option
 = 0.0.4 =
 - Added media/attachment import
 - Added post id after title

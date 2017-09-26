@@ -186,7 +186,7 @@ get_header();
                                         ?>
                                         <span class="venue"><?=$venue; ?></span>
                                         <span class="date"><?=$date; ?></span>
-                                        <span class="cta">כרטיסים</span>
+                                        <span class="cta">לכרטיסים</span>
                                     </div>
                                 </div>
                             </a>

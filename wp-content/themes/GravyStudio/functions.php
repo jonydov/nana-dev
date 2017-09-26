@@ -6,7 +6,7 @@
 
         acf_add_options_page(array(
             'page_title' 	=> 'Theme General Settings',
-            'menu_title'	=> 'Theme Settings',
+            'menu_title'	=> 'הגדרות תבנית',
             'menu_slug' 	=> 'theme-general-settings',
             'capability'	=> 'edit_posts',
             'redirect'		=> false
@@ -20,12 +20,12 @@
         wp_enqueue_script('skrollr', get_template_directory_uri()."/assets/js/skrollr.min.js");
         wp_enqueue_script('bootstrap', get_template_directory_uri()."/assets/js/bootstrap.min.js");
 	    wp_enqueue_script('magnific-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
+	    wp_enqueue_script('isotope-js' , get_stylesheet_directory_uri() . '/assets/js/isotope.pkgd.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
 	    wp_enqueue_script('functions-js' , get_stylesheet_directory_uri() . '/assets/js/functions.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
     }
     add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
 
     if( !is_admin() ){
-
         wp_enqueue_style('magnific-css', get_template_directory_uri()."/assets/css/magnific-popup.min.css");
         wp_enqueue_style('slick-css', get_template_directory_uri()."/assets/css/slick.min.css");
         wp_enqueue_style('bootstrap-css', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
@@ -202,6 +202,11 @@ function gs_wp_is_mobile() {
     }
 
     return $is_mobile;
+}
+
+function isRTL( $string ) {
+	$rtl_chars_pattern = '/[\x{0590}-\x{05ff}\x{0600}-\x{06ff}]/u';
+	return preg_match($rtl_chars_pattern, $string);
 }
 
 ?>

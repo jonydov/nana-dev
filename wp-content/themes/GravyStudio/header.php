@@ -21,12 +21,24 @@
 
     <header data-offset-top="0" data-spy="affix">
         <div class="bg-holder"></div>
+        <div class="search-bar">
+            <div class="shell">
+	            <?php get_search_form(); ?>
+            </div>
+        </div>
         <div class="shell">
 
             <nav class="navbar">
 
                 <a class="logo" href="<?php bloginfo('url'); ?>">
-                    <img src="<?php bloginfo('template_url'); ?>/assets/images/logo.png" />
+                    <?php
+                        if( is_page_template('templates/tmpl-hp.php') ){
+                            $logo = get_field('logo', 'option');
+                        }else{
+	                        $logo = get_field('logo_dark', 'option');
+                        }
+                    ?>
+                    <img src="<?php echo $logo; ?>" />
                 </a>
 
                 <?php

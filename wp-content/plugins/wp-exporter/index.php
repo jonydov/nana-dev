@@ -4,7 +4,7 @@
 	Plugin URI: http://www.ground6.com/wordpress-plugins/wordpress-exporter/
 	Description: Export specific posts, pages, comments, custom fields, categories, tags and more to an export file.
 	Author: zourbuth
-	Version: 0.0.4
+	Version: 0.0.5
 	Author URI: http://zourbuth.com
 	License: Under GPL2
  
@@ -26,6 +26,17 @@
 
 
 /**
+ * Set constant
+ * @since 0.0.5
+ */
+define( 'WP_EXPORTER_VERSION', '0.0.5' );
+define( 'WP_EXPORTER_PATH', plugin_dir_path( __FILE__ ) );
+define( 'WP_EXPORTER_URL', plugin_dir_url( __FILE__ ) );
+define( 'WP_EXPORTER_TEXTDOMAIN', 'wp-exporter' );
+
+
+
+/**
  * Plugins filters and actions
  */
 add_action( 'plugins_loaded', 'wp_exporter_plugin_loaded' );
@@ -37,13 +48,16 @@ add_action( 'plugins_loaded', 'wp_exporter_plugin_loaded' );
  * @since 0.0.1
  */	
 function wp_exporter_plugin_loaded() {
-	remove_action( 'admin_head', 'export_add_js' ); // not working
-    add_action( 'export_filters', 'wordpress_exporter_filters' );	
-	add_action( 'admin_head', 'wordpress_exporter_add_js', 99 );
+	add_action( 'export_filters', 'wordpress_exporter_filters' );		
 	add_action( 'wp_ajax_exportform', 'wordpress_exporter_form_ajax' );
 	add_action( 'wp_exporter_form', 'wordpress_exporter_form' ); // custom action
 	add_action( 'export_wp', 'export_wp_action' );
-	add_filter( 'export_post_ids', 'wp_exporter_post_ids', 1, 2 ); // custom filter
+	add_filter( 'export_post_ids', 'wp_exporter_post_ids', 1, 2 ); // custom filter	
+	
+	remove_action( 'admin_head', 'export_add_js' );
+    add_action( 'admin_head', 'wordpress_exporter_add_js', 99 );	
+	
+	require_once( WP_EXPORTER_PATH . 'utility.php' );
 }
 
 
@@ -54,14 +68,15 @@ function wp_exporter_plugin_loaded() {
  * @since 0.0.1
  */	
 function wp_exporter_post_ids( $post_ids, $args ) {
+	
 	if ( 'advanced' == $args['content'] && isset( $_GET['query'] ) ) {
 		$query = esc_attr( $_GET['query'] );
 		switch ( $query ) :
 			case 'post' :
 			case 'page' :
 			case 'attachment' :
-				if( isset( $_GET['post-ids'] ) )
-					$post_ids = (array) $_GET['post-ids'];
+				if( isset( $_GET['post_ids'] ) )
+					$post_ids = (array) $_GET['post_ids'];
 			break;
 		endswitch;
 		
@@ -73,16 +88,19 @@ function wp_exporter_post_ids( $post_ids, $args ) {
 
 
 /**
- * Export action
+ * Export action using custom query
  * @param $args (array) query arguments
  * @since 0.0.1
  */	
 function export_wp_action( $args ) {
 	if ( 'advanced' == $args['content'] ) {
-		require_once( plugin_dir_path( __FILE__ ) . 'wxr.php' );
-
+		require_once( plugin_dir_path( __FILE__ ) . 'export.php' );
+		
+		// Don't use default WP export, instead set parameter for further use
+		global $wp_query;
+		$wp_query->wp_exporter = true; // @since 0.0.5	
 		_export_wp( $args );
-		die();		
+		die();
 	}
 }
 
@@ -93,7 +111,7 @@ function export_wp_action( $args ) {
  * @since 0.0.1
  */
 function wordpress_exporter_form_ajax() {
-	if ( ! isset( $_POST['nonce'] ) || ! isset( $_POST['query'] ) || ! wp_verify_nonce( $_POST['nonce'], 'export-queries' ) )
+	if ( ! isset( $_POST['nonce'] ) || ! isset( $_POST['query'] ) || ! wp_verify_nonce( $_POST['nonce'], 'wp-exporter' ) )
 		die();
 		
 	do_action( 'wp_exporter_form', esc_attr( $_POST['query'] ) );
@@ -115,7 +133,7 @@ function wordpress_exporter_form( $query ) {
 		));
 		
 		echo "<label>". __( 'Select one or more posts','wp-exporter' ) ."<br />
-			  <select name='post-ids[]' size='8' multiple='multiple'>";
+			  <select name='post_ids[]' size='8' multiple='multiple'>";
 			foreach( $posts as $post )
 				echo "<option value='{$post->ID}'>{$post->post_title} ({$post->ID})</option>";
 		echo "</select></label>";
@@ -140,7 +158,7 @@ function wordpress_exporter_filters() {
 	<div class="export-filters" id="advanced-filters" style="margin-left: 23px;">
 		<p>
 			<label for="query"><?php _e( 'Select query','wp-exporter' ); ?></label>
-			<select class="smallfat" id="query" name="query" data-nonce="<?php echo wp_create_nonce( 'export-queries' ); ?>">
+			<select class="smallfat" id="query" name="query" data-nonce="<?php echo wp_create_nonce( 'wp-exporter' ); ?>">
 				<?php foreach ( $export_queries as $key => $query ) { ?>
 					<option value="<?php echo esc_attr( $key ); ?>"><?php echo esc_html( $query ); ?></option>
 				<?php } ?>
@@ -154,8 +172,8 @@ function wordpress_exporter_filters() {
 
 
 /**
- * JavaScript animation function
- * copy export_add_js() wp-admin\export.php lin 24
+ * Remove default WordPress export_js and replace with this
+ * copy export_add_js() wp-admin\export.php line 24
  * @since 0.0.1
  */
 function wordpress_exporter_add_js() {
@@ -188,4 +206,3 @@ function wordpress_exporter_add_js() {
 </script>
 <?php
 }
-?>

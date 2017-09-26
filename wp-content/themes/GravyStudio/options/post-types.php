@@ -63,11 +63,10 @@ register_post_type('video-clips', array(
 	'capability_type' => 'post',
     'hierarchical' => false,
     'query_var' => false,
-    'rewrite' => array('slug' => 'news'),
+    'rewrite' => array('slug' => 'videos'),
     'supports' => array(
         'title',
         'editor',
-        'excerpt',
         'thumbnail',
     )
 ));
@@ -85,7 +84,6 @@ register_post_type('shows', array(
     'supports' => array(
         'title',
         'editor',
-        'excerpt',
         'thumbnail',
     )
 ));

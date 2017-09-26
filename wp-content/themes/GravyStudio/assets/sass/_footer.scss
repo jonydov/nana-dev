@@ -7,7 +7,7 @@ footer {
   z-index: -1;
 
   .shell {
-    max-width: 420px;
+    max-width: 450px;
   }
 
   .form-holder {
@@ -17,9 +17,10 @@ footer {
 
     h3 {
       color: $green;
-      font-size: 1.8rem;
+      font-size: 2rem;
       @include flex(1 1 100%);
       margin-top: 0px;
+      margin-bottom: 0px;
     }
 
     .field {
@@ -59,9 +60,15 @@ footer {
       font-size: 1.1rem;
       font-family: $font-light;
     }
+
+    .field-desc {
+      @include flex(1 1 100%);
+      margin-bottom: 4px;
+      justify-content: right;
+      color: $grey;
+      font-size: 1.2rem;
+    }
   }
-
-
 
   .holder {
 
@@ -81,9 +88,8 @@ footer {
     padding: 0 ;
 
     &.col-right{
-
-      border-left: 2px solid $grey;
-      padding-right: 10px;
+      border-left: 2px solid #fff;
+      padding-left: 18px;
 
       .holder-col{
 
@@ -144,7 +150,8 @@ footer {
 
       .newsletter-form {
         @include flex(1 1 100%);
-        padding:0 10px;
+        padding: 0 20px 0 0px;
+        text-align: justify;
 
         .form-holder {
           @include flexbox;
@@ -161,6 +168,10 @@ footer {
               width: 100%;
             }
 
+            input {
+              padding: 2px 5px;
+              @include transition-all(.2s);
+            }
 
             &.form-submit {
 
@@ -178,7 +189,11 @@ footer {
                 @include flex(0 0 30%);
                 padding: 0;
                 line-height: 1.6rem;
+                font-size: 1.4rem;
 
+                &:hover {
+                  background-color: #fff;
+                }
               }
             }
 
@@ -189,28 +204,12 @@ footer {
                 max-width: 100%;
                 line-height: 1.6rem;
               }
-
             }
           }
         }
-
-        .field-desc {
-          @include flex(1 1 100%);
-
-          margin-bottom: 4px;
-          justify-content: right;
-          color: $grey;
-          font-size: 1rem;
-        }
-
       }
-
     }
   }
-
-
-
-
 }
 
 @media (max-width: 480px) {

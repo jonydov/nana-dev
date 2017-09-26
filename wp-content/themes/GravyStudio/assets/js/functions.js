@@ -60,9 +60,80 @@ function scrollToAnchor(aid){
 
 $(document).ready( function () {
 
+    $('.lang-toggle').on('click', function(e){
+        var text = $(this).text();
+        $(this).text(text == "ABC" ? "אבג" : "ABC");
+        $('.alphabet-scale .letter').toggleClass('active');
+    });
+
+    $('.btn-search').on('click', function(e){
+
+        var $this = $('.search-bar');
+        $('.navbar').fadeOut(250);
+        $this.fadeIn(250);
+        $this.find('input[type=text]').focus();
+
+        e.preventDefault();
+    });
+
+    $('.search-bar .btn-close').on('click', function(e){
+
+        var $this = $('.search-bar');
+        $('.navbar').fadeIn(250);
+        $this.fadeOut(250);
+
+        e.preventDefault();
+    });
+
     $('#links a').on('click', function(e){
         scrollToAnchor( $(this).attr('href') );
     });
+
+    /* Isotope JS */
+
+    var $grid = $('.items-filter').isotope({
+        itemSelector: '.item',
+        transformsEnabled: false
+    });
+
+    $grid._positionAbs = function( x, y ) {
+        return { right: x, top: y };
+    };
+
+    // store filter for each group
+    var filters = {};
+
+    $('.nav-cat, #links').on( 'click', '.cat', function() {
+        var $this = $(this);
+        // get group key
+        var $buttonGroup = $this.parents('.cat-types');
+        var filterGroup = $buttonGroup.attr('data-filter-group');
+        // set filter for group
+        filters[ filterGroup ] = $this.attr('data-filter');
+        // combine filters
+        var filterValue = concatValues( filters );
+        // set filter for Isotope
+        $grid.isotope({ filter: filterValue });
+    });
+
+    // change is-checked class on buttons
+    $('.nav-cat, #links').each( function( i, buttonGroup ) {
+        var $buttonGroup = $( buttonGroup );
+        $buttonGroup.on( 'click', '.cat', function() {
+            $buttonGroup.find('.is-checked').removeClass('is-checked');
+            $( this ).addClass('is-checked');
+        });
+    });
+
+    // flatten object by concatting values
+    function concatValues( obj ) {
+        var value = '';
+        for ( var prop in obj ) {
+            value += obj[ prop ];
+        }
+        return value;
+    }
+
 
     /* Affix */
 
@@ -130,6 +201,19 @@ $(document).ready( function () {
                 }
             }
         ]
+    });
+
+    $('.section-albums-slider .items').slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 5000,
+        pauseOnFocus: false,
+        pauseOnHover: false,
+        fade: true,
+        dots: true,
+        arrows: false,
     });
 
     $('.slider-holder').slick({

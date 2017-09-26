@@ -8,7 +8,7 @@
     ));
 
     register_taxonomy('album-type', 'albums', array(
-        'label' => __('Types'),
+        'label' => __('סוג'),
         'hierarchical' => true,
         'show_admin_column' => true,
         'rewrite' => false,
