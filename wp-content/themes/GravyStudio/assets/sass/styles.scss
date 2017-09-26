@@ -178,6 +178,76 @@ section {
     }
   }
 
+  &.section-news-archive {
+
+    .section-header {
+
+      h1 {
+        background-color: #000;
+        color: #fff;
+        display: inline-block;
+        padding: 0 5px;
+      }
+    }
+
+    .items {
+      padding-top: 40px;
+      @include flexbox();
+      @include flex-flow(row wrap);
+      @include justify-content(space-between);
+
+      .item {
+        position: relative;
+        @include flex(0 0 calc(50% - 30px));
+        margin-bottom: 30px;
+
+        .image {
+          position: relative;
+          background-size: cover;
+          background-position: center;
+          @include aspect-ratio(2.5, 1);
+
+          &:after {
+            @include pseudoElement;
+            background-color: rgba(0, 0, 0, .2);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: 0px;
+            left: 0px;
+          }
+
+          h3,
+          .meta {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding: 15px;
+          }
+
+          .meta {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-family: $font-black;
+          }
+
+          h3 {
+            font-size: 2.5rem;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0,0,0,.7);
+            margin: 0;
+            padding: 5px 0;
+          }
+        }
+      }
+    }
+  }
+
   &.section-shows-slider {
 
     .shows-slider-holder {
@@ -717,7 +787,7 @@ section {
         }
 
         .image .holder {
-          box-shadow: 0 0 10px rgba(0,0,0,.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
         }
       }
     }
@@ -1419,11 +1489,11 @@ section {
       &:hover {
 
         .image {
-          box-shadow: 0 0 10px rgba(0,0,0,.5);
+          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
         }
       }
 
-      &:nth-child(4n){
+      &:nth-child(4n) {
         padding-right: 0px;
       }
 
