@@ -299,6 +299,7 @@ section {
       .item {
         @include flexbox;
         @include flex(0 0 calc(50% - 40px));
+        will-change: transform;
       }
 
       .image {
@@ -734,6 +735,56 @@ section {
 
         .text {
           top: 0%;
+        }
+      }
+    }
+  }
+
+  &.section-albums-banner-slider {
+    padding: 20px 0 40px 0;
+
+    .section-title {
+
+      h1 {
+        background-color: #000;
+        color: #fff;
+        padding: 0 5px;
+        display: inline-block;
+      }
+    }
+
+    .items {
+      direction: ltr;
+      width: 100%;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .slick-dots {
+      bottom: 15px;
+    }
+
+    .item {
+      height: 55vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+
+      a {
+        position: absolute;
+        left: 50%;
+        bottom: 60px;
+        font-family: $font-black;
+        font-size: 2rem;
+        padding: 0px 5px;
+        @include transform-translateX(-50%);
+        background-color: $green;
+        color: #000;
+        @include transition-all(.2s);
+
+        &:hover {
+          background-color: #000;
+          color: #fff;
         }
       }
     }

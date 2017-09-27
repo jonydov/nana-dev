@@ -241,7 +241,6 @@
                     <div class="section-title">
                         <h3>וידאו</h3>
                         <a class="cta"
-
                         <?php if( get_field('clips_archive', 'option') != null ){ ?>
                             href="<?=get_field('clips_archive', 'option'); ?>
                         <?php } ?>

@@ -11,7 +11,7 @@ get_header();
 
 	<?php if ( get_row_layout() == 'news_archive' ) { ?>
 
-		<section class="section-news-archive animate fade-bottom" data-delay="100">
+		<section class="section-news-archive">
 
 			<div class="shell">
 				<div class="section-header">
@@ -54,7 +54,7 @@ get_header();
 								}
 						?>
 
-							<a href="<?=get_permalink($item->ID); ?>" class="item <?=$class; ?>">
+							<a href="<?=get_permalink($item->ID); ?>" class="item animate fade-bottom <?=$class; ?>" data-delay="100">
 								<div class="holder">
 									<div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($item->ID); ?>');">
 										<div class="holder">

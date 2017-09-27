@@ -240,7 +240,7 @@ get_header();
                                             </div>
                                         </a>
 	                                <?php }elseif( $type == 'news'){ ?>
-                                        <a href="<?=get_permalink(); ?>" class="item">
+                                        <a href="<?=get_permalink($post->ID); ?>" class="item">
                                             <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($post->ID); ?>');">
                                                 <div class="holder"></div>
                                             </div>
@@ -267,7 +267,7 @@ get_header();
                         <?php } ?>
 
                         <?php if( get_sub_field('col_left_link_text') != null ){ ?>
-                            <a class="cta" href="<?=get_sub_field('col_leftt_link_url'); ?>"><?=get_sub_field('col_left_link_text'); ?></a>
+                            <a class="cta" href="<?=get_sub_field('col_left_link_url'); ?>"><?=get_sub_field('col_left_link_text'); ?></a>
                         <?php } ?>
 
                         <div class="items">
