@@ -212,6 +212,10 @@ section {
     max-width: 975px;
     padding: 0 15px;
 
+    @media(max-width: 480px) {
+      padding: 0 30px 0 0;
+    }
+
     h2 {
       margin-top: 0px;
       margin-bottom: 5px;
@@ -846,10 +850,18 @@ section {
     .shell {
       @include flexbox;
       @include justify-content(space-between);
+
+      @media(max-width:480px ){
+        padding:0 15px 0 0;
+      }
     }
 
     .col {
       @include flex(0 0 50%);
+
+      @media (max-width: 480px){
+        padding-left:15px;
+      }
 
       h2 {
         background-color: #000;
@@ -862,6 +874,10 @@ section {
 
       &.col-clips {
         @include flex(0 0 calc(50% - 40px));
+
+        @media(max-width:480px ){
+          padding:0 30px 0 0;
+        }
 
         .items {
           @include flexbox;
@@ -917,6 +933,10 @@ section {
 
       &.col-music {
         @include flex(0 0 calc(50% - 40px));
+
+        @media(max-width:480px ){
+          padding:0 15px 0 0;
+        }
 
         .holder {
           height: 100%;
@@ -999,6 +1019,11 @@ section {
       &.video-clips {
         @include flex(0 0 calc(50% - 40px));
 
+
+        @media(max-width:480px){
+          padding-top: 40px;
+        }
+
         .items {
 
           .item {
@@ -1071,6 +1096,8 @@ section {
             &.col-clips {
               display: block;
               width: 100%;
+              padding:0 15px 0 0;
+
             }
 
             &.col-music {
@@ -1086,6 +1113,13 @@ section {
 
   &.section-albums {
     padding: 40px 0px;
+
+    .shell{
+
+      @media(max-width:480px){
+        padding:0px ;
+      }
+    }
 
     .section-title {
 
@@ -1105,6 +1139,7 @@ section {
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
     }
+
 
     .item {
       margin: 10px 0;
@@ -1172,6 +1207,12 @@ section {
     position: absolute;
     top: 0px;
     right: -60px;
+
+
+    @media (max-width:480px){
+      right:-20px;
+
+    }
 
     .alphabet-scale {
       position: absolute;
@@ -1302,6 +1343,9 @@ section {
       @include justify-content(center);
       overflow: hidden;
 
+      @media(max-width:480px){
+        @include flex(0 0 50%);
+      }
       .holder {
         width: calc(100% - 25px);
         height: calc(100% - 15px);
@@ -1873,11 +1917,17 @@ section {
       top: 0px;
       right: 0px;
 
+      @media (max-width: 480px){
+        @include flexbox;
+        @include flex-flow(wrap);
+      }
+
       span {
         float: right;
         font-size: 2rem;
         line-height: 2rem;
         color: $grey;
+        @include flex (0 0 100%);
       }
     }
 
@@ -1895,6 +1945,12 @@ section {
         background-color: $green;
         line-height: 2rem;
         @include transition-all(.1s);
+
+        @media (max-width: 480px){
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+
+        }
 
         &.cat-title {
           background-color: transparent;
@@ -1916,6 +1972,12 @@ section {
       position: absolute;
       top: 50px;
       right: -60px;
+
+      @media (max-width: 480px){
+        right:0px;
+        top: 10px;
+
+      }
     }
 
     .years {
@@ -1974,12 +2036,20 @@ section {
       position: relative;
       padding: 20px 0;
 
+      @media (max-width: 480px){
+        padding:  0px;
+      }
+
       &.affix {
 
         .year-scale {
           position: fixed;
           right: auto;
           top: 100px;
+
+          @media (max-width: 480px){
+            top: 10px;
+          }
         }
       }
     }
@@ -2040,6 +2110,12 @@ section {
           background-color: $green;
         }
       }
+    }
+  }
+
+  &section-albums-banner-slider {
+    @media (max-width: 480px) {
+      padding: 0 0 10px 0;
     }
   }
 }

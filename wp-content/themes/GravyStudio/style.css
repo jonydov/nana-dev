@@ -443,7 +443,7 @@ section {
   display: block;
   position: relative;
   font-size: 1.6rem;
-  padding: 80px 0;
+  padding: 80px 30px 80px 0;
   z-index: 1;
   background-color: #fff;
   -webkit-transition: all 0.2s linear;
@@ -451,6 +451,9 @@ section {
   -o-transition: all 0.2s linear;
   -ms-transition: all 0.2s linear;
   transition: all 0.2s linear; }
+  @media (max-width: 480px) {
+    section {
+      padding: 0 0 80px 0; } }
   section .cta {
     font-family: "almoni_dl_aaablack";
     font-size: 1.8rem;
@@ -473,6 +476,9 @@ section {
     width: 100%;
     max-width: 975px;
     padding: 0 15px; }
+    @media (max-width: 480px) {
+      section .shell {
+        padding: 0 30px 0 0; } }
     section .shell h2 {
       margin-top: 0px;
       margin-bottom: 5px;
@@ -570,6 +576,14 @@ section {
           color: #808285;
           font-family: "almoni_dl_aaalight";
           text-align: justify; }
+    @media (max-width: 480px) {
+      section.section-news .items {
+        display: block; }
+        section.section-news .items .item {
+          display: block;
+          padding-top: 30px; }
+        section.section-news .items .content {
+          padding-right: 0px; } }
   section.section-news-archive .section-header h1 {
     background-color: #000;
     color: #fff;
@@ -736,6 +750,55 @@ section {
         flex: 0 0 calc(100% - 150px);
         font-size: 1.8rem;
         font-family: "almoni_dl_aaalight"; }
+    @media (max-width: 480px) {
+      section.section-artist-bio .section-body {
+        padding-top: 20px;
+        display: block; }
+        section.section-artist-bio .section-body .image {
+          display: block;
+          width: 100%; }
+          section.section-artist-bio .section-body .image .socials {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            justify-content: space-between;
+            -webkit-box-flex-flow: row nowrap;
+            -webkit-flex-flow: row nowrap;
+            -moz-box-flex-flow: row nowrap;
+            -moz-flex-flow: row nowrap;
+            -ms-flex-flow: row nowrap;
+            flex-flow: row nowrap;
+            padding-top: 15px;
+            font-size: 2.6rem; } }
+      @media (max-width: 480px) and (min-width: 768px) {
+        section.section-artist-bio .section-body .image .socials {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 480px) and (max-width: 768px) {
+        section.section-artist-bio .section-body .image .socials {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+    @media (max-width: 480px) {
+            section.section-artist-bio .section-body .image .socials a {
+              -webkit-box-flex: 0;
+              -webkit-flex: 0 0 20%;
+              -moz-box-flex: 0;
+              -moz-flex: 0 0 20%;
+              -ms-flex: 0 0 20%;
+              flex: 0 0 20%; }
+              section.section-artist-bio .section-body .image .socials a:hover {
+                color: #32faca; }
+        section.section-artist-bio .section-body .text {
+          padding: 0;
+          display: block;
+          width: 100%; } }
   section.section-upcoming-shows {
     padding-top: 0px;
     padding-bottom: 20px; }
@@ -1095,6 +1158,14 @@ section {
           display: -webkit-flex;
           display: -webkit-box;
           display: flex; } }
+      @media (max-width: 480px) {
+        section.section-other-artists .items {
+          -webkit-box-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          -moz-box-flex-flow: row wrap;
+          -moz-flex-flow: row wrap;
+          -ms-flex-flow: row wrap;
+          flex-flow: row wrap; } }
       section.section-other-artists .items .item {
         position: relative;
         -webkit-box-flex: 0;
@@ -1142,6 +1213,15 @@ section {
             text-align: center;
             font-size: 2.4rem;
             line-height: 2.4rem; }
+        @media (max-width: 480px) {
+          section.section-other-artists .items .item {
+            -webkit-box-flex: 0;
+            -webkit-flex: 0 0 calc(50% - 10px);
+            -moz-box-flex: 0;
+            -moz-flex: 0 0 calc(50% - 10px);
+            -ms-flex: 0 0 calc(50% - 10px);
+            flex: 0 0 calc(50% - 10px);
+            margin-bottom: 20px; } }
   section.section-feed-2cols {
     padding: 20px 0; }
     section.section-feed-2cols .shell {
@@ -1164,6 +1244,9 @@ section {
           display: -webkit-flex;
           display: -webkit-box;
           display: flex; } }
+      @media (max-width: 480px) {
+        section.section-feed-2cols .shell {
+          padding: 0 15px 0 0; } }
     section.section-feed-2cols .col {
       -webkit-box-flex: 0;
       -webkit-flex: 0 0 50%;
@@ -1171,6 +1254,9 @@ section {
       -moz-flex: 0 0 50%;
       -ms-flex: 0 0 50%;
       flex: 0 0 50%; }
+      @media (max-width: 480px) {
+        section.section-feed-2cols .col {
+          padding-left: 15px; } }
       section.section-feed-2cols .col h2 {
         background-color: #000;
         color: #fff;
@@ -1185,6 +1271,9 @@ section {
         -moz-flex: 0 0 calc(50% - 40px);
         -ms-flex: 0 0 calc(50% - 40px);
         flex: 0 0 calc(50% - 40px); }
+        @media (max-width: 480px) {
+          section.section-feed-2cols .col.col-clips {
+            padding: 0 30px 0 0; } }
         section.section-feed-2cols .col.col-clips .items {
           -webkit-box-flex-flow: row wrap;
           -webkit-flex-flow: row wrap;
@@ -1225,7 +1314,7 @@ section {
                 display: block;
                 content: "";
                 width: 100%;
-                padding-top: 37.03704%; }
+                padding-top: 37.037037037%; }
               section.section-feed-2cols .col.col-clips .items .item .image > .holder {
                 position: absolute;
                 top: 0;
@@ -1263,6 +1352,9 @@ section {
         -moz-flex: 0 0 calc(50% - 40px);
         -ms-flex: 0 0 calc(50% - 40px);
         flex: 0 0 calc(50% - 40px); }
+        @media (max-width: 480px) {
+          section.section-feed-2cols .col.col-music {
+            padding: 0 15px 0 0; } }
         section.section-feed-2cols .col.col-music .holder {
           height: 100%; }
           section.section-feed-2cols .col.col-music .holder .section-body {
@@ -1357,6 +1449,9 @@ section {
         -moz-flex: 0 0 calc(50% - 40px);
         -ms-flex: 0 0 calc(50% - 40px);
         flex: 0 0 calc(50% - 40px); }
+        @media (max-width: 480px) {
+          section.section-feed-2cols .col.video-clips {
+            padding-top: 40px; } }
         section.section-feed-2cols .col.video-clips .items .item {
           position: relative;
           display: block;
@@ -1380,7 +1475,7 @@ section {
               display: block;
               content: "";
               width: 100%;
-              padding-top: 44.44444%; }
+              padding-top: 44.4444444444%; }
             section.section-feed-2cols .col.video-clips .items .item .image > .holder {
               position: absolute;
               top: 0;
@@ -1427,8 +1522,29 @@ section {
               font-family: "almoni_dl_aaalight"; }
           section.section-feed-2cols .col.video-clips .items .item:hover .text {
             bottom: 0px; }
+    @media (max-width: 480px) {
+      section.section-feed-2cols .shell {
+        display: block;
+        width: 100%; }
+        section.section-feed-2cols .shell .col {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 100%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 100%;
+          -ms-flex: 0 0 100%;
+          flex: 0 0 100%; }
+          section.section-feed-2cols .shell .col.col-clips {
+            display: block;
+            width: 100%;
+            padding: 0 15px 0 0; }
+          section.section-feed-2cols .shell .col.col-music {
+            display: block;
+            width: 100%; } }
   section.section-albums {
     padding: 40px 0px; }
+    @media (max-width: 480px) {
+      section.section-albums .shell {
+        padding: 0px; } }
     section.section-albums .section-title h2 {
       background-color: #000;
       color: #fff;
@@ -1550,6 +1666,9 @@ section {
     position: absolute;
     top: 0px;
     right: -60px; }
+    @media (max-width: 480px) {
+      section nav#links {
+        right: -20px; } }
     section nav#links .alphabet-scale {
       position: absolute;
       -webkit-transition: all 0.1s linear;
@@ -1700,6 +1819,14 @@ section {
           display: -webkit-flex;
           display: -webkit-box;
           display: flex; } }
+      @media (max-width: 480px) {
+        section.section-artists .item {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 50%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%; } }
       section.section-artists .item .holder {
         width: calc(100% - 25px);
         height: calc(100% - 15px); }
@@ -2304,11 +2431,40 @@ section {
       position: relative;
       top: 0px;
       right: 0px; }
+      @media (max-width: 480px) {
+        section.section-albums-list .nav-cat {
+          -webkit-box-flex-flow: wrap;
+          -webkit-flex-flow: wrap;
+          -moz-box-flex-flow: wrap;
+          -moz-flex-flow: wrap;
+          -ms-flex-flow: wrap;
+          flex-flow: wrap; } }
+  @media (max-width: 480px) and (min-width: 768px) {
+    section.section-albums-list .nav-cat {
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: flex; } }
+  @media (max-width: 480px) and (max-width: 768px) {
+    section.section-albums-list .nav-cat {
+      display: -moz-flex;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: -webkit-box;
+      display: flex; } }
+
       section.section-albums-list .nav-cat span {
         float: right;
         font-size: 2rem;
         line-height: 2rem;
-        color: #808285; }
+        color: #808285;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%; }
     section.section-albums-list .cat-types {
       padding: 0;
       margin: 0px 0px 15px 0;
@@ -2339,6 +2495,10 @@ section {
         -o-transition: all 0.1s linear;
         -ms-transition: all 0.1s linear;
         transition: all 0.1s linear; }
+        @media (max-width: 480px) {
+          section.section-albums-list .cat-types .cat {
+            font-size: 1.6rem;
+            line-height: 1.6rem; } }
         section.section-albums-list .cat-types .cat.cat-title {
           background-color: transparent;
           color: #808285;
@@ -2352,6 +2512,10 @@ section {
       position: absolute;
       top: 50px;
       right: -60px; }
+      @media (max-width: 480px) {
+        section.section-albums-list nav#links {
+          right: 0px;
+          top: 10px; } }
     section.section-albums-list .years {
       position: absolute;
       -webkit-box-flex-flow: row wrap;
@@ -2418,10 +2582,16 @@ section {
     section.section-albums-list .section-body {
       position: relative;
       padding: 20px 0; }
+      @media (max-width: 480px) {
+        section.section-albums-list .section-body {
+          padding: 0px; } }
       section.section-albums-list .section-body.affix .year-scale {
         position: fixed;
         right: auto;
         top: 100px; }
+        @media (max-width: 480px) {
+          section.section-albums-list .section-body.affix .year-scale {
+            top: 10px; } }
     section.section-albums-list .items {
       display: block; }
     section.section-albums-list .item {
@@ -2492,6 +2662,9 @@ section {
       section.section-albums-list .item:hover .name-artist {
         color: #000;
         background-color: #32faca; }
+  @media (max-width: 480px) {
+    sectionsection-albums-banner-slider {
+      padding: 0 0 10px 0; } }
 
 .wpcf7-response-output {
   border: none !important;
@@ -2788,11 +2961,11 @@ header {
 
 .home header .bg-holder {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */ }
@@ -2841,6 +3014,9 @@ header {
   -o-transition: all 0.2s linear;
   -ms-transition: all 0.2s linear;
   transition: all 0.2s linear; }
+  @media (max-width: 480px) {
+    .c-hamburger {
+      right: 0px; } }
   .c-hamburger:focus {
     outline: none; }
   .c-hamburger:hover {
@@ -3247,7 +3423,7 @@ footer {
 
 @media (max-width: 480px) {
   footer {
-    width: calc(100% - 30px); }
+    width: calc(100% ); }
     footer .shell {
       -webkit-box-direction: normal;
       -webkit-box-orient: vertical;
@@ -3256,8 +3432,14 @@ footer {
       -ms-flex-direction: column;
       flex-direction: column; }
       footer .shell .col {
-        padding: 15px;
-        text-align: center; } }
+        padding: 10px;
+        text-align: center; }
+        footer .shell .col.col-left .newsletter-form {
+          padding: 0px; } }
+  @media (max-width: 480px) and (max-width: 480px) {
+    footer {
+      z-index: 99; } }
+
 @media (max-width: 1024px) {
   header .shell {
     width: calc(100% - 30px);
@@ -3328,21 +3510,20 @@ footer {
     -webkit-order: 1;
     order: 1;
     -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -webkit-flex-direction: column;
-    -moz-flex-direction: column;
-    -ms-flex-direction: column;
-    flex-direction: column;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    -moz-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
     -webkit-transition: all 0.6s ease;
     -moz-transition: all 0.6s ease;
     -o-transition: all 0.6s ease;
     -ms-transition: all 0.6s ease;
     transition: all 0.6s ease;
-    position: fixed;
+    position: absolute;
     width: 100%;
     top: 0px;
-    padding: 0px;
-    background-color: black;
+    padding: 20px;
     -webkit-transition-delay: .5s;
     transition-delay: .5s; }
     header .navbar .main-nav.is-active {
@@ -3352,11 +3533,11 @@ footer {
         -webkit-transition-delay: .2s;
         transition-delay: .2s; }
     header .navbar .main-nav li {
-      height: 30px; }
+      height: 20px; }
       header .navbar .main-nav li a {
         padding-top: 0px;
         padding-right: 0px;
-        font-size: 3rem; }
+        font-size: 2rem; }
 
   section.section-albums .item {
     -webkit-box-flex: 0;
