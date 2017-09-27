@@ -11,7 +11,7 @@ get_header();
 
 	<?php if ( get_row_layout() == 'news_archive' ) { ?>
 
-		<section class="section-news-archive">
+		<section class="section-news-archive animate fade-bottom" data-delay="100">
 
 			<div class="shell">
 				<div class="section-header">

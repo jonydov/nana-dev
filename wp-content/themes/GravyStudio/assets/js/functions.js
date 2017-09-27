@@ -142,6 +142,13 @@ $(document).ready( function () {
 
     /* Magnific Popups */
 
+    $('.popup-img').magnificPopup({
+        type: 'image',
+        gallery:{
+            enabled:true
+        }
+    });
+
     $('.popup-yt').magnificPopup({
         type : 'iframe',
         iframe: {
@@ -203,7 +210,7 @@ $(document).ready( function () {
         ]
     });
 
-    $('.section-albums-slider .albums-slider-holder').slick({
+    $('.section-albums-slider .albums-slider-holder, .section-artist-gallery .artist-gallery-slider-holder').slick({
         infinite: true,
         slidesToShow: 4,
         slidesToScroll: 4,
