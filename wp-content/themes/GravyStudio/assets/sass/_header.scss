@@ -198,7 +198,7 @@ header {
 
   header {
 
-    &.affix .bg-holder {
+    .bg-holder {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */
       background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%); /* FF3.6-15 */
       background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%); /* Chrome10-25,Safari5.1-6 */
