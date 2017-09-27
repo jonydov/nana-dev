@@ -91,34 +91,37 @@
                     $today = date('Ymd');
 
                     $args = array(
-                        'posts_per_page'   => 5,
-                        'orderby'          => 'title',
-                        'order'            => 'ASC',
-                        'post_type'        => 'shows',
+                        'post_type' => 'shows',
+                        'posts_per_page' => 2,
+                        'meta_query'	=> array(
+                            array(
+                                'key' => 'assigned_artist',
+                                'value' => $id,
+                                'compare' => 'LIKE'
+                            )
+                        ),
                     );
 
                     $posts_array = get_posts( $args );
                 ?>
 
                 <?php foreach ( $posts_array as $post ) { ?>
-                    <?php if (in_array($id, get_field('assigned_artist')) ) { ?>
 
-                        <?php
-                            $date = get_field('date', $post->ID);
-                            $date = new DateTime($date);
-                            $date = $date->format('j.m');
-                        ?>
+                    <?php
+                        $date = get_field('date', $post->ID);
+                        $date = new DateTime($date);
+                        $date = $date->format('j.m');
+                    ?>
 
-                        <?php if (strtotime($today) <= strtotime(get_field('date', $post->ID)) ) { ?>
-                            <a href="<?php the_field('link', $post->ID); ?>" target="_blank">
-                                <span class="date"><?=$date; ?>,</span>
-                                <span class="time"><?=get_field('time', $post->ID); ?></span>
-                                <span class="venue"><?=get_field('venue', $post->ID); ?></span>
-                                <span class="desc">, <?=get_the_title($post->ID); ?></span>
-                            </a>
-                        <?php } ?>
-
+                    <?php if (strtotime($today) <= strtotime(get_field('date', $post->ID)) ) { ?>
+                        <a href="<?php the_field('link', $post->ID); ?>" target="_blank">
+                            <span class="date"><?=$date; ?>,</span>
+                            <span class="time"><?=get_field('time', $post->ID); ?></span>
+                            <span class="venue"><?=get_field('venue', $post->ID); ?></span>
+                            <span class="desc">, <?=get_the_title($post->ID); ?></span>
+                        </a>
                     <?php } ?>
+
                 <?php } wp_reset_postdata(); ?>
             </div>
 
@@ -135,18 +138,20 @@
             <div class="section-body albums-slider-holder">
                 <?php
                 $args = array(
-                    'post_type' => 'albums',
-                    'posts_per_page' => -1,
-                    'orderby' => 'title',
-                    'order' => 'DESC',
-                    'post_status'      => 'publish',
-                    'suppress_filters' => true
+	                'post_type' => 'albums',
+	                'posts_per_page' => 2,
+	                'meta_query'	=> array(
+		                array(
+			                'key' => 'assigned_artist',
+			                'value' => $id,
+			                'compare' => 'LIKE'
+		                )
+	                ),
                 );
 
                 $albums = get_posts( $args );
 
                 foreach ( $albums as $post ) {
-                    if ( in_array($id, get_field('assigned_artist', $post->ID)) ) {
                         $img = get_the_post_thumbnail_url( $post->ID );
                 ?>
 
@@ -164,7 +169,7 @@
                         </div>
                     </a>
 
-                <?php } } wp_reset_postdata(); ?>
+                <?php } wp_reset_postdata(); ?>
             </div>
         </div>
     </section>
@@ -186,17 +191,18 @@
                 <div class="items">
                         <?php
                         $args = array(
-                            'post_type' => 'news',
-                            'posts_per_page' => -1,
-                            'orderby' => 'date',
-                            'order' => 'DESC'
+	                        'post_type' => 'news',
+	                        'posts_per_page' => 2,
+	                        'meta_query'	=> array(
+		                        array(
+			                        'key' => 'assigned_artist',
+			                        'value' => $id,
+			                        'compare' => 'LIKE'
+		                        )
+	                        ),
                         );
 
-                        $i = 0;
-                        $posts = get_posts($args);
-
                         foreach ($posts as $post){
-                            if ( is_array(get_field('assigned_artist', $post->ID)) && in_array($id, get_field('assigned_artist', $post->ID)) && $i < 2 ) {
                         ?>
                             <a href="<?=get_permalink(); ?>" class="item">
                                 <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($post->ID); ?>');">
@@ -209,7 +215,7 @@
                                 </div>
                             </a>
 
-                        <?php $i++; } } wp_reset_postdata(); ?>
+                        <?php } wp_reset_postdata(); ?>
                     </div>
             </div>
 
@@ -254,21 +260,18 @@
                         $args = array(
                             'post_type' => 'video-clips',
                             'posts_per_page' => 2,
-                            'orderby' => 'date',
-                            'order' => 'DESC',
                             'meta_query'	=> array(
-                                'relation'		=> 'AND',
                                 array(
-                                    'key'	 	=> 'assigned_artist',
-                                    'value'	  	=> array($post->ID),
+	                                'key' => 'assigned_artist',
+	                                'value' => $id,
+	                                'compare' => 'LIKE'
                                 )
                             ),
                         );
 
                         $videos = get_posts($args);
 
-                        foreach ($videos as $post){
-                            ?>
+                        foreach ($videos as $post){ ?>
 
                             <a href="<?=get_field('youtube', $post->ID); ?>" class="item popup-yt">
                                 <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($post->ID); ?>');">
@@ -279,8 +282,7 @@
                                     </div>
                                 </div>
                             </a>
-                        <?php }
-                        wp_reset_postdata(); ?>
+                        <?php } wp_reset_postdata(); ?>
                     </div>
 
                 </div>

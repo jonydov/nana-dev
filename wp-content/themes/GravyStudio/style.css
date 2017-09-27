@@ -831,6 +831,8 @@ section {
         -moz-flex: 0 0 150px;
         -ms-flex: 0 0 150px;
         flex: 0 0 150px; }
+        section.section-artist-bio .section-body .image img {
+          max-width: 100%; }
         section.section-artist-bio .section-body .image .socials {
           -webkit-box-pack: start;
           -ms-flex-pack: start;

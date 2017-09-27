@@ -526,6 +526,10 @@ section {
       .image {
         @include flex(0 0 150px);
 
+        img {
+          max-width: 100%;
+        }
+
         .socials {
           @include flexbox;
           @include justify-content(flex-start);
