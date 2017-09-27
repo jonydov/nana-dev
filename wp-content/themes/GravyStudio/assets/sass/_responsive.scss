@@ -9,9 +9,7 @@
     }
   }
 
-  section {
 
-  }
 }
 
 @media (max-width: 768px) {
@@ -59,17 +57,19 @@
       }
 
       .main-nav {
+
         @include justify-content(center);
         right: -1000px;
         -webkit-order: 1;
         order: 1;
-        @include flex-direction(column);
+        @include flex-direction(row);
         @include transition(all, .6s, ease);
-        position: fixed;
+
+        position: absolute;
         width: 100%;
         top: 0px;
-        padding: 0px;
-        background-color: rgba(0, 0, 0, 1);
+        padding: 20px;
+     //   background-color: rgba(0, 0, 0, 1);
         -webkit-transition-delay: .5s;
         transition-delay: .5s;
 
@@ -84,12 +84,12 @@
         }
 
         li {
-          height: 30px;
+          height: 20px;
 
           a {
             padding-top: 0px;
             padding-right: 0px;
-            font-size: 3rem;
+            font-size: 2rem;
           }
         }
       }

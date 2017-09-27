@@ -144,6 +144,7 @@ footer {
           }
         }
       }
+
      }
 
     &.col-left{
@@ -217,15 +218,22 @@ footer {
   footer {
 
 
-    width: calc(100% - 30px);
+    width: calc(100% );
 
     .shell {
       @include flex-direction(column);
 
       .col {
-        padding: 15px;
+        padding: 10px;
         text-align: center;
+
+        &.col-left .newsletter-form{padding: 0px;
+        }
       }
+    }
+
+    @media (max-width: 480px){
+      z-index:99;
     }
   }
 }
