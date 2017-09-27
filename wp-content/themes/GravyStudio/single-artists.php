@@ -174,7 +174,12 @@
         <div class="shell">
             <div class="section-title">
                 <h3>חדשות</h3>
-                <a class="cta" href="<?=get_sub_field('col_right_link_url'); ?>">עוד חדשות</a>
+
+                <a class="cta"
+                <?php if( get_field('news_archive', 'option') != null ){ ?>
+                     href="<?=get_field('news_archive', 'option'); ?>
+                <?php } ?>
+               ">עוד חדשות</a>
             </div>
 
             <div class="section-body">
@@ -235,8 +240,11 @@
 
                     <div class="section-title">
                         <h3>וידאו</h3>
-                        <a class="cta" href="<?=get_sub_field('col_right_link_url'); ?>">עוד קליפים</a>
-
+                        <a class="cta"
+                        <?php if( get_field('clips_archive', 'option') != null ){ ?>
+                            href="<?=get_field('clips_archive', 'option'); ?>
+                        <?php } ?>
+                         ">עוד קליפים</a>
                     </div>
 
                     <div class="items">
