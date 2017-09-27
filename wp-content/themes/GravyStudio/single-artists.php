@@ -171,7 +171,7 @@
 
     <section class="section-news">
 
-        <div class="shell">
+        <div class="shell animate fade-bottom" data-delay="100">
             <div class="section-title">
                 <h3>חדשות</h3>
 

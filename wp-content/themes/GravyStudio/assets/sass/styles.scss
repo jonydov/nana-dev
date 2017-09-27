@@ -298,6 +298,7 @@ section {
         color: #fff;
         display: inline-block;
         padding: 0 5px;
+        margin-bottom: 0px;
       }
     }
 
@@ -310,7 +311,7 @@ section {
       .item {
         position: relative;
         @include flex(0 0 calc(50% - 30px));
-        margin-bottom: 30px;
+        margin-bottom: 20px;
 
         .image {
           position: relative;
@@ -927,6 +928,7 @@ section {
       }
 
       &.news {
+        @include flex(0 0 calc(50% - 40px));
 
         .item {
           padding: 40px 0;
@@ -995,6 +997,7 @@ section {
       }
 
       &.video-clips {
+        @include flex(0 0 calc(50% - 40px));
 
         .items {
 
