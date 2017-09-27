@@ -574,7 +574,8 @@ section {
     background-color: #000;
     color: #fff;
     display: inline-block;
-    padding: 0 5px; }
+    padding: 0 5px;
+    margin-bottom: 0px; }
   section.section-news-archive .items {
     padding-top: 40px;
     -webkit-box-flex-flow: row wrap;
@@ -610,7 +611,7 @@ section {
       -moz-flex: 0 0 calc(50% - 30px);
       -ms-flex: 0 0 calc(50% - 30px);
       flex: 0 0 calc(50% - 30px);
-      margin-bottom: 30px; }
+      margin-bottom: 20px; }
       section.section-news-archive .items .item .image {
         position: relative;
         background-size: cover;
