@@ -128,6 +128,69 @@ h6 {
   }
 }
 
+.widget_jal_widget {
+  list-style: none;
+
+  .jaw_years {
+
+  }
+
+  .jaw_months {
+    font-size: 1.4rem;
+  }
+
+  .jaw_symbol {
+    display: inline-block;
+    font-size: 0px;
+    right: 0px;
+    float: left;
+    margin-right: 10px;
+
+    &:before {
+      opacity: 0;
+      @include transition-all(.1s);
+      content: '\f2f9';
+      display: block;
+      font-size: 1.8rem;
+      color: #000;
+      position: absolute;
+      font-family: $icons;
+    }
+  }
+
+  ul {
+    list-style: none;
+    font-family: $font-light;
+    color: $grey;
+    padding: 0px;
+    font-size: 1.6rem;
+
+    li {
+      display: table;
+    }
+
+    a {
+      font-size: 2rem;
+      color: $grey;
+
+      &:focus,
+      &:hover {
+        background-color: $green;
+        text-decoration: none;
+        color: #000;
+        font-family: $font-black;
+
+        .jaw_symbol {
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
 .wrapper {
 
 }
@@ -266,6 +329,23 @@ section {
   }
 
   &.section-news-archive {
+    padding-top: 0px;
+    padding-bottom: 20px;
+
+    .archive-list {
+      position: absolute;
+      top: 30px;
+      right: -100px;
+      width: 100px;
+    }
+
+    .section-body {
+      position: relative;
+    }
+
+    .widgettitle {
+      display: none;
+    }
 
     .section-header {
 
@@ -289,6 +369,16 @@ section {
         @include flex(0 0 calc(50% - 30px));
         margin-bottom: 20px;
 
+        &:hover {
+
+          .image {
+
+            h3 {
+              color: $green;
+            }
+          }
+        }
+
         .image {
           position: relative;
           background-size: cover;
@@ -311,6 +401,7 @@ section {
             z-index: 2;
             color: #fff;
             padding: 15px;
+            @include transition-all(.2s);
           }
 
           .meta {
@@ -330,6 +421,59 @@ section {
             background-color: rgba(0, 0, 0, .7);
             margin: 0;
             padding: 5px 0;
+            @include transition-all(.2s);
+          }
+        }
+
+        .text {
+          padding-top: 5px;
+          font-family: $font-light;
+          color: $grey;
+        }
+
+        &.style-2 {
+          padding: 40px 0 20px 0;
+          border-top: 1px solid $grey;
+
+          &:nth-child(5),
+          &:nth-child(6) {
+            border-top: none;
+          }
+
+          &:hover {
+
+            .text {
+
+              h3 {
+                color: $green;
+              }
+            }
+          }
+
+          .holder {
+            @include flexbox;
+          }
+
+          .image {
+            @include aspect-ratio(1, 1);
+            @include flex(0 0 30%);
+          }
+
+          .text {
+            @include flex(0 0 70%);
+            padding-right: 20px;
+            padding-top: 0px;
+            font-size: 1.4rem;
+
+            .meta {
+              font-family: $font-black;
+            }
+
+            h3 {
+              margin: 0px;
+              color: #000;
+              @include transition-all(.2s);
+            }
           }
         }
       }

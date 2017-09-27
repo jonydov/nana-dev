@@ -11,8 +11,13 @@
             'capability'	=> 'edit_posts',
             'redirect'		=> false
         ));
-
     }
+
+    register_sidebar( array(
+        'id'          => 'news-archives',
+        'name'        => __( 'News Archives' ),
+        'description' => __( 'This sidebar is located above the age logo.'),
+    ) );
 
     function gs_enqueue_scripts() {
         wp_enqueue_script('jQuery', get_template_directory_uri()."/assets/js/jquery-2.2.4.min.js");
