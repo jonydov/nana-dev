@@ -65,6 +65,7 @@ header {
 
     .navbar .main-nav li a {
       padding-top: 30px;
+
     }
 
     .bg-holder {
@@ -80,6 +81,13 @@ header {
     @include flexbox;
     @include justify-content(center);
     @include align-items(center);
+
+    @media(max-width: 480px){
+      padding: 0;
+      z-index: 100;
+      width: 100%;
+
+    }
 
   }
 
@@ -147,6 +155,7 @@ header {
     }
 
     .main-nav {
+
       height: 100%;
       margin: 0px;
       padding: 0px 15px;
@@ -155,6 +164,13 @@ header {
       @include flex(1 1 85%);
       @include justify-content(space-between);
 
+      @media(max-width: 480px){
+        @include flex-flow(wrap);
+        opacity: 0.8;
+        background-color: #000000;
+        min-height: 100vh;
+        width: 100%;
+      }
 
       li {
         position: relative;
@@ -168,6 +184,13 @@ header {
         @include align-items(center);
         @include justify-content(center);
 
+        @media(max-width: 480px){
+          width: 100%;
+          @include align-items(flex-start);
+
+        }
+
+
 
         a {
           padding-top: 50px;
@@ -175,6 +198,11 @@ header {
           color: #000;
           font-size: 2rem;
           position: relative;
+
+          @media(max-width: 480px){
+            color: #fff;
+          }
+
 
           &:before {
             @include transition-all(.25s);
@@ -283,7 +311,9 @@ $button-transistion-duration: 0.3s; // The transition duration
   @include transition-all(.2s);
 
   @media (max-width: 480px){
-    right: 0px;
+
+    padding-right: 15px;
+
   }
 
   &:focus {
@@ -397,5 +427,11 @@ $button-transistion-duration: 0.3s; // The transition duration
     padding-left: 15px;
     padding-right: 15px;
     height: 60px;
+
+    @media(max-width: 480px){
+      padding-left: 0px;
+      padding-right: 0px;
+
+    }
   }
 }
