@@ -22,6 +22,7 @@ header {
   }
 
   .search-bar {
+    z-index: 10;
     position: absolute;
     top: 0;
     left: 0;
@@ -36,7 +37,7 @@ header {
       color: #000;
       display: block;
       position: absolute;
-      left: 0px;
+      left: 10px;
       top: 50%;
       @include transform-translateY(-50%);
       @include transition(all, .2s, ease);
@@ -49,6 +50,7 @@ header {
     }
 
     input[type="text"] {
+      background-color: transparent;
       padding-right: 70px;
       padding-left: 30px;
       width: 100%;
@@ -65,7 +67,6 @@ header {
 
     .navbar .main-nav li a {
       padding-top: 30px;
-
     }
 
     .bg-holder {
@@ -82,13 +83,11 @@ header {
     @include justify-content(center);
     @include align-items(center);
 
-    @media(max-width: 480px){
+    @media(max-width: 480px) {
       padding: 0;
       z-index: 100;
       width: 100%;
-
     }
-
   }
 
   ul {
@@ -98,7 +97,6 @@ header {
   .logo {
     position: absolute;
     right: -100px;
-
 
     img {
       width: 100%;
@@ -164,11 +162,10 @@ header {
       @include flex(1 1 85%);
       @include justify-content(space-between);
 
-      @media(max-width: 480px){
+      @media(max-width: 480px) {
         @include flex-flow(wrap);
-        opacity: 0.8;
-        background-color: #000000;
-        min-height: 100vh;
+        background-color: rgba(0, 0, 0, .8);
+        height: calc(100vh - 30px);
         width: 100%;
       }
 
@@ -184,13 +181,11 @@ header {
         @include align-items(center);
         @include justify-content(center);
 
-        @media(max-width: 480px){
+        @media(max-width: 480px) {
           width: 100%;
           @include align-items(flex-start);
 
         }
-
-
 
         a {
           padding-top: 50px;
@@ -199,10 +194,10 @@ header {
           font-size: 2rem;
           position: relative;
 
-          @media(max-width: 480px){
+          @media(max-width: 480px) {
             color: #fff;
+            padding-top: 0px;
           }
-
 
           &:before {
             @include transition-all(.25s);
@@ -258,7 +253,7 @@ header {
             &:hover {
               color: $green;
 
-              &:before{
+              &:before {
                 background-color: $green;
               }
             }
@@ -310,7 +305,7 @@ $button-transistion-duration: 0.3s; // The transition duration
   background-color: $green;
   @include transition-all(.2s);
 
-  @media (max-width: 480px){
+  @media (max-width: 480px) {
 
     padding-right: 15px;
 
@@ -428,10 +423,59 @@ $button-transistion-duration: 0.3s; // The transition duration
     padding-right: 15px;
     height: 60px;
 
-    @media(max-width: 480px){
+    @media(max-width: 480px) {
       padding-left: 0px;
       padding-right: 0px;
 
+    }
+
+    .logo {
+      right: initial;
+      left: 0px;
+      top: 10px;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    &.affix {
+
+      .navbar {
+
+        .main-nav {
+
+          li {
+
+            a {
+              padding-top: 0px;
+            }
+          }
+        }
+      }
+    }
+
+    .navbar {
+
+      .main-nav {
+
+        li {
+          height: initial;
+          @include align-items(center);
+
+          a {
+            padding-top: 0px;
+          }
+        }
+      }
+    }
+  }
+
+  .home {
+
+    header {
+
+      .logo {
+        background-color: #000;
+      }
     }
   }
 }

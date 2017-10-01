@@ -216,8 +216,6 @@ footer {
 @media (max-width: 480px) {
 
   footer {
-
-
     width: calc(100% );
 
     .shell {
@@ -230,10 +228,6 @@ footer {
         &.col-left .newsletter-form{padding: 0px;
         }
       }
-    }
-
-    @media (max-width: 480px){
-      z-index:99;
     }
   }
 }

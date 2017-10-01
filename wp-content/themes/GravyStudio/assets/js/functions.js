@@ -298,6 +298,15 @@ $(document).ready( function () {
         fade: false,
         dots: false,
         arrows: true,
+        responsive: [
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
     });
 
     /* Nav Menu */

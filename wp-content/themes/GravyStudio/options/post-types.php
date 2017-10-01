@@ -46,6 +46,7 @@ register_post_type('news', array(
     'hierarchical' => false,
     'query_var' => false,
 	'has_archive'           => true,
+	'taxonomies'  => array( 'post_tag' ),
     'rewrite' => array('slug' => 'news', "with_front" => true),
     'supports' => array(
         'title',
