@@ -11,7 +11,7 @@ get_header();
 
 	<?php if ( get_row_layout() == 'news_archive' ) { ?>
 
-		<section class="section-news-archive animate fade-bottom" data-delay="100">
+		<section class="section-news-archive">
 
 			<div class="shell">
 				<div class="section-header">
@@ -19,6 +19,11 @@ get_header();
 				</div>
 
 				<div class="section-body">
+
+                    <div class="archive-list">
+	                    <?php dynamic_sidebar('news-archives') ?>
+                    </div>
+
 					<div class="items items-news">
 
 						<?php
@@ -49,16 +54,22 @@ get_header();
 								}
 						?>
 
-							<a href="<?=get_permalink($item->ID); ?>" class="item <?=$class; ?>">
+							<a href="<?=get_permalink($item->ID); ?>" class="item animate fade-bottom <?=$class; ?>" data-delay="100">
 								<div class="holder">
 									<div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($item->ID); ?>');">
 										<div class="holder">
-											<span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
-											<h3><?=get_the_title($item->ID); ?></h3>
+                                            <?php if( $class == 'style-1'){ ?>
+                                                <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
+                                                <h3><?=get_the_title($item->ID); ?></h3>
+                                            <?php } ?>
 										</div>
 									</div>
 									<div class="text">
-										<?php wp_trim_words($item->post_content, 20); ?>
+										<?php if( $class == 'style-2'){ ?>
+                                            <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
+                                            <h3><?=get_the_title($item->ID); ?></h3>
+										<?php } ?>
+										<?php echo wp_trim_words($item->post_content, 18); ?>
 									</div>
 								</div>
 							</a>

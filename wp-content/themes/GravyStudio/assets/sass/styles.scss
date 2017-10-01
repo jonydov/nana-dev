@@ -128,6 +128,69 @@ h6 {
   }
 }
 
+.widget_jal_widget {
+  list-style: none;
+
+  .jaw_years {
+
+  }
+
+  .jaw_months {
+    font-size: 1.4rem;
+  }
+
+  .jaw_symbol {
+    display: inline-block;
+    font-size: 0px;
+    right: 0px;
+    float: left;
+    margin-right: 10px;
+
+    &:before {
+      opacity: 0;
+      @include transition-all(.1s);
+      content: '\f2f9';
+      display: block;
+      font-size: 1.8rem;
+      color: #000;
+      position: absolute;
+      font-family: $icons;
+    }
+  }
+
+  ul {
+    list-style: none;
+    font-family: $font-light;
+    color: $grey;
+    padding: 0px;
+    font-size: 1.6rem;
+
+    li {
+      display: table;
+    }
+
+    a {
+      font-size: 2rem;
+      color: $grey;
+
+      &:focus,
+      &:hover {
+        background-color: $green;
+        text-decoration: none;
+        color: #000;
+        font-family: $font-black;
+
+        .jaw_symbol {
+
+          &:before {
+            opacity: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
 .wrapper {
 
 }
@@ -185,8 +248,8 @@ section {
   background-color: #fff;
   @include transition-all(.2s);
 
-  @media(max-width: 480px){
-      padding: 0 0 80px 0;
+  @media(max-width: 480px) {
+    padding: 0 0 80px 0;
   }
 
   .cta {
@@ -212,10 +275,6 @@ section {
     max-width: 975px;
     padding: 0 15px;
 
-    @media(max-width: 480px) {
-      padding: 0 30px 0 0;
-    }
-
     h2 {
       margin-top: 0px;
       margin-bottom: 5px;
@@ -240,6 +299,7 @@ section {
       .item {
         @include flexbox;
         @include flex(0 0 calc(50% - 40px));
+        will-change: transform;
       }
 
       .image {
@@ -282,8 +342,6 @@ section {
           padding-top: 30px;
         }
 
-
-
         .content {
           padding-right: 0px;
 
@@ -294,6 +352,23 @@ section {
   }
 
   &.section-news-archive {
+    padding-top: 0px;
+    padding-bottom: 20px;
+
+    .archive-list {
+      position: absolute;
+      top: 30px;
+      right: -100px;
+      width: 100px;
+    }
+
+    .section-body {
+      position: relative;
+    }
+
+    .widgettitle {
+      display: none;
+    }
 
     .section-header {
 
@@ -317,6 +392,16 @@ section {
         @include flex(0 0 calc(50% - 30px));
         margin-bottom: 20px;
 
+        &:hover {
+
+          .image {
+
+            h3 {
+              color: $green;
+            }
+          }
+        }
+
         .image {
           position: relative;
           background-size: cover;
@@ -339,6 +424,7 @@ section {
             z-index: 2;
             color: #fff;
             padding: 15px;
+            @include transition-all(.2s);
           }
 
           .meta {
@@ -358,6 +444,59 @@ section {
             background-color: rgba(0, 0, 0, .7);
             margin: 0;
             padding: 5px 0;
+            @include transition-all(.2s);
+          }
+        }
+
+        .text {
+          padding-top: 5px;
+          font-family: $font-light;
+          color: $grey;
+        }
+
+        &.style-2 {
+          padding: 40px 0 20px 0;
+          border-top: 1px solid $grey;
+
+          &:nth-child(5),
+          &:nth-child(6) {
+            border-top: none;
+          }
+
+          &:hover {
+
+            .text {
+
+              h3 {
+                color: $green;
+              }
+            }
+          }
+
+          .holder {
+            @include flexbox;
+          }
+
+          .image {
+            @include aspect-ratio(1, 1);
+            @include flex(0 0 30%);
+          }
+
+          .text {
+            @include flex(0 0 70%);
+            padding-right: 20px;
+            padding-top: 0px;
+            font-size: 1.4rem;
+
+            .meta {
+              font-family: $font-black;
+            }
+
+            h3 {
+              margin: 0px;
+              color: #000;
+              @include transition-all(.2s);
+            }
           }
         }
       }
@@ -378,12 +517,46 @@ section {
     }
 
     .section-body {
-
       padding-top: 20px;
+      padding-bottom: 20px;
       @include flexbox;
+
+      .scrollbar {
+        float: right;
+        height: 200px;
+        overflow-y: scroll;
+        direction: ltr;
+      }
+
+      .force-overflow {
+        min-height: 250px;
+        direction: rtl;
+        padding-right: 20px;
+      }
+
+      #style-2::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: $grey;
+      }
+
+      #style-2::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5;
+      }
+
+      #style-2::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: $green;
+      }
 
       .image {
         @include flex(0 0 150px);
+
+        img {
+          max-width: 100%;
+        }
 
         .socials {
           @include flexbox;
@@ -417,10 +590,9 @@ section {
         padding-top: 20px;
         display: block;
 
-
         .image {
           display: block;
-          width:100%;
+          width: 100%;
 
           .socials {
             @include flexbox;
@@ -442,7 +614,7 @@ section {
         .text {
           padding: 0;
           display: block;
-          width:100%;
+          width: 100%;
 
         }
 
@@ -594,6 +766,56 @@ section {
 
         .text {
           top: 0%;
+        }
+      }
+    }
+  }
+
+  &.section-albums-banner-slider {
+    padding: 20px 0 40px 0;
+
+    .section-title {
+
+      h1 {
+        background-color: #000;
+        color: #fff;
+        padding: 0 5px;
+        display: inline-block;
+      }
+    }
+
+    .items {
+      direction: ltr;
+      width: 100%;
+      display: block;
+      margin-top: 20px;
+    }
+
+    .slick-dots {
+      bottom: 15px;
+    }
+
+    .item {
+      height: 55vh;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+
+      a {
+        position: absolute;
+        left: 50%;
+        bottom: 60px;
+        font-family: $font-black;
+        font-size: 2rem;
+        padding: 0px 5px;
+        @include transform-translateX(-50%);
+        background-color: $green;
+        color: #000;
+        @include transition-all(.2s);
+
+        &:hover {
+          background-color: #000;
+          color: #fff;
         }
       }
     }
@@ -850,18 +1072,10 @@ section {
     .shell {
       @include flexbox;
       @include justify-content(space-between);
-
-      @media(max-width:480px ){
-        padding:0 15px 0 0;
-      }
     }
 
     .col {
       @include flex(0 0 50%);
-
-      @media (max-width: 480px){
-        padding-left:15px;
-      }
 
       h2 {
         background-color: #000;
@@ -874,10 +1088,6 @@ section {
 
       &.col-clips {
         @include flex(0 0 calc(50% - 40px));
-
-        @media(max-width:480px ){
-          padding:0 30px 0 0;
-        }
 
         .items {
           @include flexbox;
@@ -933,10 +1143,6 @@ section {
 
       &.col-music {
         @include flex(0 0 calc(50% - 40px));
-
-        @media(max-width:480px ){
-          padding:0 15px 0 0;
-        }
 
         .holder {
           height: 100%;
@@ -1019,11 +1225,6 @@ section {
       &.video-clips {
         @include flex(0 0 calc(50% - 40px));
 
-
-        @media(max-width:480px){
-          padding-top: 40px;
-        }
-
         .items {
 
           .item {
@@ -1083,43 +1284,32 @@ section {
       }
     }
 
-
     @media (max-width: 480px) {
 
       .shell {
-          display: block;
-          width: 100%;
+        display: block;
+        width: 100%;
 
-          .col {
-            @include flex(0 0 100%);
+        .col {
+          @include flex(0 0 100%);
 
-            &.col-clips {
-              display: block;
-              width: 100%;
-              padding:0 15px 0 0;
+          &.col-clips {
+            display: block;
+            width: 100%;
+          }
 
-            }
-
-            &.col-music {
-              display: block;
-              width: 100%;
-            }
+          &.col-music {
+            display: block;
+            width: 100%;
           }
         }
-
+      }
 
     }
-    }
+  }
 
   &.section-albums {
     padding: 40px 0px;
-
-    .shell{
-
-      @media(max-width:480px){
-        padding:0px ;
-      }
-    }
 
     .section-title {
 
@@ -1139,7 +1329,6 @@ section {
       -webkit-flex-flow: row wrap;
       flex-flow: row wrap;
     }
-
 
     .item {
       margin: 10px 0;
@@ -1207,12 +1396,6 @@ section {
     position: absolute;
     top: 0px;
     right: -60px;
-
-
-    @media (max-width:480px){
-      right:-20px;
-
-    }
 
     .alphabet-scale {
       position: absolute;
@@ -1343,9 +1526,6 @@ section {
       @include justify-content(center);
       overflow: hidden;
 
-      @media(max-width:480px){
-        @include flex(0 0 50%);
-      }
       .holder {
         width: calc(100% - 25px);
         height: calc(100% - 15px);
@@ -1917,17 +2097,11 @@ section {
       top: 0px;
       right: 0px;
 
-      @media (max-width: 480px){
-        @include flexbox;
-        @include flex-flow(wrap);
-      }
-
       span {
         float: right;
         font-size: 2rem;
         line-height: 2rem;
         color: $grey;
-        @include flex (0 0 100%);
       }
     }
 
@@ -1945,12 +2119,6 @@ section {
         background-color: $green;
         line-height: 2rem;
         @include transition-all(.1s);
-
-        @media (max-width: 480px){
-          font-size: 1.6rem;
-          line-height: 1.6rem;
-
-        }
 
         &.cat-title {
           background-color: transparent;
@@ -1972,12 +2140,6 @@ section {
       position: absolute;
       top: 50px;
       right: -60px;
-
-      @media (max-width: 480px){
-        right:0px;
-        top: 10px;
-
-      }
     }
 
     .years {
@@ -2036,20 +2198,12 @@ section {
       position: relative;
       padding: 20px 0;
 
-      @media (max-width: 480px){
-        padding:  0px;
-      }
-
       &.affix {
 
         .year-scale {
           position: fixed;
           right: auto;
           top: 100px;
-
-          @media (max-width: 480px){
-            top: 10px;
-          }
         }
       }
     }
@@ -2112,12 +2266,6 @@ section {
       }
     }
   }
-
-  &section-albums-banner-slider {
-    @media (max-width: 480px) {
-      padding: 0 0 10px 0;
-    }
-  }
 }
 
 .wpcf7-response-output {
@@ -2133,4 +2281,44 @@ span.wpcf7-not-valid-tip {
   bottom: 2px;
   left: 2px;
   font-size: 1rem !important;
+}
+
+.mfp-zoom-in {
+
+  /* start state */
+  .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    transform: scale(0.8);
+  }
+
+  &.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s ease-out;
+  }
+
+  /* animate in */
+  &.mfp-ready {
+    .mfp-with-anim {
+      opacity: 1;
+      transform: scale(1);
+    }
+    &.mfp-bg {
+      opacity: 0.8;
+    }
+  }
+
+  /* animate out */
+  &.mfp-removing {
+
+    .mfp-with-anim {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+    &.mfp-bg {
+      opacity: 0;
+    }
+
+  }
+
 }

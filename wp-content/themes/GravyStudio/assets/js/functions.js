@@ -146,7 +146,12 @@ $(document).ready( function () {
         type: 'image',
         gallery:{
             enabled:true
-        }
+        },
+        callbacks: {
+            beforeOpen: function() {
+                this.st.mainClass = this.st.el.attr('data-effect');
+            }
+        },
     });
 
     $('.popup-yt').magnificPopup({

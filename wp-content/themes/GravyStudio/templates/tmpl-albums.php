@@ -16,7 +16,7 @@ get_header();
 	        <?php if ( get_sub_field( 'title' ) != null ) { ?>
                 <div class="shell">
                     <div class="section-title">
-                        <h2><?php the_sub_field( 'title' ); ?></h2>
+                        <h1><?php the_sub_field( 'title' ); ?></h1>
                     </div>
                 </div>
 	        <?php } ?>
@@ -27,7 +27,7 @@ get_header();
 					<?php while ( have_rows( 'items' ) ) : the_row(); ?>
 
                         <div class="item"
-						     <?php if ( get_sub_field( 'image' ) != null ){ ?>style="background-image: url('<?php the_sub_field( 'image' ); ?>');"<?php } ?>>
+						     <?php if ( get_sub_field( 'image' ) != null ){ ?>style="background-image: url('<?php the_sub_field( 'image' )['image']; ?>');"<?php } ?>>
 
 							<?php if ( get_sub_field( 'button' ) != null ) {
 								$btn = get_sub_field( 'button' ); ?>
@@ -58,7 +58,10 @@ get_header();
                 <nav id="links">
                     <ul class="years">
 	                    <?php
-	                    $terms = get_terms( 'year', 'orderby=title&order=DESC' );
+
+                        echo '<li class="cat year is-checked" data-filter="*"><span>הכל</span></li>';
+
+                        $terms = get_terms( 'year', 'orderby=title&order=DESC' );
 
 	                    foreach ( $terms as $term ) {
 		                    echo '<li class="cat year" data-filter=".year-'.$term->slug.'"><span>'.$term->slug.'</span></li>';

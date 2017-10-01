@@ -1,5 +1,4 @@
 header {
-
   position: fixed;
   top: 0;
   z-index: 10;
@@ -109,8 +108,6 @@ header {
     max-width: 975px;
     height: 100%;
 
-
-
     .btn-search {
       position: absolute;
       left: -100px;
@@ -162,10 +159,10 @@ header {
       li {
         position: relative;
         height: 100%;
+        overflow: visible;
         width: auto;
         padding: 0 10px;
         float: right;
-        overflow: hidden;
 
         @include flexbox;
         @include align-items(center);
@@ -185,7 +182,7 @@ header {
             bottom: 4px;
             right: 0px;
             width: 0%;
-            border-bottom: 1px solid #fff;
+            height: 1px;
           }
 
           &:active,
@@ -195,7 +192,7 @@ header {
 
             &:before {
               width: 100%;
-              border-color: $green;
+              background-color: $green;
             }
           }
         }
@@ -229,6 +226,14 @@ header {
 
           a {
             color: #fff;
+
+            &:hover {
+              color: $green;
+
+              &:before{
+                background-color: $green;
+              }
+            }
           }
         }
       }

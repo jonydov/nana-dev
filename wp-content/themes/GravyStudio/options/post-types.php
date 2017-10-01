@@ -45,7 +45,8 @@ register_post_type('news', array(
 	'capability_type' => 'post',
     'hierarchical' => false,
     'query_var' => false,
-    'rewrite' => array('slug' => 'news'),
+	'has_archive'           => true,
+    'rewrite' => array('slug' => 'news', "with_front" => true),
     'supports' => array(
         'title',
         'editor',
