@@ -809,7 +809,8 @@ section {
       color: #fff;
       padding: 0 5px; }
     section.section-artist-bio .section-body {
-      padding-top: 20px; }
+      padding-top: 20px;
+      padding-bottom: 20px; }
       @media (min-width: 768px) {
         section.section-artist-bio .section-body {
           display: -webkit-flex;
@@ -824,6 +825,26 @@ section {
           display: -webkit-flex;
           display: -webkit-box;
           display: flex; } }
+      section.section-artist-bio .section-body .scrollbar {
+        float: right;
+        height: 200px;
+        overflow-y: scroll;
+        direction: ltr; }
+      section.section-artist-bio .section-body .force-overflow {
+        min-height: 250px;
+        direction: rtl;
+        padding-right: 20px; }
+      section.section-artist-bio .section-body #style-2::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        background-color: #808285; }
+      section.section-artist-bio .section-body #style-2::-webkit-scrollbar {
+        width: 6px;
+        background-color: #F5F5F5; }
+      section.section-artist-bio .section-body #style-2::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+        background-color: #32faca; }
       section.section-artist-bio .section-body .image {
         -webkit-box-flex: 0;
         -webkit-flex: 0 0 150px;
@@ -2773,6 +2794,28 @@ span.wpcf7-not-valid-tip {
   bottom: 2px;
   left: 2px;
   font-size: 1rem !important; }
+
+.mfp-zoom-in {
+  /* start state */
+  /* animate in */
+  /* animate out */ }
+  .mfp-zoom-in .mfp-with-anim {
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+    transform: scale(0.8); }
+  .mfp-zoom-in.mfp-bg {
+    opacity: 0;
+    transition: all 0.3s ease-out; }
+  .mfp-zoom-in.mfp-ready .mfp-with-anim {
+    opacity: 1;
+    transform: scale(1); }
+  .mfp-zoom-in.mfp-ready.mfp-bg {
+    opacity: 0.8; }
+  .mfp-zoom-in.mfp-removing .mfp-with-anim {
+    transform: scale(0.8);
+    opacity: 0; }
+  .mfp-zoom-in.mfp-removing.mfp-bg {
+    opacity: 0; }
 
 header {
   position: fixed;

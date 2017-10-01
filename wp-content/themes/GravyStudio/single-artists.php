@@ -71,7 +71,11 @@
                 </div>
                 <div class="text">
                     <div class="holder">
-                        <?php the_content(); ?>
+                        <div class="scrollbar" id="style-2">
+                            <div class="force-overflow">
+	                            <?php the_content(); ?>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -309,7 +313,7 @@
 
                 ?>
 
-                    <a href="<?=$image['url']; ?>" class="item popup-img">
+                    <a href="<?=$image['url']; ?>" class="item popup-img" data-effect="mfp-zoom-in">
 
                         <div class="holder">
                             <div class="image" <?php if( $image != null ){

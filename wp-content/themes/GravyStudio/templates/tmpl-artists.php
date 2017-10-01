@@ -27,25 +27,17 @@ get_header();
                         <ul class="alphabet-scale">
 
 							<?php
-							$args        = array(
-								'posts_per_page'   => - 1,
-								'orderby'          => 'title',
-								'order'            => 'ASC',
-								'post_type'        => 'artists',
-								'post_status'      => 'publish',
-								'suppress_filters' => true
 
-							);
-							$posts_array = get_posts( $args );
+							$posts_array = get_sub_field( 'items' );
 
 							$i = 0;
 
 							foreach ( $posts_array as $post ) {
 
-								if ( isRTL( $post->post_title ) == true ) {
-									$artistsHe[] = $post->ID;
+								if ( isRTL( get_the_title($post) ) == true ) {
+									$artistsHe[] = $post;
 								} else {
-									$artistsEn[] = $post->ID;
+									$artistsEn[] = $post;
 								}
 
 							} ?>
@@ -106,28 +98,21 @@ get_header();
 
 						<?php
 
-                            $args = array(
-                                'posts_per_page'   => - 1,
-                                'orderby'          => 'title',
-                                'order'            => 'ASC',
-                                'post_type'        => 'artists',
-                                'post_status'      => 'publish',
-                                'suppress_filters' => true
-
-                            );
-
-                            $posts_array = get_posts( $args );
+                            $posts_array = get_sub_field( 'items' );
 
                             mb_internal_encoding( "UTF-8" );
 
                             $i = 0;
 
+						    $artistsHe = array();
+						    $artistsEn = array();
+
                             foreach ( $posts_array as $post ) {
 
-                                if ( isRTL( $post->post_title ) == true ) {
-                                    $artistsHe[] = $post->ID;
+                                if ( isRTL( get_the_title($post) ) == true ) {
+                                    $artistsHe[] = $post;
                                 } else {
-                                    $artistsEn[] = $post->ID;
+                                    $artistsEn[] = $post;
                                 }
                             }
 
