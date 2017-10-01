@@ -359,6 +359,16 @@ h4,
 h5,
 h6 {
   font-family: "almoni_dl_aaablack"; }
+  h1.black,
+  h2.black,
+  h3.black,
+  h4.black,
+  h5.black,
+  h6.black {
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    padding: 0 5px; }
 
 .slick-dots {
   position: absolute;
@@ -2569,6 +2579,267 @@ section {
           left: -70px;
           -webkit-transform: translateY(-50%) rotate(-180deg);
           transform: translateY(-50%) rotate(-180deg); }
+  section.section-album-text {
+    padding-top: 20px;
+    font-size: 1.8rem;
+    font-family: "almoni_dl_aaalight"; }
+  section.section-albums-info {
+    padding-bottom: 20px; }
+    section.section-albums-info .cols3 {
+      -webkit-box-flex-flow: row wrap;
+      -webkit-flex-flow: row wrap;
+      -moz-box-flex-flow: row wrap;
+      -moz-flex-flow: row wrap;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap; }
+      @media (min-width: 768px) {
+        section.section-albums-info .cols3 {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        section.section-albums-info .cols3 {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+    section.section-albums-info .col {
+      -webkit-box-flex: 0;
+      -webkit-flex: 0 0 33.3333%;
+      -moz-box-flex: 0;
+      -moz-flex: 0 0 33.3333%;
+      -ms-flex: 0 0 33.3333%;
+      flex: 0 0 33.3333%; }
+      section.section-albums-info .col.col-purchase .image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px; }
+      section.section-albums-info .col.col-purchase .items {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        -webkit-align-items: center;
+        -moz-align-items: center;
+        align-items: center;
+        background-color: #32faca;
+        color: #000;
+        margin-bottom: 10px;
+        padding: 5px 10px;
+        -webkit-transition: all 0.15s linear;
+        -moz-transition: all 0.15s linear;
+        -o-transition: all 0.15s linear;
+        -ms-transition: all 0.15s linear;
+        transition: all 0.15s linear; }
+        @media (min-width: 768px) {
+          section.section-albums-info .col.col-purchase .items {
+            display: -webkit-flex;
+            display: -webkit-box;
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: flex; } }
+        @media (max-width: 768px) {
+          section.section-albums-info .col.col-purchase .items {
+            display: -moz-flex;
+            display: -ms-flexbox;
+            display: -webkit-flex;
+            display: -webkit-box;
+            display: flex; } }
+        section.section-albums-info .col.col-purchase .items .label {
+          color: #000;
+          font-family: "almoni_dl_aaalight";
+          font-size: 1.6rem;
+          line-height: 1.6rem;
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 50%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+          text-align: right; }
+        section.section-albums-info .col.col-purchase .items .links {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 50%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 50%;
+          -ms-flex: 0 0 50%;
+          flex: 0 0 50%;
+          text-align: left; }
+        section.section-albums-info .col.col-purchase .items .link {
+          font-size: 1rem; }
+        section.section-albums-info .col.col-purchase .items:hover {
+          background-color: #000;
+          color: #32faca; }
+          section.section-albums-info .col.col-purchase .items:hover .link,
+          section.section-albums-info .col.col-purchase .items:hover .label {
+            color: #32faca; }
+      section.section-albums-info .col.col-more-albums h3 {
+        margin-top: 0px;
+        margin-bottom: 15px;
+        background-color: #32faca;
+        display: inline-block;
+        padding: 2px 5px; }
+      @media (min-width: 768px) {
+        section.section-albums-info .col.col-more-albums .items {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 768px) {
+        section.section-albums-info .col.col-more-albums .items {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+      section.section-albums-info .col.col-more-albums .items .item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 33.333%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 33.333%;
+        -ms-flex: 0 0 33.333%;
+        flex: 0 0 33.333%;
+        padding: 0 0px 0 15px; }
+        section.section-albums-info .col.col-more-albums .items .item:hover .text {
+          top: 0%; }
+        section.section-albums-info .col.col-more-albums .items .item .holder {
+          position: relative;
+          overflow: hidden; }
+        section.section-albums-info .col.col-more-albums .items .item .text {
+          will-change: transform;
+          -webkit-transition: all 0.15s linear;
+          -moz-transition: all 0.15s linear;
+          -o-transition: all 0.15s linear;
+          -ms-transition: all 0.15s linear;
+          transition: all 0.15s linear;
+          top: 100%;
+          position: absolute;
+          z-index: 1;
+          background-color: rgba(0, 0, 0, 0.5);
+          -webkit-box-flex-flow: row wrap;
+          -webkit-flex-flow: row wrap;
+          -moz-box-flex-flow: row wrap;
+          -moz-flex-flow: row wrap;
+          -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+          -webkit-box-align: center;
+          -ms-flex-align: center;
+          -webkit-align-items: center;
+          -moz-align-items: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          -ms-flex-pack: center;
+          -webkit-justify-content: center;
+          -moz-justify-content: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          padding: 5px; }
+          @media (min-width: 768px) {
+            section.section-albums-info .col.col-more-albums .items .item .text {
+              display: -webkit-flex;
+              display: -webkit-box;
+              display: -moz-flex;
+              display: -ms-flexbox;
+              display: flex; } }
+          @media (max-width: 768px) {
+            section.section-albums-info .col.col-more-albums .items .item .text {
+              display: -moz-flex;
+              display: -ms-flexbox;
+              display: -webkit-flex;
+              display: -webkit-box;
+              display: flex; } }
+          section.section-albums-info .col.col-more-albums .items .item .text span {
+            -webkit-box-flex: 0;
+            -webkit-flex: 0 0 0 100%;
+            -moz-box-flex: 0;
+            -moz-flex: 0 0 0 100%;
+            -ms-flex: 0 0 0 100%;
+            flex: 0 0 0 100%;
+            text-align: center; }
+          section.section-albums-info .col.col-more-albums .items .item .text .name-artist {
+            font-family: "almoni_dl_aaablack";
+            font-size: 1rem;
+            width: 100%;
+            display: block;
+            color: #32faca; }
+          section.section-albums-info .col.col-more-albums .items .item .text .name-album {
+            font-size: 1rem;
+            color: #fff;
+            font-family: "almoni_dl_aaalight"; }
+        section.section-albums-info .col.col-more-albums .items .item .image {
+          max-width: 100%;
+          height: auto;
+          background-color: #32faca; }
+      section.section-albums-info .col.col-songs-list {
+        padding: 0 25px 0 50px; }
+        section.section-albums-info .col.col-songs-list h1 {
+          margin: 0;
+          font-size: 3.8rem;
+          margin-bottom: 10px; }
+        section.section-albums-info .col.col-songs-list .section-title .text {
+          font-size: 2.2rem;
+          line-height: 2.2rem;
+          color: #32faca;
+          font-family: "almoni_dl_aaablack";
+          padding-bottom: 20px; }
+        section.section-albums-info .col.col-songs-list ul {
+          list-style: none;
+          color: #000;
+          padding: 0;
+          font-family: "almoni_dl_aaalight";
+          font-size: 1.6rem;
+          text-align: right; }
+          section.section-albums-info .col.col-songs-list ul li {
+            -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+            -webkit-justify-content: space-between;
+            -moz-justify-content: space-between;
+            justify-content: space-between; }
+            @media (min-width: 768px) {
+              section.section-albums-info .col.col-songs-list ul li {
+                display: -webkit-flex;
+                display: -webkit-box;
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: flex; } }
+            @media (max-width: 768px) {
+              section.section-albums-info .col.col-songs-list ul li {
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: -webkit-box;
+                display: flex; } }
+            section.section-albums-info .col.col-songs-list ul li .number {
+              -webkit-box-flex: 0;
+              -webkit-flex: 0 0 10%;
+              -moz-box-flex: 0;
+              -moz-flex: 0 0 10%;
+              -ms-flex: 0 0 10%;
+              flex: 0 0 10%; }
+            section.section-albums-info .col.col-songs-list ul li .title {
+              -webkit-box-flex: 0;
+              -webkit-flex: 0 0 75%;
+              -moz-box-flex: 0;
+              -moz-flex: 0 0 75%;
+              -ms-flex: 0 0 75%;
+              flex: 0 0 75%; }
+            section.section-albums-info .col.col-songs-list ul li .duration {
+              -webkit-box-flex: 0;
+              -webkit-flex: 0 0 15%;
+              -moz-box-flex: 0;
+              -moz-flex: 0 0 15%;
+              -ms-flex: 0 0 15%;
+              flex: 0 0 15%;
+              text-align: left;
+              color: #32faca; }
   section.section-albums-list {
     padding: 0px 0px 60px 0px; }
     section.section-albums-list .section-title h2 {
