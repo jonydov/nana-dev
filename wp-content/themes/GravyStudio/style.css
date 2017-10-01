@@ -539,9 +539,11 @@ section {
       section .shell h2.large {
         font-size: 3.6rem;
         line-height: 3.8rem; }
-    @media (max-width: 480px) {
-      section .shell {
-        width: 100%; } }
+  @media (max-width: 480px) {
+    section section {
+      padding: 0 0 80px 0; }
+    section .shell {
+      width: 100%; } }
   section.section-news {
     padding-top: 20px;
     padding-bottom: 20px; }
@@ -1163,6 +1165,10 @@ section {
         section.section-albums-banner-slider .item a:hover {
           background-color: #000;
           color: #fff; }
+  @media (max-width: 480px) {
+    section.section-albums-banner-slider .section-title h1 {
+      font-size: 2.6rem;
+      line-height: 2.8rem; } }
   section.section-albums-slider {
     padding-top: 20px;
     padding-bottom: 0px; }
@@ -1526,7 +1532,7 @@ section {
                 display: block;
                 content: "";
                 width: 100%;
-                padding-top: 37.03704%; }
+                padding-top: 37.037037037%; }
               section.section-feed-2cols .col.col-clips .items .item .image > .holder {
                 position: absolute;
                 top: 0;
@@ -1681,7 +1687,7 @@ section {
               display: block;
               content: "";
               width: 100%;
-              padding-top: 44.44444%; }
+              padding-top: 44.4444444444%; }
             section.section-feed-2cols .col.video-clips .items .item .image > .holder {
               position: absolute;
               top: 0;
@@ -2107,6 +2113,25 @@ section {
         background-color: #32faca; }
       section.section-artists .item:hover .image .holder {
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); }
+  @media (max-width: 480px) {
+    section.section-artists {
+      padding: 20px 0px; }
+      section.section-artists .section-title h2 {
+        font-size: 3rem;
+        line-height: 3.2rem; }
+      section.section-artists .section-body {
+        position: relative;
+        padding: 20px 0; }
+        section.section-artists .section-body.affix .alphabet-scale {
+          right: auto;
+          top: 100px; }
+      section.section-artists .item {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 50%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 50%;
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%; } }
   section.section-about {
     padding: 40px 0px;
     -webkit-box-pack: justify;
@@ -2450,6 +2475,233 @@ section {
         font-family: "almoni_dl_aaabold";
         text-align: right;
         padding-top: 10px; }
+  @media (max-width: 480px) {
+    section.section-about .holder {
+      padding: 0px; }
+    section.section-about .section-title h2 {
+      font-size: 2rem; }
+    section.section-about .shell {
+      flex-flow: wrap;
+      justify-content: flex-start; }
+      section.section-about .shell .col {
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 100%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 100%;
+        -ms-flex: 0 0 100%;
+        flex: 0 0 100%; }
+      section.section-about .shell .col-left .holder {
+        padding: 30px 20px 20px 20px; }
+      section.section-about .shell .newsletter-form {
+        padding-bottom: 30px;
+        border-bottom: 1px solid #32faca; } }
+    @media (max-width: 480px) and (min-width: 768px) {
+      section.section-about .shell .newsletter-form .form-holder .field {
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex; } }
+    @media (max-width: 480px) and (max-width: 768px) {
+      section.section-about .shell .newsletter-form .form-holder .field {
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: flex; } }
+  @media (max-width: 480px) {
+        section.section-about .shell .newsletter-form .form-holder .field span {
+          width: 100%;
+          max-width: 70%; }
+        section.section-about .shell .newsletter-form .form-holder .field.form-submit .email {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 70%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 70%;
+          -ms-flex: 0 0 70%;
+          flex: 0 0 70%; }
+          section.section-about .shell .newsletter-form .form-holder .field.form-submit .email input {
+            max-width: 100%; }
+        section.section-about .shell .newsletter-form .form-holder .field.form-submit input[type="submit"] {
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 30%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 30%;
+          -ms-flex: 0 0 30%;
+          flex: 0 0 30%;
+          padding: 0; }
+        section.section-about .shell .newsletter-form .field-desc {
+          justify-content: center;
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 100%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 100%;
+          -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+          line-height: 1.6rem;
+          color: #fff;
+          margin-bottom: 20px; }
+        section.section-about .shell .newsletter-form .field-name {
+          padding-bottom: 4px;
+          width: 60%;
+          justify-content: flex-start; }
+        section.section-about .shell .newsletter-form .field-send-email {
+          justify-content: flex-start;
+          padding: 0px 0px 3px;
+          flex-flow: row nowrap;
+          margin-bottom: 20px;
+          border-bottom: 1px solid #32faca; } }
+      @media (max-width: 480px) and (min-width: 768px) {
+        section.section-about .shell .newsletter-form .field-send-email {
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: flex; } }
+      @media (max-width: 480px) and (max-width: 768px) {
+        section.section-about .shell .newsletter-form .field-send-email {
+          display: -moz-flex;
+          display: -ms-flexbox;
+          display: -webkit-flex;
+          display: -webkit-box;
+          display: flex; } }
+  @media (max-width: 480px) {
+      section.section-about .shell .col-left .contact-form {
+        padding-top: 14px;
+        -webkit-box-flex-flow: row wrap;
+        -webkit-flex-flow: row wrap;
+        -moz-box-flex-flow: row wrap;
+        -moz-flex-flow: row wrap;
+        -ms-flex-flow: row wrap;
+        flex-flow: row wrap;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #32faca; }
+        section.section-about .shell .col-left .contact-form .form-holder h3 {
+          margin-top: 0px;
+          margin-bottom: 5px; }
+        section.section-about .shell .col-left .contact-form .field {
+          position: relative;
+          width: 100%;
+          margin-bottom: 10px; }
+          section.section-about .shell .col-left .contact-form .field.form-submit {
+            margin-bottom: 0px; }
+          section.section-about .shell .col-left .contact-form .field.field-message {
+            margin-bottom: 0px; }
+          section.section-about .shell .col-left .contact-form .field.nl-checkbox {
+            margin: 0px; }
+            section.section-about .shell .col-left .contact-form .field.nl-checkbox .custom-checkbox {
+              position: absolute;
+              width: 15px;
+              height: 15px;
+              display: block;
+              background-color: #fff;
+              content: '';
+              top: 2px; }
+            section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter {
+              width: 100%;
+              display: block; }
+              section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter .wpcf7-list-item {
+                width: 100%;
+                margin: 0px; }
+              section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label {
+                margin: 0px;
+                position: relative; } }
+            @media (max-width: 480px) and (min-width: 768px) {
+              section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label {
+                display: -webkit-flex;
+                display: -webkit-box;
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: flex; } }
+            @media (max-width: 480px) and (max-width: 768px) {
+              section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label {
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: -webkit-flex;
+                display: -webkit-box;
+                display: flex; } }
+  @media (max-width: 480px) {
+                section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label input {
+                  -webkit-box-flex: 0;
+                  -webkit-flex: 0 0 15px;
+                  -moz-box-flex: 0;
+                  -moz-flex: 0 0 15px;
+                  -ms-flex: 0 0 15px;
+                  flex: 0 0 15px;
+                  opacity: 0;
+                  position: initial;
+                  z-index: 1; }
+                  section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label input:checked + .wpcf7-list-item-label:before {
+                    background-color: #32faca; }
+                section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label .wpcf7-list-item-label {
+                  -webkit-box-flex: 0;
+                  -webkit-flex: 0 0 calc(100% - 15px);
+                  -moz-box-flex: 0;
+                  -moz-flex: 0 0 calc(100% - 15px);
+                  -ms-flex: 0 0 calc(100% - 15px);
+                  flex: 0 0 calc(100% - 15px);
+                  padding-right: 10px;
+                  position: relative;
+                  color: #fff;
+                  font-size: 1.4rem;
+                  font-weight: 100; }
+                  section.section-about .shell .col-left .contact-form .field.nl-checkbox .newsletter label .wpcf7-list-item-label:before {
+                    content: '';
+                    display: block;
+                    width: 14px;
+                    height: 14px;
+                    position: absolute;
+                    right: -15px;
+                    top: 2px;
+                    background-color: #fff; }
+        section.section-about .shell .col-left .contact-form .wpcf7-textarea {
+          height: 80px;
+          width: 100%;
+          font-size: 1rem;
+          resize: none; }
+      section.section-about .shell .section-footer .socials {
+        position: relative;
+        margin: 0px;
+        padding: 0px 100px 0px 100px;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        -webkit-align-items: flex-end;
+        -moz-align-items: flex-end;
+        align-items: flex-end;
+        -webkit-box-flex: 0;
+        -webkit-flex: 0 0 15%;
+        -moz-box-flex: 0;
+        -moz-flex: 0 0 15%;
+        -ms-flex: 0 0 15%;
+        flex: 0 0 15%;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        -webkit-justify-content: space-between;
+        -moz-justify-content: space-between;
+        justify-content: space-between; } }
+    @media (max-width: 480px) and (min-width: 768px) {
+      section.section-about .shell .section-footer .socials {
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: flex; } }
+    @media (max-width: 480px) and (max-width: 768px) {
+      section.section-about .shell .section-footer .socials {
+        display: -moz-flex;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: flex; } }
+  @media (max-width: 480px) {
+      section.section-about .shell .section-footer a {
+        color: #32faca; }
+      section.section-about .shell .section-footer .section-footer-text {
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: "almoni_dl_aaabold";
+        text-align: right;
+        padding-top: 10px; } }
   section.section-banner {
     padding: 120px 0px 0px 0px;
     min-height: 680px;
@@ -3106,6 +3358,15 @@ section {
       section.section-albums-list .item:hover .name-artist {
         color: #000;
         background-color: #32faca; }
+  @media (max-width: 480px) {
+    section.section-albums-list .section-body {
+      padding: 0; }
+    section.section-albums-list .nav-cat span {
+      font-size: 1.6rem; }
+    section.section-albums-list .nav-cat .cat-types .cat {
+      padding: 0px;
+      font-size: 1.6rem;
+      text-align: center; } }
   section.section-news-item {
     padding: 10px 0px; }
     section.section-news-item .section-top-bunner .image {
@@ -3556,11 +3817,11 @@ header {
 
 .home header .bg-holder {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */
-  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, transparent 100%);
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(1, 1, 1, 0.7) 1%, rgba(61, 61, 61, 0.33) 50%, rgba(60, 60, 60, 0.32) 51%, rgba(17, 17, 17, 0) 86%, rgba(0, 0, 0, 0) 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#b3000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */ }
