@@ -604,6 +604,197 @@ section {
         }
       }
     }
+
+      @media (max-width:480px){
+
+        h1{
+          font-size: 3rem;
+        }
+        .archive-list {
+          right: 0px;
+        }
+        .items{
+          @include justify-content(flex-start);
+          padding-right: 60px;
+          .item{
+              @include flex(0 0 100%);
+            }
+        }
+      }
+  }
+
+  &.section-productions {
+    padding-top: 0px;
+    padding-bottom: 20px;
+
+    .productions-list {
+      position: absolute;
+      top: 30px;
+      right: -100px;
+      width: 100px;
+    }
+
+    .section-body {
+      position: relative;
+    }
+
+    .widgettitle {
+      display: none;
+    }
+
+    .section-header {
+
+      h1 {
+        background-color: #000;
+        color: #fff;
+        display: inline-block;
+        padding: 0 5px;
+        margin-bottom: 0px;
+      }
+    }
+
+    .items {
+      @include transition(height, .4s, ease);
+      padding-top: 40px;
+      @include flexbox();
+      @include flex-flow(row wrap);
+      @include justify-content(space-between);
+
+      .item {
+        position: relative;
+        @include flex(0 0 calc(50% - 30px));
+        margin-bottom: 20px;
+
+        &:focus,
+        &:hover {
+          text-decoration: none;
+          color: inherit;
+          outline: none;
+
+          .image {
+
+            h3 {
+              color: $green;
+            }
+          }
+        }
+
+        .image {
+          position: relative;
+          background-size: cover;
+          background-position: center;
+          @include aspect-ratio(2.5, 1);
+
+          &:after {
+            @include pseudoElement;
+            background-color: rgba(0, 0, 0, .2);
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            top: 0px;
+            left: 0px;
+          }
+
+          h3,
+          .meta {
+            position: relative;
+            z-index: 2;
+            color: #fff;
+            padding: 15px;
+            @include transition-all(.2s);
+          }
+
+          .meta {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            font-family: $font-black;
+          }
+
+          h3 {
+            font-size: 2.5rem;
+            position: absolute;
+            left: 0px;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            background-color: rgba(0, 0, 0, .7);
+            margin: 0;
+            padding: 5px 0;
+            @include transition-all(.2s);
+          }
+        }
+
+        .text {
+          padding-top: 5px;
+          font-family: $font-light;
+          color: $grey;
+        }
+
+        &.style-2 {
+          padding: 40px 0 20px 0;
+          border-top: 1px solid $grey;
+
+          &:nth-child(5),
+          &:nth-child(6) {
+            border-top: none;
+          }
+
+          &:hover {
+
+            .text {
+
+              h3 {
+                color: $green;
+              }
+            }
+          }
+
+          .holder {
+            @include flexbox;
+          }
+
+          .image {
+            @include aspect-ratio(1, 1);
+            @include flex(0 0 30%);
+          }
+
+          .text {
+            @include flex(0 0 70%);
+            padding-right: 20px;
+            padding-top: 0px;
+            font-size: 1.4rem;
+
+            .meta {
+              font-family: $font-black;
+            }
+
+            h3 {
+              margin: 0px;
+              color: #000;
+              @include transition-all(.2s);
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width:480px){
+
+      h1{
+        font-size: 3rem;
+      }
+      .productions-list {
+        right: 0px;
+      }
+      .items{
+        @include justify-content(flex-start);
+        padding-right: 60px;
+        .item{
+          @include flex(0 0 100%);
+        }
+      }
+    }
   }
 
   &.section-artist-bio {
@@ -761,6 +952,15 @@ section {
             padding-right: 5px;
             border-right: 1px solid #fff;
           }
+        }
+      }
+    }
+    @media (max-width: 480px) {
+      .section-body{
+        a{
+          display: block;
+          width: 100%;
+          font-size: 1.6rem;
         }
       }
     }
@@ -952,6 +1152,10 @@ section {
           font-size: 2.6rem;
           line-height: 2.8rem;
         }
+      }
+
+      .item {
+        height: 30vh;
       }
 
     }
@@ -2622,9 +2826,11 @@ section {
           font-size: 1.6rem;
         }
         .cat-types .cat {
-          padding: 0px;
-          font-size: 1.6rem;
+          padding: 0px 5px;
+          font-size: 1rem;
           text-align: center;
+          display: flex;
+          align-items: center;
 
         }
       }
@@ -2681,7 +2887,6 @@ section {
 
         .text {
           padding: 20px 0 0 10px;
-
           font-family: $font-light;
           color: #808285;
         }
@@ -2723,7 +2928,91 @@ section {
           }
         }
       }
+
     }
+
+  &.section-productions-item {
+    padding: 10px 0px;
+
+    .section-top-bunner {
+
+      .image {
+        max-width: 100%;
+        max-height: 435px;
+        width: auto;
+        background-size: cover;
+        background-position: center;
+        width: 100%;
+        height: 435px;
+      }
+    }
+    .section-body {
+
+      h3 {
+        line-height: 2.4rem;
+        margin-bottom: 0px;
+        margin-top: 10px;
+      }
+
+      .title {
+        padding-top: 20px;
+      }
+
+      .date {
+        font-family: $font-black;
+        font-size: 1.5rem;
+        color: $grey;
+      }
+
+      .text {
+        padding: 20px 0 0 10px;
+        font-family: $font-light;
+        color: #808285;
+      }
+
+      .tag-list {
+        font-family: $font-bold;
+        color: #000;
+        padding: 20px 0px;
+        @include flexbox();
+        @include justify-content(flex-start);
+        @include transition-all(.2s);
+
+        ul {
+          @include flexbox();
+          @include justify-content(flex-start);
+          list-style: none;
+          margin-bottom: 0px;
+
+          &:first-child {
+            padding-right: 0px;
+          }
+        }
+
+        li {
+          @include flexbox();
+          padding-left: 10px;
+
+          a {
+            font-family: $font-black;
+            background-color: $green;
+            text-align: center;
+            padding: 0px 20px;
+
+            &:hover {
+              background-color: #000;
+              color: #fff;
+            }
+          }
+        }
+      }
+    }
+
+    /*  mobile general-section-productions-item*/
+    @media(max-width: 480px) {
+
+    }
+  }
 
   &.section-music {
       padding: 10px 0 40px 0;
