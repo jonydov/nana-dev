@@ -344,7 +344,7 @@ $(document).ready(function () {
 
                     var $ajax_response = $(data);
                     var url = $('.section-news-archive').data('currentUrl');
-
+                    console.log($ajax_response);
                     $('.section-news-archive .items').html($ajax_response[0].outerHTML);
                     history.pushState('newsItems', "", url + year + '/' + month + '/');
                     var value = url.substring(url.lastIndexOf('/') + 1);

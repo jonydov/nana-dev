@@ -152,7 +152,7 @@ get_header();
                                 }
                             ?>
 
-                                <a href="<?php get_permalink( $post->ID ); ?>" class="item cf <?php echo implode(' ',$types); ?> <?php echo implode(' ',$years); ?>">
+                                <a href="<?=get_permalink( $post->ID ); ?>" class="item cf <?php echo implode(' ',$types); ?> <?php echo implode(' ',$years); ?>">
 
 
                                     <div class="image">
