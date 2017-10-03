@@ -660,6 +660,11 @@ section {
       padding: 0 5px;
       margin-bottom: 0px; }
     section.section-news-archive .items {
+      -webkit-transition: height 0.4s ease;
+      -moz-transition: height 0.4s ease;
+      -o-transition: height 0.4s ease;
+      -ms-transition: height 0.4s ease;
+      transition: height 0.4s ease;
       padding-top: 40px;
       -webkit-box-flex-flow: row wrap;
       -webkit-flex-flow: row wrap;

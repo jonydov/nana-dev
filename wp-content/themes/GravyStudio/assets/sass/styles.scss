@@ -400,6 +400,7 @@ section {
     }
 
     .items {
+      @include transition(height, .4s, ease);
       padding-top: 40px;
       @include flexbox();
       @include flex-flow(row wrap);
