@@ -1,4 +1,5 @@
 header {
+
   position: fixed;
   top: 0;
   z-index: 10;
@@ -110,6 +111,7 @@ header {
 
     @include flexbox;
     @include align-items(flex-end);
+
     width: 100%;
     max-width: 975px;
     height: 100%;
@@ -162,12 +164,6 @@ header {
       @include flex(1 1 85%);
       @include justify-content(space-between);
 
-      @media(max-width: 480px) {
-        @include flex-flow(wrap);
-        background-color: rgba(0, 0, 0, .8);
-        height: calc(100vh - 30px);
-        width: 100%;
-      }
 
       li {
         position: relative;
@@ -181,23 +177,12 @@ header {
         @include align-items(center);
         @include justify-content(center);
 
-        @media(max-width: 480px) {
-          width: 100%;
-          @include align-items(flex-start);
-
-        }
-
         a {
           padding-top: 50px;
           position: relative;
           color: #000;
           font-size: 2rem;
           position: relative;
-
-          @media(max-width: 480px) {
-            color: #fff;
-            padding-top: 0px;
-          }
 
           &:before {
             @include transition-all(.25s);
@@ -207,7 +192,6 @@ header {
             width: 0%;
             height: 1px;
           }
-
           &:active,
           &:hover {
             color: $green;
@@ -217,6 +201,39 @@ header {
               width: 100%;
               background-color: $green;
             }
+          }
+        }
+      }
+    }
+  }
+  /*  mobile header */
+  @media (max-width: 480px) {
+    @include flexbox;
+    @include align-items(center);
+
+    .shell {
+      padding: 0px;
+      width: 100%;
+
+    }
+    nav {
+      display: block;
+    }
+
+    .navbar {
+      .main-nav {
+        @include flex-flow(wrap);
+        background-color: rgba(0, 0, 0, .8);
+        height: calc(100vh - 30px);
+        width: 100%;
+
+        li {
+          width: 100%;
+          @include align-items(flex-start);
+
+          a {
+            color: #fff;
+            padding-top: 0px;
           }
         }
       }
@@ -262,6 +279,7 @@ header {
       }
     }
   }
+
 }
 
 $button-width: 62px; // The width of the button area
