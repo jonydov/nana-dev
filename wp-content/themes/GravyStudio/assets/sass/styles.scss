@@ -203,9 +203,7 @@ h6 {
   }
 }
 
-.wrapper {
 
-}
 
 .ico {
   display: block;
@@ -261,11 +259,6 @@ section {
 
   @include transition-all(.2s);
 
-  @media(max-width: 480px) {
-    padding: 0 0 80px 0;
-
-  }
-
   .cta {
     font-family: $font-black;
     font-size: 1.8rem;
@@ -301,16 +294,95 @@ section {
     }
 
   }
-  //mobile
-  @media(max-width: 480px) {
-    section {
-      padding: 0 0 80px 0;
-    }
-    .shell{
-      width: 100%;
+
+  nav#links {
+    position: absolute;
+    top: 10px;
+    right: -60px;
+
+    .alphabet-scale {
+      position: absolute;
+      @include transition-all(.1s);
+      @include flexbox;
+
+      -webkit-flex-flow: row wrap;
+      flex-flow: row wrap;
+      padding: 0;
+      margin: 0px;
+      width: 5px;
+      right: 0px;
+      list-style: none;
+
+      .lang-toggle {
+        color: $grey;
+        position: relative;
+        left: 5px;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
+
+      .letter {
+        @include flex(0 0 100%);
+        @include transition-all(.2s);
+        color: $grey;
+        display: none;
+
+        &.active {
+          display: inline-block;
+
+          .letter {
+            display: inline-block;
+          }
+        }
+
+        a {
+          color: $grey;
+          position: relative;
+          @include transition-all(.2s);
+          padding: 7px 2px 5px 2px;
+          margin: 5px auto 2px;
+          line-height: 10px;
+          display: inline-block;
+
+          &:before {
+            @include pseudoElement;
+            height: 1px;
+            width: 100%;
+            bottom: -4px;
+            background-color: $grey;
+          }
+
+        }
+
+        &:last-child {
+
+          a {
+
+            &:before {
+              display: none;
+            }
+          }
+        }
+
+        &:hover {
+
+          span {
+            cursor: pointer;
+            background-color: $green;
+            font-family: $font-black;
+            color: #000;
+
+            &:before {
+              background-color: #000;
+            }
+          }
+        }
+
+      }
     }
   }
-
 
   &.section-news {
     padding-top: 20px;
@@ -357,7 +429,7 @@ section {
       }
     }
 
-    //mobile
+    /*  mobile section-news */
     @media (max-width: 480px) {
 
       .items {
@@ -614,8 +686,14 @@ section {
 
     }
 
+    //* mobile section-artist-bio */
     @media (max-width: 480px) {
+      .section-title {
 
+        h1 {
+          font-size: 3rem;
+        }
+      }
       .section-body {
         padding-top: 20px;
         display: block;
@@ -628,11 +706,11 @@ section {
             @include flexbox;
             @include justify-content(space-between);
             @include flex-flow(row nowrap);
-            padding-top: 15px;
+            padding: 15px 0 0 15px;
             font-size: 2.6rem;
 
             a {
-              @include flex(0 0 20%);
+              @include flex(0 0 16%);
 
               &:hover {
                 color: $green;
@@ -645,7 +723,7 @@ section {
           padding: 0;
           display: block;
           width: 100%;
-
+          min-height: 200px;
         }
 
       }
@@ -748,9 +826,6 @@ section {
       @include aspect-ratio(1, 1);
       margin: 0 0px 0 20px;
 
-      .holder {
-      }
-
       .image {
         position: absolute;
         top: 0px;
@@ -800,6 +875,7 @@ section {
       }
     }
 
+    /*  section-shows-slider  */
     @media (max-width: 480px) {
 
       .section-header {
@@ -866,16 +942,17 @@ section {
         }
       }
     }
-  }
-  //mobile
-  @media (max-width: 480px) {
-    &.section-albums-banner-slider {
+
+    /* mobile  section-albums-banner-slider */
+    @media (max-width: 480px) {
+
       .section-title {
         h1 {
           font-size: 2.6rem;
           line-height: 2.8rem;
         }
       }
+
     }
   }
 
@@ -943,10 +1020,6 @@ section {
       width: 25%;
       @include aspect-ratio(1, 1);
       margin: 0px 0px 0px 30px;
-
-      .holder {
-
-      }
 
       &:hover {
 
@@ -1079,10 +1152,6 @@ section {
       @include flexbox;
       @include justify-content(space-between);
 
-      @media (max-width: 480px) {
-        @include flex-flow(row wrap);
-      }
-
       .item {
         position: relative;
         @include flex(0 0 13%);
@@ -1090,9 +1159,7 @@ section {
         padding: 15px;
 
         &:hover {
-
           .holder {
-
             .name-artist {
               opacity: 1;
             }
@@ -1116,11 +1183,18 @@ section {
           }
         }
 
-        @media (max-width: 480px) {
+      }
+    }
+    /*mobile section-other-artists */
+    @media (max-width: 480px) {
+      .items{
+        @include flex-flow(row wrap);
+
+        .item{
           @include flex(0 0 calc(50% - 10px));
           margin-bottom: 20px;
         }
-      }
+        }
     }
   }
 
@@ -1342,14 +1416,8 @@ section {
       }
     }
 
+    /*  mobile section-feed-2cols   */
     @media (max-width: 480px) {
-
-      .col {
-
-        h2 {
-
-        }
-      }
 
       .shell {
         display: block;
@@ -1374,9 +1442,7 @@ section {
           }
 
           &.video-clips {
-
             .items {
-
               .item {
                 margin-bottom: 20px;
               }
@@ -1482,112 +1548,20 @@ section {
       }
 
       &:hover {
-
         .text {
           top: 0%;
         }
       }
     }
 
-    /* Mobile */
-
+    /* Mobile section-albums*/
     @media (max-width: 480px) {
 
       .section-title {
-
         h2 {
           font-size: 2.6rem;
           line-height: 2.8rem;
         }
-      }
-    }
-  }
-
-  nav#links {
-    position: absolute;
-    top: 0px;
-    right: -60px;
-
-    .alphabet-scale {
-      position: absolute;
-      @include transition-all(.1s);
-      @include flexbox;
-
-      -webkit-flex-flow: row wrap;
-      flex-flow: row wrap;
-      padding: 0;
-      margin: 0px;
-      width: 5px;
-      right: 0px;
-      list-style: none;
-
-      .lang-toggle {
-        color: $grey;
-        position: relative;
-        left: 5px;
-
-        &:hover {
-          cursor: pointer;
-        }
-      }
-
-      .letter {
-        @include flex(0 0 100%);
-        @include transition-all(.2s);
-        color: $grey;
-        display: none;
-
-        &.active {
-          display: inline-block;
-
-          .letter {
-            display: inline-block;
-          }
-        }
-
-        a {
-          color: $grey;
-          position: relative;
-          @include transition-all(.2s);
-          padding: 7px 2px 5px 2px;
-          margin: 5px auto 2px;
-          line-height: 10px;
-          display: inline-block;
-
-          &:before {
-            @include pseudoElement;
-            height: 1px;
-            width: 100%;
-            bottom: -4px;
-            background-color: $grey;
-          }
-
-        }
-
-        &:last-child {
-
-          a {
-
-            &:before {
-              display: none;
-            }
-          }
-        }
-
-        &:hover {
-
-          span {
-            cursor: pointer;
-            background-color: $green;
-            font-family: $font-black;
-            color: #000;
-
-            &:before {
-              background-color: #000;
-            }
-          }
-        }
-
       }
     }
   }
@@ -1600,7 +1574,6 @@ section {
     @include flex(1 1 10%);
 
     .section-title {
-
       h2 {
         background-color: #000;
         color: #fff;
@@ -1609,7 +1582,6 @@ section {
         padding: 0 5px;
       }
     }
-
     .section-body {
       position: relative;
       padding: 20px 0;
@@ -1683,37 +1655,34 @@ section {
         }
       }
     }
-  }
 
-  //mobile
-  @media (max-width: 480px){
+    /* mobile section-artists */
+    @media (max-width: 480px){
+        padding: 20px 0px;
 
-    &.section-artists {
-      padding: 20px 0px;
-
-      .section-title {
-        h2 {
-          font-size: 3rem;
-          line-height: 3.2rem;
-        }
-      }
-
-      .section-body {
-        position: relative;
-        padding: 20px 0;
-
-        &.affix {
-          .alphabet-scale {
-            right: auto;
-            top: 100px;
+        .section-title {
+          h2 {
+            font-size: 3rem;
+            line-height: 3.2rem;
           }
         }
-      }
 
-      .item {
-        @include flex(0 0 50%);
+        .section-body {
+          position: relative;
+          padding: 20px 30px;
+
+          &.affix {
+            .alphabet-scale {
+              right: auto;
+              top: 100px;
+            }
+          }
+        }
+
+        .item {
+          @include flex(0 0 100%);
+        }
       }
-    }
 
   }
 
@@ -1748,22 +1717,14 @@ section {
       span {
         color: $grey;
       }
-
       .col {
         @include flex(0 0 50%);
       }
-
-      .col-right {
-
-      }
-
       .col-left {
-
         .holder {
           background-color: #000;
           padding: 30px 50px 20px 50px;
         }
-
         .form-holder {
           @include flexbox;
           @include justify-content(flex-start);
@@ -1825,66 +1786,6 @@ section {
             }
           }
         }
-      }
-
-      .newsletter-form {
-        padding-bottom: 30px;
-        border-bottom: 1px solid $green;
-
-        .form-holder {
-
-          .field {
-            @include flexbox;
-
-            span {
-              width: 100%;
-              max-width: 70%;
-            }
-
-            &.form-submit {
-
-              .email {
-                @include flex(0 0 70%);
-
-                input {
-                  max-width: 100%;
-                }
-              }
-
-              input[type="submit"] {
-                @include flex(0 0 30%);
-                padding: 0;
-              }
-            }
-          }
-        }
-
-        .field-desc {
-          justify-content: center;
-          @include flex(0 0 100%);
-          line-height: 1.6rem;
-          color: #fff;
-          margin-bottom: 20px;
-        }
-
-        .field-name {
-          padding-bottom: 4px;
-          width: 60%;
-          justify-content: flex-start;
-        }
-
-        .field-send-email {
-          justify-content: flex-start;
-          padding: 0px 0px 3px;
-          @include flexbox;
-          flex-flow: row nowrap;
-          margin-bottom: 20px;
-          border-bottom: 1px solid $green;
-        }
-      }
-
-      .col-left {
-
         .contact-form {
           padding-top: 14px;
           @include flex-flow(row wrap);
@@ -1988,7 +1889,61 @@ section {
           }
         }
       }
+      .newsletter-form {
+        padding-bottom: 30px;
+        border-bottom: 1px solid $green;
 
+        .form-holder {
+
+          .field {
+            @include flexbox;
+
+            span {
+              width: 100%;
+              max-width: 70%;
+            }
+
+            &.form-submit {
+
+              .email {
+                @include flex(0 0 70%);
+
+                input {
+                  max-width: 100%;
+                }
+              }
+
+              input[type="submit"] {
+                @include flex(0 0 30%);
+                padding: 0;
+              }
+            }
+          }
+        }
+
+        .field-desc {
+          justify-content: center;
+          @include flex(0 0 100%);
+          line-height: 1.6rem;
+          color: #fff;
+          margin-bottom: 20px;
+        }
+
+        .field-name {
+          padding-bottom: 4px;
+          width: 60%;
+          justify-content: flex-start;
+        }
+
+        .field-send-email {
+          justify-content: flex-start;
+          padding: 0px 0px 3px;
+          @include flexbox;
+          flex-flow: row nowrap;
+          margin-bottom: 20px;
+          border-bottom: 1px solid $green;
+        }
+      }
       .section-footer {
 
         .socials {
@@ -2016,12 +1971,9 @@ section {
         }
       }
     }
-  }
-  //mobile
 
-  @media (max-width: 480px) {
-    &.section-about {
-
+    /*  mobile  section-about   */
+    @media (max-width: 480px) {
       .holder {
         padding: 0px;
       }
@@ -2047,197 +1999,10 @@ section {
 
         }
 
-        .newsletter-form {
-          padding-bottom: 30px;
-          border-bottom: 1px solid $green;
-
-          .form-holder {
-
-            .field {
-              @include flexbox;
-
-              span {
-                width: 100%;
-                max-width: 70%;
-              }
-
-              &.form-submit {
-
-                .email {
-                  @include flex(0 0 70%);
-
-                  input {
-                    max-width: 100%;
-                  }
-                }
-
-                input[type="submit"] {
-                  @include flex(0 0 30%);
-                  padding: 0;
-                }
-              }
-            }
-          }
-
-          .field-desc {
-            justify-content: center;
-            @include flex(0 0 100%);
-            line-height: 1.6rem;
-            color: #fff;
-            margin-bottom: 20px;
-          }
-
-          .field-name {
-            padding-bottom: 4px;
-            width: 60%;
-            justify-content: flex-start;
-          }
-
-          .field-send-email {
-            justify-content: flex-start;
-            padding: 0px 0px 3px;
-            @include flexbox;
-            flex-flow: row nowrap;
-            margin-bottom: 20px;
-            border-bottom: 1px solid $green;
-          }
-        }
-
-        .col-left {
-
-          .contact-form {
-            padding-top: 14px;
-            @include flex-flow(row wrap);
-            padding-bottom: 15px;
-            border-bottom: 1px solid $green;
-
-            .form-holder {
-
-              h3 {
-                margin-top: 0px;
-                margin-bottom: 5px;
-              }
-            }
-
-            .field {
-              position: relative;
-              width: 100%;
-              margin-bottom: 10px;
-
-              &.form-submit {
-                margin-bottom: 0px;
-              }
-
-              &.field-message {
-                margin-bottom: 0px;
-              }
-
-              &.nl-checkbox {
-                margin: 0px;
-
-                .custom-checkbox {
-                  position: absolute;
-                  width: 15px;
-                  height: 15px;
-                  display: block;
-                  background-color: #fff;
-                  content: '';
-                  top: 2px;
-                }
-
-                .newsletter {
-                  width: 100%;
-                  display: block;
-
-                  .wpcf7-list-item {
-                    width: 100%;
-                    margin: 0px;
-                  }
-
-                  label {
-                    @include flexbox;
-                    margin: 0px;
-                    position: relative;
-
-                    input {
-                      @include flex(0 0 15px);
-                      opacity: 0;
-                      position: initial;
-                      z-index: 1;
-
-                      &:checked {
-
-                        + .wpcf7-list-item-label {
-
-                          &:before {
-                            background-color: $green;
-                          }
-                        }
-                      }
-                    }
-
-                    .wpcf7-list-item-label {
-                      @include flex(0 0 calc(100% - 15px));
-                      padding-right: 10px;
-                      position: relative;
-                      color: #fff;
-                      font-size: 1.4rem;
-                      font-weight: 100;
-
-                      &:before {
-                        content: '';
-                        display: block;
-                        width: 14px;
-                        height: 14px;
-                        position: absolute;
-                        right: -15px;
-                        top: 2px;
-                        background-color: #fff;
-                      }
-                    }
-                  }
-                }
-              }
-            }
-
-            .wpcf7-textarea {
-              height: 80px;
-              width: 100%;
-              font-size: 1rem;
-              resize: none;
-            }
-          }
-        }
-
-        .section-footer {
-
-          .socials {
-            position: relative;
-            margin: 0px;
-            padding: 0px 100px 0px 100px;
-
-            @include flexbox;
-            @include align-items(flex-end);
-            @include flex(0 0 15%);
-            @include justify-content(space-between);
-
-          }
-
-          a {
-            color: $green;
-          }
-          .section-footer-text {
-            color: #fff;
-            font-size: 1.2rem;
-            font-family: $font-bold;
-            text-align: right;
-            padding-top: 10px;
-
-          }
-        }
       }
     }
   }
+
   &.section-banner {
     padding: 120px 0px 0px 0px;
     min-height: 680px;
@@ -2430,7 +2195,7 @@ section {
       }
     }
 
-    /* Mobile */
+    /* Mobile  section-banner */
 
     @media (max-width: 480px) {
       min-height: auto;
@@ -2651,6 +2416,11 @@ section {
   &.section-albums-list {
     padding: 0px 0px 60px 0px;
 
+    .shell{
+      nav#links {
+        top: 50px;
+      }
+    }
     .section-title {
 
       h2 {
@@ -2715,12 +2485,6 @@ section {
           cursor: pointer;
         }
       }
-    }
-
-    nav#links {
-      position: absolute;
-      top: 50px;
-      right: -60px;
     }
 
     .years {
@@ -2839,123 +2603,146 @@ section {
       }
 
       &:hover {
-
         .name-artist {
           color: #000;
           background-color: $green;
         }
       }
     }
-  }
 
-  //mobile
-  @media (max-width: 480px){
-    &.section-albums-list {
+    /*  mobile section-albums-list */
+    @media (max-width: 480px) {
+
       .section-body {
         padding: 0;
       }
-
-      .nav-cat{
-        span{
+      .nav-cat {
+        span {
           font-size: 1.6rem;
         }
-        .cat-types .cat{
-          padding:0px;
-          font-size:1.6rem;
+        .cat-types .cat {
+          padding: 0px;
+          font-size: 1.6rem;
           text-align: center;
 
         }
       }
 
 
-    }
+      .item {
+        width: 90%;
+        float: left;
 
-
-
-  }
-
-
-  &.section-news-item {
-    padding: 10px 0px;
-
-    .section-top-bunner {
-
-      .image {
-        max-width: 100%;
-        max-height: 435px;
-        width: auto;
-        background-size: cover;
-        background-position: center;
-        width: 100%;
-        height: 435px;
-      }
-    }
-    .section-body {
-
-      h3 {
-        line-height: 2.4rem;
-        margin-bottom: 0px;
-        margin-top: 10px;
-      }
-
-      .title {
-        padding-top: 20px;
-      }
-
-      .date {
-        font-family: $font-black;
-        font-size: 1.5rem;
-        color: $grey;
-      }
-
-      .text {
-        padding: 20px 0 0 10px;
-
-        font-family: $font-light;
-        color: #808285;
-      }
-
-      .tag-list {
-        font-family: $font-bold;
-        color: #000;
-        padding: 20px 0px;
-        @include flexbox();
-        @include justify-content(flex-start);
-        @include transition-all(.2s);
-
-        ul {
-          @include flexbox();
-          @include justify-content(flex-start);
-          list-style: none;
-          margin-bottom: 0px;
-
-          &:first-child {
-            padding-right: 0px;
-          }
+        &:nth-child(1n) {
+          padding-left: 0px;
         }
 
-        li {
+        .image {
+          width: calc(100% - 35px);
+          margin: 0 25px 25px 0 ;
+         }
+      }
+    }
+  }
+
+  &.section-news-item {
+      padding: 10px 0px;
+
+      .section-top-bunner {
+
+        .image {
+          max-width: 100%;
+          max-height: 435px;
+          width: auto;
+          background-size: cover;
+          background-position: center;
+          width: 100%;
+          height: 435px;
+        }
+      }
+      .section-body {
+
+        h3 {
+          line-height: 2.4rem;
+          margin-bottom: 0px;
+          margin-top: 10px;
+        }
+
+        .title {
+          padding-top: 20px;
+        }
+
+        .date {
+          font-family: $font-black;
+          font-size: 1.5rem;
+          color: $grey;
+        }
+
+        .text {
+          padding: 20px 0 0 10px;
+
+          font-family: $font-light;
+          color: #808285;
+        }
+
+        .tag-list {
+          font-family: $font-bold;
+          color: #000;
+          padding: 20px 0px;
           @include flexbox();
-          padding-left: 10px;
+          @include justify-content(flex-start);
+          @include transition-all(.2s);
 
-          a {
-            font-family: $font-black;
-            background-color: $green;
-            text-align: center;
-            padding: 0px 20px;
+          ul {
+            @include flexbox();
+            @include justify-content(flex-start);
+            list-style: none;
+            margin-bottom: 0px;
 
-            &:hover {
-              background-color: #000;
-              color: #fff;
+            &:first-child {
+              padding-right: 0px;
+            }
+          }
+
+          li {
+            @include flexbox();
+            padding-left: 10px;
+
+            a {
+              font-family: $font-black;
+              background-color: $green;
+              text-align: center;
+              padding: 0px 20px;
+
+              &:hover {
+                background-color: #000;
+                color: #fff;
+              }
             }
           }
         }
       }
     }
-  }
 
   &.section-music {
-    padding: 10px 0 40px 0;
+      padding: 10px 0 40px 0;
+    }
+
+  /*  mobile general-section and its general-elements */
+  @media(max-width: 480px) {
+    padding: 0 0 80px 0;
+
+    .shell {
+      width: 100%;
+
+      nav#links {
+        right: 0px;
+        top:0px;
+        padding: 10px 15px;
+        font-size: 2rem;
+      }
+    }
+
   }
 }
 
