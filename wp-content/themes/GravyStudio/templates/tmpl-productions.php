@@ -11,8 +11,8 @@ get_header();
 
 	<?php if ( get_row_layout() == 'productions' ) { ?>
 
-		<section class="section-productions" data-current-url="<?php the_permalink(); ?>">
-
+		<section class="section-productions-archive" data-current-url="<?php the_permalink(); ?>">
+		<div class="archive">
 			<div class="shell">
 				<div class="section-header">
 					<h1>הפקות מיוחדות</h1>
@@ -20,16 +20,18 @@ get_header();
 
 				<div class="section-body">
 
-                    <div class="productions-list">
+					<div class="archive-list">
 						<?php dynamic_sidebar('productions-archives') ?>
-                    </div>
+					</div>
 
+                    
 					<div class="items items-productions">
-						<?php echo load_productions(get_the_date('Y'), get_the_date('m')); ?>
+						<?php echo load_posts(get_the_date('Y'), get_the_date('m'),'productions'); ?>
+
 					</div>
 				</div>
 			</div>
-
+		</div>
 		</section>
 
 	<?php } ?>

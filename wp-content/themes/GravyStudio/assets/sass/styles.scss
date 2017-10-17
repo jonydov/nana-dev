@@ -449,7 +449,7 @@ section {
 
   }
 
-  &.section-news-archive {
+  &.section-news-archive, &.section-productions-archive {
     padding-top: 0px;
     padding-bottom: 20px;
 
@@ -623,7 +623,7 @@ section {
       }
   }
 
-  &.section-productions {
+  &.section-productions-archive {
     padding-top: 0px;
     padding-bottom: 20px;
 

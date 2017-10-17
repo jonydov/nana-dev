@@ -315,26 +315,38 @@ $(document).ready(function () {
         ]
     });
 
-    /* News - AJAX Load */
 
-    $('.archive-list a').on('click', function (e) {
+
+    /* productions or news - AJAX Load archive */
+
+    $('.archive-list a').on('click', function (e){
         e.preventDefault();
         var baseURL = $('header .logo').attr('href');
 
         var year = $(this).data('year');
         var month = $(this).data('month');
 
-        if( month != undefined) {
-            var height = $('.section-news-archive .items').height();
-            //$('.section-news-archive .items').css('height', height);
-            $('.section-news-archive .items .item').fadeOut(300);
+        if( $('body').hasClass('page-template-tmpl-news') ){
+            var post_type = 'news';
+        }
+
+        if( $('body').hasClass('page-template-tmpl-productions') ){
+            var post_type = 'productions';
+        }
+
+        if( month != undefined ) {
+            var height = $('.archive .items').height();
+            //$('.section-productions-archive .items').css('height', height);
+            $('.archive .items .item').fadeOut(300);
 
             $.ajax({
 
                 cache: false,
                 url: baseURL + '/wp-admin/admin-ajax.php',
                 type: "POST",
-                data: {action: 'load-news', month: month , year: year },
+
+                data: {action: 'load-archive', month: month , year: year , post_type:post_type},
+
 
                 beforeSend: function () {
                     $('#ajax-response').html('Loading');
@@ -344,12 +356,12 @@ $(document).ready(function () {
 
                     var $ajax_response = $(data);
                     console.log($ajax_response);
-                    //var url = $('.section-news-archive').data('currentUrl');
+                    //var url = $('.section-productions-archive').data('currentUrl');
 
                     console.log($ajax_response[0].outerHTML);
-                    $('.section-news-archive .items').html(data);
+                    $('.archive .items').html(data);
 
-                    //history.pushState('newsItems', "", url + year + '/' + month + '/');
+                    //history.pushState('productionsItems', "", url + year + '/' + month + '/');
                     //var value = url.substring(url.lastIndexOf('/') + 1);
                     //alert(value);
                 },
@@ -371,7 +383,6 @@ $(document).ready(function () {
             });
         }
     });
-
 
     /* Nav Menu */
 

@@ -12,8 +12,8 @@ get_header();
 	<?php if ( get_row_layout() == 'news_archive' ) { ?>
 
 		<section class="section-news-archive" data-current-url="<?php the_permalink(); ?>">
-
-			<div class="shell">
+			<div class="archive">
+				<div class="shell">
 				<div class="section-header">
 					<h1>מה חדש?</h1>
 				</div>
@@ -25,11 +25,11 @@ get_header();
                     </div>
 
 					<div class="items items-news">
-						<?php echo load_news(get_the_date('Y'), get_the_date('m')); ?>
+						<?php echo load_posts(get_the_date('Y'), get_the_date('m'),'news'); ?>
 					</div>
 				</div>
 			</div>
-
+			</div>
 		</section>
 
 	<?php } ?>
