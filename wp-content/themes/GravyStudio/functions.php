@@ -272,6 +272,7 @@ function ajax_load_news($year, $month){
 	$month = $_POST['month'];
 	$year = $_POST['year'];
     load_news($year, $month);
+    exit;
 }
 
 ?>

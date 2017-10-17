@@ -343,12 +343,15 @@ $(document).ready(function () {
                 success: function (data, textStatus, jqXHR) {
 
                     var $ajax_response = $(data);
-                    var url = $('.section-news-archive').data('currentUrl');
                     console.log($ajax_response);
-                    $('.section-news-archive .items').html($ajax_response[0].outerHTML);
-                    history.pushState('newsItems', "", url + year + '/' + month + '/');
-                    var value = url.substring(url.lastIndexOf('/') + 1);
-                    alert(value);
+                    //var url = $('.section-news-archive').data('currentUrl');
+
+                    console.log($ajax_response[0].outerHTML);
+                    $('.section-news-archive .items').html(data);
+
+                    //history.pushState('newsItems', "", url + year + '/' + month + '/');
+                    //var value = url.substring(url.lastIndexOf('/') + 1);
+                    //alert(value);
                 },
 
                 error: function (jqXHR, textStatus, errorThrown) {
