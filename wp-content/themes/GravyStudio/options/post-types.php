@@ -90,4 +90,24 @@ register_post_type('shows', array(
     )
 ));
 
+register_post_type('productions', array(
+    'label' => __('הפקות'),
+    'singular_label' => __('הפקה'),
+    'public' => true,
+    'show_ui' => true,
+    'menu_icon'   => 'dashicons-calendar-alt',
+    'capability_type' => 'post',
+    'hierarchical' => false,
+    'query_var' => false,
+    'has_archive'           => true,
+    'taxonomies'  => array( 'post_tag' ),
+    'rewrite' => array('slug' => 'productions', "with_front" => true),
+    'supports' => array(
+        'title',
+        'editor',
+        'excerpt',
+        'thumbnail',
+    )
+));
+
 ?>
