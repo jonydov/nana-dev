@@ -149,6 +149,10 @@ h6 {
 
   .jaw_months {
     font-size: 1.4rem;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   .jaw_symbol {

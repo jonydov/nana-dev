@@ -358,8 +358,8 @@ $(document).ready(function () {
                     console.log($ajax_response);
                     //var url = $('.section-productions-archive').data('currentUrl');
 
-                    console.log($ajax_response[0].outerHTML);
-                    $('.archive .items').html(data);
+                    console.log($ajax_response);
+                    $('.archive .items').html($ajax_response);
 
                     //history.pushState('productionsItems', "", url + year + '/' + month + '/');
                     //var value = url.substring(url.lastIndexOf('/') + 1);
