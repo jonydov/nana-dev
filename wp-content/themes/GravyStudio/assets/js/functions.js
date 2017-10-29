@@ -323,33 +323,25 @@ $(document).ready(function () {
 
         var filter_type = $(this).data('filter');
 
-        if ( ! $(this).hasClass('is-checked') ){
+        if (filter_type == 'artist') {
 
-
-            if (filter_type == 'artist') {
-
-                if( $('.locations').hasClass('on') ){
-                    $('.locations').removeClass('on');
-                }
-
-                $('.artists').toggleClass('on');
-
-            } else if (filter_type == 'date') {
-
-                $('.locations, .artists').removeClass('on');
-
-            } else if (filter_type == 'location') {
-
-                if( $('.artists').hasClass('on') ){
-                    $('.artists').removeClass('on');
-                }
-
-                $('.locations').toggleClass('on');
-
-            } else if (filter_type == 'date') {
-
-                get_shows(filter_type);
+            if( $('.locations').hasClass('on') ){
+                $('.locations').removeClass('on');
             }
+
+            $('.artists').toggleClass('on');
+
+        } else if (filter_type == 'location') {
+
+            if( $('.artists').hasClass('on') ){
+                $('.artists').removeClass('on');
+            }
+
+            $('.locations').toggleClass('on');
+
+        } else if (filter_type == 'date') {
+            $('.locations, .artists').removeClass('on');
+            get_shows(filter_type);
         }
     });
 
