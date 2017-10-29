@@ -338,5 +338,76 @@ function ajax_load_archive($year, $month, $post_type){
 	exit();
 }
 
+add_action( 'wp_ajax_nopriv_shows-filter', 'ajax_shows_filter' );
+add_action( 'wp_ajax_shows-filter', 'ajax_shows_filter' );
+
+function ajax_shows_filter($filter_type){
+	$filter_type = $_POST['filter_type'];
+
+	ob_start();
+
+	if( $filter_type == 'date'){
+
+	    $args = array(
+			'posts_per_page'   => -1,
+			'post_type'        => 'shows',
+			'post_status'      => 'publish',
+			'suppress_filters' => true,
+			'meta_key' => 'date',
+			'orderby' => 'meta_value',
+			'order'            => 'ASC'
+	    );
+
+    }elseif( $filter_type == 'location'){
+
+		$location = $_POST['location'];
+
+		$args = array(
+			'post_type'      => 'shows',
+			'location' => $location,
+            'posts_per_page' => - 1,
+		);
+
+    }elseif( $filter_type == 'artist'){
+
+		$artist = $_POST['artist'];
+		$meta_query = array( 'relation' => 'OR' );
+
+        $meta_query[] = array(
+            'key'     => 'assigned_artist',
+            'value'   => $artist,
+            'compare' => 'LIKE',
+        );
+
+		$args = array(
+			'post_type'      => 'shows',
+			'posts_per_page' => - 1,
+			'meta_query'     => array( $meta_query ),
+		);
+	}
+
+	$items = get_posts( $args );
+
+	rewind_posts();
+
+	if( $items != null ){
+
+    	foreach ( $items as $post ){ setup_postdata($post);
+
+	    	include( 'includes/item-shows.php');
+
+		$i++; }
+
+	}else{
+	    echo 'No Results';
+    }
+
+	$response = ob_get_contents();
+	ob_end_clean();
+
+	echo $response;
+	exit();
+}
+
 
 ?>

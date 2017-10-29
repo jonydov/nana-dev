@@ -49,9 +49,9 @@ get_header();
 				<div class="section-body">
 
 					<div class="holder">
-						<nav class="nav-cat">
+						<nav class="nav-cat filter-shows">
 							<span>מיון לפי:</span>
-							<ul class="cat-types" data-filter-group="album-type">
+							<ul class="cat-types">
 								<li class="cat is-checked" data-filter="date">תאריך</li>
 								<li class="cat" data-filter="artist">שם האמן</li>
 								<li class="cat" data-filter="location">מקום</li>
@@ -75,7 +75,7 @@ get_header();
 								foreach ($posts as $post){
 									if( $i == 1 ){ echo '<div class="col">'; }
 									if( $i % 5 == 0 ){ echo '</div><div class="col">'; }
-									echo '<a href="'.get_permalink($post->ID).'"><span>'.$post->post_title.'</span></a>';
+									echo '<a data-artist="'.$post->ID.'" class="artist" href="#"><span>'.$post->post_title.'</span></a>';
 									if( $i == $c ){ echo '</div>'; }
 									$i++;
 								} wp_reset_postdata();
@@ -83,51 +83,63 @@ get_header();
 							</div>
 						</div>
 
-						<div class="items shows-filter cf">
+                        <div class="locations">
+							<div class="locations-slider">
+								<?php
+								$args = array(
+									'post_type' => 'shows',
+									'taxonomy' => 'location',
+									'posts_per_page' => -1,
+								);
+
+								$posts = get_terms($args);
+
+								$i = 1;
+								$c = count($posts);
+								$m = 5;
+
+								foreach ($posts as $post){
+									if( $i == 1 ){ echo '<div class="col">'; }
+									if( $i % 5 == 0 ){ echo '</div><div class="col">'; }
+									echo '<a data-location="'.$post->slug.'" class="location" href="#"><span>'.$post->name.'</span></a>';
+									if( $i == $c ){ echo '</div>'; }
+									$i++;
+								} wp_reset_postdata();
+								?>
+							</div>
+						</div>
+
+                        <div class="sk-folding-cube fade-bottom" id="preloader">
+                            <div class="sk-cube1 sk-cube"></div>
+                            <div class="sk-cube2 sk-cube"></div>
+                            <div class="sk-cube4 sk-cube"></div>
+                            <div class="sk-cube3 sk-cube"></div>
+                        </div>
+
+						<div class="items shows-filter cf fade-bottom on">
 
 							<?php
 
-							$args = array(
-								'post_type' => 'shows',
-								'posts_per_page' => -1,
-							);
+                                $args = array(
+                                    'post_type' => 'shows',
+                                    'posts_per_page' => -1,
+                                    'meta_key' => 'date',
+                                    'orderby' => 'meta_value',
+                                    'order' => 'ASC'
+                                );
 
-							$posts_array = get_posts( $args );
+                                $posts_array = get_posts( $args );
+
 							?>
 
 							<?php foreach ( $posts_array as $post ) { ?>
 
-								<?php
-									$date = get_field('date', $post->ID);
-									$date = new DateTime($date);
-									$date = $date->format('j.m');
-								?>
-
-								<?php if (strtotime($today) <= strtotime(get_field('date', $post->ID)) ) { ?>
-									<div class="item">
-										<span class="date"><?=$date; ?></span>
-										<span class="time"><?=get_field('time', $post->ID); ?> | </span>
-										<span class="artist">
-											<?php
-												$artists       = get_field( 'assigned_artist', $post->ID );
-												$artists_names = array();
-												foreach ( $artists as $artist ) {
-													$artists_names[] = get_the_title( $artist );
-												}
-												echo implode(", ", $artists_names).' - ';
-											?>
-										</span>
-										<span class="venue"><?=get_field('venue', $post->ID); ?></span>
-										<span class="desc">, <?=get_the_title($post->ID); ?></span>
-										<span class="tix"><a target="_blank" href="<?=get_field('link', $post->ID); ?>">כרטיסים</a></span>
-									</div>
-								<?php } ?>
+								<?php get_template_part( 'includes/item-shows'); ?>
 
 							<?php } wp_reset_postdata(); ?>
-
 						</div>
-					</div>
 
+					</div>
 				</div>
 			</div>
 

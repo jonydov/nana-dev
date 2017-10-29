@@ -316,25 +316,120 @@ $(document).ready(function () {
     });
 
 
+    /* Shows - AJAX Filter */
+
+    $('.filter-shows li').on('click', function (e) {
+        e.preventDefault();
+
+        var filter_type = $(this).data('filter');
+
+        if ( ! $(this).hasClass('is-checked') ){
+
+
+            if (filter_type == 'artist') {
+
+                if( $('.locations').hasClass('on') ){
+                    $('.locations').removeClass('on');
+                }
+
+                $('.artists').toggleClass('on');
+
+            } else if (filter_type == 'date') {
+
+                $('.locations, .artists').removeClass('on');
+
+            } else if (filter_type == 'location') {
+
+                if( $('.artists').hasClass('on') ){
+                    $('.artists').removeClass('on');
+                }
+
+                $('.locations').toggleClass('on');
+
+            } else if (filter_type == 'date') {
+
+                get_shows(filter_type);
+            }
+        }
+    });
+
+    $('.artists-slider .artist').on('click', function (e) {
+        e.preventDefault();
+
+        $('.artists-slider .artist').removeClass('active');
+        $(this).addClass('active');
+
+        get_shows('artist', $(this).attr('data-artist'), '');
+    });
+
+    $('.locations-slider .location').on('click', function (e) {
+        e.preventDefault();
+
+        $('.locations-slider .location').removeClass('active');
+        $(this).addClass('active');
+
+        get_shows('location', '', $(this).attr('data-location'));
+    });
+
+    function get_shows(filter_type, artist, location) {
+
+        var baseURL = $('header .logo').attr('href');
+
+        $.ajax({
+            cache: false,
+            url: baseURL + '/wp-admin/admin-ajax.php',
+            type: "POST",
+            data: {action: 'shows-filter', filter_type: filter_type, artist: artist, location: location },
+
+            beforeSend: function () {
+                $('#preloader').addClass('on');
+                $('.shows-filter').removeClass('on');
+            },
+
+            success: function (data, textStatus, jqXHR) {
+
+                var $ajax_response = $(data);
+                console.log($ajax_response);
+
+                if( $ajax_response.selector != 'No Results' ){
+                    $('.shows-filter').html($ajax_response);
+                }else{
+                    $('.shows-filter').html('<div class="no-results">אין הופעות קרובות לאמן זה.</div>');
+                }
+            },
+
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log('The following error occured: ' + textStatus, errorThrown);
+            },
+
+            complete: function (jqXHR, textStatus) {
+
+                $('#preloader').removeClass('on');
+                $('.shows-filter').addClass('on');
+            }
+
+        });
+    }
+
 
     /* productions or news - AJAX Load archive */
 
-    $('.archive-list a').on('click', function (e){
+    $('.archive-list a').on('click', function (e) {
         e.preventDefault();
         var baseURL = $('header .logo').attr('href');
 
         var year = $(this).data('year');
         var month = $(this).data('month');
 
-        if( $('body').hasClass('page-template-tmpl-news') ){
+        if ($('body').hasClass('page-template-tmpl-news')) {
             var post_type = 'news';
         }
 
-        if( $('body').hasClass('page-template-tmpl-productions') ){
+        if ($('body').hasClass('page-template-tmpl-productions')) {
             var post_type = 'productions';
         }
 
-        if( month != undefined ) {
+        if (month != undefined) {
             var height = $('.archive .items').height();
             //$('.section-productions-archive .items').css('height', height);
             $('.archive .items .item').fadeOut(300);
@@ -345,7 +440,7 @@ $(document).ready(function () {
                 url: baseURL + '/wp-admin/admin-ajax.php',
                 type: "POST",
 
-                data: {action: 'load-archive', month: month , year: year , post_type:post_type},
+                data: {action: 'load-archive', month: month, year: year, post_type: post_type},
 
 
                 beforeSend: function () {
