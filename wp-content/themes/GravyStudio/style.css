@@ -995,7 +995,7 @@ section {
             flex: 0 0 70%;
             padding-right: 20px;
             padding-top: 0px;
-            font-size: 1.4rem; }
+            font-size: 1.8rem; }
             section.section-news-archive .items .item.style-2 .text .meta, section.section-productions-archive .items .item.style-2 .text .meta {
               font-family: "almoni_dl_aaablack"; }
             section.section-news-archive .items .item.style-2 .text h3, section.section-productions-archive .items .item.style-2 .text h3 {
@@ -2374,7 +2374,8 @@ section {
         section.section-feed-2cols .col.video-clips .items .item {
           position: relative;
           display: block;
-          margin-bottom: 40px; }
+          margin-bottom: 40px;
+          font-size: 1.8rem; }
           section.section-feed-2cols .col.video-clips .items .item:before {
             width: 100%;
             height: 100%;
@@ -2435,7 +2436,8 @@ section {
                 display: flex; } }
             section.section-feed-2cols .col.video-clips .items .item .text .artist-name {
               color: #32faca;
-              font-family: "almoni_dl_aaablack"; }
+              font-family: "almoni_dl_aaablack";
+              font-size: 2.1rem; }
             section.section-feed-2cols .col.video-clips .items .item .text .vid-name {
               color: #fff;
               font-family: "almoni_dl_aaalight"; }
@@ -2790,7 +2792,8 @@ section {
       padding: 0 5px; }
     section.section-about .shell {
       flex-flow: row;
-      max-width: 780px;
+      max-width: 975px;
+      padding: 0 40px;
       justify-content: center; }
       @media (min-width: 768px) {
         section.section-about .shell {
@@ -2807,7 +2810,9 @@ section {
           display: -webkit-box;
           display: flex; } }
       section.section-about .shell span {
-        color: #808285; }
+        color: #000;
+        font-size: 1.8rem;
+        font-family: "almoni_dl_aaalight"; }
       section.section-about .shell .col {
         -webkit-box-flex: 0;
         -webkit-flex: 0 0 50%;
@@ -3061,7 +3066,7 @@ section {
       section.section-about .shell .section-footer .socials {
         position: relative;
         margin: 0px;
-        padding: 0px 100px 0px 100px;
+        padding: 0px 80px;
         -webkit-box-align: end;
         -ms-flex-align: end;
         -webkit-align-items: flex-end;

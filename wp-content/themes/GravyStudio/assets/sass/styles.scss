@@ -618,7 +618,7 @@ section {
             @include flex(0 0 70%);
             padding-right: 20px;
             padding-top: 0px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
 
             .meta {
               font-family: $font-black;
@@ -1896,6 +1896,7 @@ section {
             position: relative;
             display: block;
             margin-bottom: 40px;
+            font-size: 1.8rem;
 
             &:before {
               width: 100%;
@@ -1930,6 +1931,7 @@ section {
               .artist-name {
                 color: $green;
                 font-family: $font-black;
+                font-size: 2.1rem;
               }
 
               .vid-name {
@@ -2245,11 +2247,16 @@ section {
     .shell {
       @include flexbox;
       flex-flow: row;
-      max-width: 780px;
+      max-width: 975px;
+      padding: 0 40px;
       justify-content: center;
 
+
       span {
-        color: $grey;
+        color: #000;
+        font-size: 1.8rem;
+        font-family: $font-light;
+
       }
       .col {
         @include flex(0 0 50%);
@@ -2483,7 +2490,7 @@ section {
         .socials {
           position: relative;
           margin: 0px;
-          padding: 0px 100px 0px 100px;
+          padding: 0px 80px;
 
           @include flexbox;
           @include align-items(flex-end);
