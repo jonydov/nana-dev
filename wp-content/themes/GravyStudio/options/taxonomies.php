@@ -14,4 +14,11 @@
         'rewrite' => false,
     ));
 
+    register_taxonomy('location', 'shows', array(
+        'label' => __('מקום'),
+        'hierarchical' => true,
+        'show_admin_column' => true,
+        'rewrite' => false,
+    ));
+
 ?>
