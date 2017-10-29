@@ -203,7 +203,7 @@ get_header();
 
             <div class="shell">
                 <?php $type = get_sub_field('col_right_post_type'); ?>
-				<div class="col <?=$type; ?> animate fade-right" data-delay="100">
+				<div class="col <?=$type; ?> animate fade-bottom" data-delay="100">
                     <div class="holder">
 
                         <?php if( get_sub_field('col_right_title') != null ){ ?>
@@ -259,7 +259,7 @@ get_header();
                 </div>
 
 	            <?php $type = get_sub_field('col_left_post_type'); ?>
-                <div class="col <?=$type; ?> animate fade-left" data-delay="100">
+                <div class="col <?=$type; ?> animate fade-bottom" data-delay="100">
                     <div class="holder">
 
                         <?php if( get_sub_field('col_left_title') != null ){ ?>

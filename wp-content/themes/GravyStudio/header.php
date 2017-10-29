@@ -56,7 +56,7 @@
                     <?php if( get_field('youtube', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('youtube', 'option'); ?>">
-                                <i class="zmdi zmdi-youtube"></i>
+                              <i class="zmdi zmdi-youtube-play"></i>
                             </a>
                         </li>
                     <?php } ?>
