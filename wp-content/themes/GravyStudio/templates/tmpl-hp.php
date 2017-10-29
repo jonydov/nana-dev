@@ -205,15 +205,14 @@ get_header();
                 <?php $type = get_sub_field('col_right_post_type'); ?>
 				<div class="col <?=$type; ?> animate fade-bottom" data-delay="100">
                     <div class="holder">
-
+                        <div class="section-header">
                         <?php if( get_sub_field('col_right_title') != null ){ ?>
-                            <h2><?=get_sub_field('col_right_title'); ?></h2>
-                        <?php } ?>
-
-                        <?php if( get_sub_field('col_right_link_text') != null ){ ?>
-                            <a class="cta" href="<?=get_sub_field('col_right_link_url'); ?>"><?=get_sub_field('col_right_link_text'); ?></a>
-                        <?php } ?>
-
+                                <h2><?=get_sub_field('col_right_title'); ?></h2>
+                            <?php } ?>
+                            <?php if( get_sub_field('col_right_link_text') != null ){ ?>
+                                <a class="cta" href="<?=get_sub_field('col_right_link_url'); ?>"><?=get_sub_field('col_right_link_text'); ?></a>
+                            <?php } ?>
+                        </div>
                         <div class="items">
                             <?php
                                 $args = array(
@@ -261,15 +260,14 @@ get_header();
 	            <?php $type = get_sub_field('col_left_post_type'); ?>
                 <div class="col <?=$type; ?> animate fade-bottom" data-delay="100">
                     <div class="holder">
-
-                        <?php if( get_sub_field('col_left_title') != null ){ ?>
-                            <h2><?=get_sub_field('col_left_title'); ?></h2>
-                        <?php } ?>
-
-                        <?php if( get_sub_field('col_left_link_text') != null ){ ?>
-                            <a class="cta" href="<?=get_sub_field('col_left_link_url'); ?>"><?=get_sub_field('col_left_link_text'); ?></a>
-                        <?php } ?>
-
+                        <div class="section-header">
+                            <?php if( get_sub_field('col_left_title') != null ){ ?>
+                                <h2><?=get_sub_field('col_left_title'); ?></h2>
+                            <?php } ?>
+                            <?php if( get_sub_field('col_left_link_text') != null ){ ?>
+                                <a class="cta" href="<?=get_sub_field('col_left_link_url'); ?>"><?=get_sub_field('col_left_link_text'); ?></a>
+                            <?php } ?>
+                        </div>
                         <div class="items">
                             <?php
                                 $args = array(

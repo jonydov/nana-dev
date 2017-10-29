@@ -4,6 +4,12 @@
         <div class="holder">
 
             <div class="col col-right">
+                <a class="logo" href="<?php bloginfo('url'); ?>">
+                    <?php
+                      $logo = get_field('logo', 'option');
+                    ?>
+                    <img src="<?php echo $logo; ?>" />
+                </a>
 
                 <div class ="holder-col holder-text">
 
