@@ -26,7 +26,16 @@ get_header();
 
                     
 					<div class="items items-productions">
-						<?php echo load_posts(get_the_date('Y'), get_the_date('m'),'productions'); ?>
+						<?php
+                            if ( $_GET['year'] != null ) {
+                                $year = $_GET['year'];
+                                $month = $_GET['month'];
+                            } else {
+                                $year = get_the_date( 'Y' );
+                                $month = get_the_date( 'm' );
+                            }
+                            echo load_posts( $year, $month, 'productions' );
+						?>
 
 					</div>
 				</div>

@@ -167,11 +167,14 @@ get_header();
                         );
 
                         $posts = get_posts($args);
+                        $i = 1;
 
                         foreach ($posts as $post){
                             $artist = get_field('assigned_artist', $post->ID);
 	                        $venue = get_field('venue', $post->ID);
                             $img = get_the_post_thumbnail_url($post->ID);
+
+                            if( $i == 1 ){ echo '<div class="items-slide">'; }
                         ?>
 
                             <a href="<?=get_permalink($post->ID); ?>" class="item">
@@ -191,7 +194,10 @@ get_header();
                                 </div>
                             </a>
 
-                    <?php } ?>
+                            <?php if( $i % 4 == 0){ echo '</div>'; } ?>
+
+                    <?php $i++; } ?>
+                    <?php if( $i % 4 != 1 ) echo '</div>'; ?>
                 </div>
             </div>
 

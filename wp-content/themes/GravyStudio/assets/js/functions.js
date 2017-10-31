@@ -202,8 +202,8 @@ $(document).ready(function () {
 
     $('.shows-slider-holder').slick({
         infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
+        slidesToShow: 1,
+        slidesToScroll: 1,
         autoplay: false,
         pauseOnFocus: false,
         pauseOnHover: false,
@@ -443,14 +443,13 @@ $(document).ready(function () {
 
                     var $ajax_response = $(data);
                     console.log($ajax_response);
-                    //var url = $('.section-productions-archive').data('currentUrl');
+                    var url = $('.section-news-archive').data('currentUrl');
 
                     console.log($ajax_response);
                     $('.archive .items').html($ajax_response);
 
-                    //history.pushState('productionsItems', "", url + year + '/' + month + '/');
-                    //var value = url.substring(url.lastIndexOf('/') + 1);
-                    //alert(value);
+                    history.pushState('productionsItems', "", url + '?year=' + year + '&month=' + month);
+
                 },
 
                 error: function (jqXHR, textStatus, errorThrown) {

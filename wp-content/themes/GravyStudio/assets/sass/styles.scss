@@ -23,7 +23,7 @@ body {
   font-family: $font-reg;
   margin: 0;
   padding: 100px 0 0 0;
-  margin-bottom: 150px;
+  margin-bottom: 160px;
   color: #000;
   width: 100%;
   overflow-x: hidden;
@@ -255,13 +255,11 @@ section {
   display: block;
   position: relative;
   font-size: 1.6rem;
-  /*padding: 80px 0px 80px 0;*/
-  padding: 80px 30px 80px 0;
+  padding: 80px 0;
   z-index: 1;
   background-color: #fff;
 
   @include transition-all(.2s);
-
 
   .cta {
     font-family: $font-black;
@@ -299,9 +297,7 @@ section {
       }
     }
 
-
   }
-
 
   .shell {
     display: block;
@@ -908,6 +904,7 @@ section {
     }
 
     //* mobile section-artist-bio */
+
     @media (max-width: 480px) {
       .section-title {
 
@@ -1250,8 +1247,6 @@ section {
       direction: ltr;
     }
 
-
-
     .slick-arrow {
       border: none;
       font-size: 0px;
@@ -1284,9 +1279,17 @@ section {
       }
     }
 
+    .items-slide {
+      @include flexbox;
+      @include justify-content(space-between);
+      @include flex-flow(row wrap);
+    }
+
     .item {
       @include aspect-ratio(1, 1);
-      margin: 0 0px 0 20px;
+      @include flex(0 0 calc(25% - 20px));
+      margin: 0;
+      overflow: hidden;
 
       .image {
         position: absolute;
@@ -1337,8 +1340,18 @@ section {
       }
     }
 
-    /*  section-shows-slider  */
+    /*  Mobile  */
+
     @media (max-width: 480px) {
+
+      .items-slide {
+        @include justify-content(space-between);
+      }
+
+      .item {
+        @include flex(0 0 calc(50% - 5px));
+        margin-bottom: 10px;
+      }
 
       .section-header {
 
@@ -1741,7 +1754,6 @@ section {
     .col {
       @include flex(0 0 50%);
 
-
       h2 {
         background-color: #000;
         color: #fff;
@@ -1993,6 +2005,8 @@ section {
             }
 
             .item {
+              padding: 10px 0;
+              @include align-items(flex-start);
               margin-bottom: 20px;
             }
           }
@@ -2250,7 +2264,6 @@ section {
       max-width: 975px;
       padding: 0 40px;
       justify-content: center;
-
 
       span {
         color: #000;
@@ -2665,8 +2678,10 @@ section {
 
       .cta {
         position: absolute;
-        bottom: -40px;
-        left: 0px;
+        bottom: 10px;
+        top: initial;
+        left: 20px;
+        height: fit-content;
         background: $green;
         font-family: $font-black;
         padding: 0 15px;
@@ -2736,10 +2751,32 @@ section {
       }
     }
 
-    /* Mobile  section-banner */
+    /* Mobile  .section-banner */
 
     @media (max-width: 480px) {
       min-height: auto;
+
+      .artists {
+        padding: 15px 50px 0;
+
+        .slick-arrow {
+
+          &.slick-next {
+            right: -30px;
+          }
+
+          &.slick-prev {
+            left: -30px;
+          }
+        }
+
+        a {
+          font-size: 2.1rem;
+          margin: 10px 0;
+          line-height: 2.2rem;
+          text-align: center;
+        }
+      }
 
       .slider-texts-holder {
         padding-top: 40px;
@@ -2774,7 +2811,6 @@ section {
   &.section-albums-info {
 
     padding-bottom: 20px;
-
 
     .cols3 {
       @include flexbox;
@@ -3190,8 +3226,7 @@ section {
   }
 
   &.section-news-item,
-  &.section-productions-item
-  {
+  &.section-productions-item {
     padding: 10px 0px;
 
     .section-top-bunner {
@@ -3271,7 +3306,6 @@ section {
 
   }
 
-
   &.section-productions-item {
 
     .section-top-bunner {
@@ -3349,20 +3383,13 @@ section {
       }
     }
 
-
   }
 
   &.section-music {
     padding: 10px 0 40px 0;
   }
 
-
-
 }
-
-
-
-
 
 .wpcf7-response-output {
   border: none !important;
