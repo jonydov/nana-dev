@@ -59,8 +59,15 @@ get_header();
                             <ul class="socials">
                                 <?php if ( get_field( 'youtube', 'option' ) != null ) { ?>
                                     <li>
-                                        <a href="<?= get_field( 'youtube', 'option' ); ?>">
-                                            <i class="zmdi zmdi-youtube"></i>
+                                        <a href="<?=get_field('youtube', 'option'); ?>">
+                                            <i class="zmdi zmdi-youtube-play"></i>
+                                        </a>
+                                    </li>
+                                <?php } ?>
+                                <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+                                    <li>
+                                        <a href="<?= get_field( 'apple', 'option' ); ?>">
+                                            <i class="zmdi zmdi-apple"></i>
                                         </a>
                                     </li>
                                 <?php } ?>

@@ -255,26 +255,53 @@ section {
   display: block;
   position: relative;
   font-size: 1.6rem;
+  /*padding: 80px 0px 80px 0;*/
   padding: 80px 30px 80px 0;
   z-index: 1;
   background-color: #fff;
 
   @include transition-all(.2s);
 
+
   .cta {
     font-family: $font-black;
     font-size: 1.8rem;
     color: #000;
     background-color: $green;
-    margin-top: 20px;
-    padding: 0 15px;
+
     @include transition-all(.2s);
+
+    display: inline-block;
+    position: relative;
+    padding: 0 15px;
+    margin: 0px 8px 0 0;
+    top: 2px;
 
     &:hover {
       background-color: #000;
       color: #fff;
     }
   }
+
+  /*global titles*/
+  &.news,
+  &.video-clips,
+  &.section-shows-slider {
+
+    .section-header {
+      h2 {
+        background-color: #000;
+        color: #fff;
+        font-size: 3.9rem;
+        display: inline-block;
+        padding: 0 5px;
+        margin-bottom: 30px;
+      }
+    }
+
+
+  }
+
 
   .shell {
     display: block;
@@ -591,7 +618,7 @@ section {
             @include flex(0 0 70%);
             padding-right: 20px;
             padding-top: 0px;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
 
             .meta {
               font-family: $font-black;
@@ -862,7 +889,7 @@ section {
           font-size: 2.6rem;
 
           a {
-            @include flex(0 0 20%);
+            @include flex(0 0 25%);
 
             &:hover {
               color: $green;
@@ -1223,24 +1250,7 @@ section {
       direction: ltr;
     }
 
-    .section-header {
 
-      h2 {
-        background-color: #000;
-        color: #fff;
-        font-size: 3.9rem;
-        display: inline-block;
-        padding: 0 5px;
-        margin-bottom: 30px;
-      }
-
-      .cta {
-        display: inline-block;
-        margin: 0px 10px 0 0;
-        position: relative;
-        top: 6px;
-      }
-    }
 
     .slick-arrow {
       border: none;
@@ -1316,7 +1326,7 @@ section {
       .date {
         font-family: $font-bold;
         color: $green;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
 
       &:hover {
@@ -1340,7 +1350,7 @@ section {
         .cta {
           font-size: 1.4rem;
           line-height: 1.6rem;
-          top: 0px;
+          top: 3px;
         }
       }
     }
@@ -1731,6 +1741,7 @@ section {
     .col {
       @include flex(0 0 50%);
 
+
       h2 {
         background-color: #000;
         color: #fff;
@@ -1769,7 +1780,7 @@ section {
               text-align: center;
               margin: 0;
               color: #fff;
-              padding: 5px 0;
+              padding: 0px 0;
               background-color: rgba(0, 0, 0, .5);
 
               span {
@@ -1848,14 +1859,14 @@ section {
 
           .date {
             font-family: $font-bold;
-            font-size: 1.4rem;
+            font-size: 1.8rem;
             color: #939597;
           }
         }
 
         h3 {
-          font-size: 2.4rem;
-          margin-top: 5px;
+          font-size: 2.6rem;
+          margin-top: 0px;
           margin-bottom: 0px;
 
           b {
@@ -1865,7 +1876,7 @@ section {
 
         .text {
           font-size: 1.5rem;
-          color: #939597;
+          color: #636363;
           font-family: $font-light;
         }
 
@@ -1885,6 +1896,7 @@ section {
             position: relative;
             display: block;
             margin-bottom: 40px;
+            font-size: 1.8rem;
 
             &:before {
               width: 100%;
@@ -1919,6 +1931,7 @@ section {
               .artist-name {
                 color: $green;
                 font-family: $font-black;
+                font-size: 2.1rem;
               }
 
               .vid-name {
@@ -2102,6 +2115,7 @@ section {
         font-size: 3.9rem;
         display: inline-block;
         padding: 0 5px;
+        margin-right: 12px;
       }
     }
     .section-body {
@@ -2233,11 +2247,16 @@ section {
     .shell {
       @include flexbox;
       flex-flow: row;
-      max-width: 780px;
+      max-width: 975px;
+      padding: 0 40px;
       justify-content: center;
 
+
       span {
-        color: $grey;
+        color: #000;
+        font-size: 1.8rem;
+        font-family: $font-light;
+
       }
       .col {
         @include flex(0 0 50%);
@@ -2471,7 +2490,7 @@ section {
         .socials {
           position: relative;
           margin: 0px;
-          padding: 0px 100px 0px 100px;
+          padding: 0px 80px;
 
           @include flexbox;
           @include align-items(flex-end);
@@ -2753,7 +2772,9 @@ section {
   }
 
   &.section-albums-info {
+
     padding-bottom: 20px;
+
 
     .cols3 {
       @include flexbox;
@@ -3168,7 +3189,9 @@ section {
     }
   }
 
-  &.section-news-item {
+  &.section-news-item,
+  &.section-productions-item
+  {
     padding: 10px 0px;
 
     .section-top-bunner {
@@ -3189,6 +3212,7 @@ section {
         line-height: 2.4rem;
         margin-bottom: 0px;
         margin-top: 10px;
+        font-size: 3.1rem;
       }
 
       .title {
@@ -3197,7 +3221,7 @@ section {
 
       .date {
         font-family: $font-black;
-        font-size: 1.5rem;
+        font-size: 2.1rem;
         color: $grey;
       }
 
@@ -3247,8 +3271,8 @@ section {
 
   }
 
+
   &.section-productions-item {
-    padding: 10px 0px;
 
     .section-top-bunner {
 
@@ -3268,6 +3292,7 @@ section {
         line-height: 2.4rem;
         margin-bottom: 0px;
         margin-top: 10px;
+
       }
 
       .title {
@@ -3324,33 +3349,20 @@ section {
       }
     }
 
-    /*  mobile general-section-productions-item*/
-    @media(max-width: 480px) {
 
-    }
   }
 
   &.section-music {
     padding: 10px 0 40px 0;
   }
 
-  /*  mobile general-section and its general-elements */
-  @media(max-width: 480px) {
-    padding: 0 0 80px 0;
 
-    .shell {
-      width: 100%;
 
-      nav#links {
-        right: 0px;
-        top: 0px;
-        padding: 10px 15px;
-        font-size: 2rem;
-      }
-    }
-
-  }
 }
+
+
+
+
 
 .wpcf7-response-output {
   border: none !important;
@@ -3406,3 +3418,4 @@ span.wpcf7-not-valid-tip {
   }
 
 }
+

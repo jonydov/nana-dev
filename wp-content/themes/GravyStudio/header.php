@@ -56,21 +56,26 @@
                     <?php if( get_field('youtube', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('youtube', 'option'); ?>">
-                                <i class="zmdi zmdi-youtube"></i>
+                              <i class="zmdi zmdi-youtube-play"></i>
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if( get_field('instagram', 'option') != null ){ ?>
+                    <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+                        <li>
+                            <a href="<?= get_field( 'apple', 'option' ); ?>">
+                                <i class="zmdi zmdi-apple"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+                    <?php if( $socials['spotify'] != null ){ ?>
+                        <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
+                            <i class="zmdi zmdi-spotify"></i>
+                        </a>
+                    <?php } ?>
+                  <?php if( get_field('instagram', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('instagram', 'option'); ?>">
                                 <i class="zmdi zmdi-instagram"></i>
-                            </a>
-                        </li>
-                    <?php } ?>
-                    <?php if( get_field('facebook', 'option') != null ){ ?>
-                        <li>
-                            <a href="<?=get_field('facebook', 'option'); ?>">
-                                <i class="zmdi zmdi-facebook-box"></i>
                             </a>
                         </li>
                     <?php } ?>
@@ -81,6 +86,14 @@
                             </a>
                         </li>
                     <?php } ?>
+                    <?php if( get_field('facebook', 'option') != null ){ ?>
+                        <li>
+                            <a href="<?=get_field('facebook', 'option'); ?>">
+                                <i class="zmdi zmdi-facebook-box"></i>
+                            </a>
+                        </li>
+                    <?php } ?>
+
                 </ul>
 
                 <button class="btn btn-search hide-mobile">

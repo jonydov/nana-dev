@@ -21,6 +21,7 @@ $id = get_queried_object()->ID;
 
             <div class="title"><h3><?= get_the_title(); ?></h3></div>
             <span class="date"><?= get_the_time( 'd בM, Y' ); ?></span>
+
             <div class="text">
                 <div class="holder">
 	                <?=$post->post_content; ?>

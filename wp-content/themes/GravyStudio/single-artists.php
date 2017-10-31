@@ -19,11 +19,24 @@
 
                         <?php $socials = get_field('links'); ?>
 
-                        <?php if( $socials['facebook'] != null ){ ?>
-                            <a href="<?=$socials['facebook']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-facebook-box"></i>
+                        <?php if( $socials['youtube'] != null ){ ?>
+                            <a target="_blank" href="<?=$socials['youtube']; ?>" class="ico-social">
+                                <i class="zmdi zmdi-youtube-play"></i>
                             </a>
                         <?php } ?>
+                        <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+
+                            <a href="<?= get_field( 'apple', 'option' ); ?>">
+                                <i class="zmdi zmdi-apple"></i>
+                            </a>
+
+                        <?php } ?>
+                        <?php if( $socials['spotify'] != null ){ ?>
+                            <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
+                                <i class="zmdi zmdi-spotify"></i>
+                            </a>
+                        <?php } ?>
+
 
                         <?php if( $socials['instagram'] != null ){ ?>
                             <a href="<?=$socials['instagram']; ?>" class="ico-social">
@@ -36,7 +49,11 @@
                                 <i class="zmdi zmdi-twitter"></i>
                             </a>
                         <?php } ?>
-
+                        <?php if( $socials['facebook'] != null ){ ?>
+                            <a href="<?=$socials['facebook']; ?>" class="ico-social">
+                                <i class="zmdi zmdi-facebook-box"></i>
+                            </a>
+                        <?php } ?>
                         <?php if( $socials['itunes'] != null ){ ?>
                             <a href="<?=$socials['itunes']; ?>" class="ico-social">
                                 <i class="zmdi zmdi-itunes"></i>
@@ -49,23 +66,9 @@
                             </a>
                         <?php } ?>
 
-                        <?php if( $socials['facebook'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['facebook']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-facebook"></i>
-                            </a>
-                        <?php } ?>
 
-                        <?php if( $socials['spotify'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-spotify"></i>
-                            </a>
-                        <?php } ?>
 
-                        <?php if( $socials['youtube'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['youtube']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-youtube"></i>
-                            </a>
-                        <?php } ?>
+
 
                     </div>
                 </div>
