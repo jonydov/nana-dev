@@ -15,7 +15,6 @@ header {
     width: 100%;
     height: 70px;
     opacity: 0;
-    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,ffffff+52,ffffff+100&1+0,0.5+52,0+100 */
     background: -moz-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 52%, rgba(255, 255, 255, 0) 100%); /* FF3.6-15 */
     background: -webkit-linear-gradient(top, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 52%, rgba(255, 255, 255, 0) 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(to bottom, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.5) 52%, rgba(255, 255, 255, 0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -29,11 +28,21 @@ header {
     left: 0;
     display: none;
     width: 100%;
-    height: 100%;
-    padding: 20px 0;
+    height: 150%;
+    padding: 20px 10px;
+    color: #000;
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0.7) 27%, rgba(255,255,255,0.6) 45%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 27%,rgba(255,255,255,0.6) 45%,rgba(255,255,255,0) 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(255,255,255,0.7) 27%,rgba(255,255,255,0.6) 45%,rgba(255,255,255,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+
+    @include placeholder {
+      color: rgba(0, 0, 0, .6);
+      font-family: $font-light;
+    }
 
     .btn-close {
-      font-family: $icons;
+      font-family: $icons-social;
       font-size: 3rem;
       color: #000;
       display: block;
@@ -52,14 +61,16 @@ header {
 
     input[type="text"] {
       background-color: transparent;
-      padding-right: 70px;
-      padding-left: 30px;
-      width: 100%;
+      margin-right: 70px;
+      margin-left: 30px;
+      width: 85%;
       height: 100%;
       outline: none;
       border: none;
+      font-family: $font-light;
       font-weight: 300;
       font-size: 50px;
+      border-bottom: 1px solid #000;
     }
   }
 
@@ -106,12 +117,9 @@ header {
   }
 
   .navbar {
-
     position: relative;
-
     @include flexbox;
     @include align-items(flex-end);
-
     width: 100%;
     max-width: 975px;
     height: 100%;
@@ -133,18 +141,21 @@ header {
 
     .socials {
       position: relative;
-      top: 5px;
+      top: 0px;
       margin: 0px;
-      padding: 0px 0px 0px 15px;
+      padding: 0;
       @include flexbox;
       @include align-items(flex-end);
-      @include flex(0 0 15%);
+      @include flex(0 0 20%);
       @include justify-content(space-between);
 
       li {
 
+        .ico {
+          font-size: 1.6rem;
+        }
+
         a {
-          font-size: 2rem;
           color: #000;
 
           &:hover {
@@ -161,9 +172,8 @@ header {
       padding: 0px 15px;
       font-family: $font-black;
       @include flexbox;
-      @include flex(1 1 85%);
+      @include flex(1 1 80%);
       @include justify-content(space-between);
-
 
       li {
         position: relative;
@@ -185,7 +195,7 @@ header {
           position: relative;
 
           &:before {
-            @include transition-all(.25s);
+            @include transition-all(.4s);
             @include pseudoElement;
             bottom: 4px;
             right: 0px;
@@ -206,21 +216,25 @@ header {
       }
     }
   }
+
   /*  mobile header */
+
   @media (max-width: 480px) {
+
     @include flexbox;
     @include align-items(center);
 
     .shell {
       padding: 0px;
       width: 100%;
-
     }
+
     nav {
       display: block;
     }
 
     .navbar {
+
       .main-nav {
         @include flex-flow(wrap);
         background-color: rgba(0, 0, 0, .8);
@@ -244,6 +258,28 @@ header {
 .home {
 
   header {
+
+    .search-bar {
+      background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(0,0,0,0.7) 27%, rgba(0,0,0,0.6) 45%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 27%,rgba(0,0,0,0.6) 45%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(0,0,0,0.7) 27%,rgba(0,0,0,0.6) 45%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+      color: #fff;
+
+      @include placeholder {
+        color: rgba(255, 255, 255, .6);
+        font-family: $font-light;
+      }
+
+      .btn-close,
+      .btn-search {
+        color: #fff;
+      }
+
+      input[type="text"] {
+        border-bottom: 1px solid #fff;
+      }
+    }
 
     .bg-holder {
       /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,3d3d3d+50,000000+100&0.7+1,0.32+51,0+86 */

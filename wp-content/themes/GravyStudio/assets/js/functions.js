@@ -97,14 +97,14 @@ $(document).ready(function () {
 
     /* Isotope JS */
 
+    $.Isotope.prototype._positionAbs = function( x, y ) {
+        return { right: x, top: y };
+    };
+
     var $grid = $('.items-filter').isotope({
         itemSelector: '.item',
         transformsEnabled: false
     });
-
-    $grid._positionAbs = function (x, y) {
-        return {right: x, top: y};
-    };
 
     // store filter for each group
     var filters = {};
@@ -150,14 +150,22 @@ $(document).ready(function () {
 
     $('.popup-img').magnificPopup({
         type: 'image',
+        closeMarkup:'<button title="%title%" type="button" class="mfp-close"><i class="zmdi zmdi-close"></i></button>',
         gallery: {
-            enabled: true
+            enabled: true,
+            tCounter: '<span class="mfp-counter">%curr% מתוך %total%</span>',
+            arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%">sssss</button>'
         },
-        callbacks: {
-            beforeOpen: function () {
-                this.st.mainClass = this.st.el.attr('data-effect');
+        image: {
+            titleSrc: function(item) {
+                return '<h3>' + item.el.find('.image').attr('data-title') + '</h3>' + item.el.find('.image').attr('data-caption');
             }
         },
+        callbacks: {
+            beforeOpen: function() {
+                this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure animated ' + this.st.el.attr('data-effect'));
+            }
+        }
     });
 
     $('.popup-yt').magnificPopup({
@@ -230,6 +238,7 @@ $(document).ready(function () {
         pauseOnHover: false,
         fade: false,
         dots: false,
+        rtl: true,
         arrows: true,
         responsive: [
             {
@@ -296,6 +305,7 @@ $(document).ready(function () {
 
     $('.artists-slider').slick({
         infinite: true,
+        rtl: true,
         slidesToShow: 4,
         slidesToScroll: 4,
         autoplay: false,
@@ -325,7 +335,7 @@ $(document).ready(function () {
 
         if (filter_type == 'artist') {
 
-            if( $('.locations').hasClass('on') ){
+            if ($('.locations').hasClass('on')) {
                 $('.locations').removeClass('on');
             }
 
@@ -333,7 +343,7 @@ $(document).ready(function () {
 
         } else if (filter_type == 'location') {
 
-            if( $('.artists').hasClass('on') ){
+            if ($('.artists').hasClass('on')) {
                 $('.artists').removeClass('on');
             }
 
@@ -371,7 +381,7 @@ $(document).ready(function () {
             cache: false,
             url: baseURL + '/wp-admin/admin-ajax.php',
             type: "POST",
-            data: {action: 'shows-filter', filter_type: filter_type, artist: artist, location: location },
+            data: {action: 'shows-filter', filter_type: filter_type, artist: artist, location: location},
 
             beforeSend: function () {
                 $('#preloader').addClass('on');
@@ -383,9 +393,9 @@ $(document).ready(function () {
                 var $ajax_response = $(data);
                 console.log($ajax_response);
 
-                if( $ajax_response.selector != 'No Results' ){
+                if ($ajax_response.selector != 'No Results') {
                     $('.shows-filter').html($ajax_response);
-                }else{
+                } else {
                     $('.shows-filter').html('<div class="no-results">אין הופעות קרובות לאמן זה.</div>');
                 }
             },

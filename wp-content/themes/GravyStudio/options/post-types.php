@@ -95,7 +95,7 @@ register_post_type('productions', array(
     'singular_label' => __('הפקה'),
     'public' => true,
     'show_ui' => true,
-    'menu_icon'   => 'dashicons-calendar-alt',
+    'menu_icon'   => 'dashicons-hammer',
     'capability_type' => 'post',
     'hierarchical' => false,
     'query_var' => false,

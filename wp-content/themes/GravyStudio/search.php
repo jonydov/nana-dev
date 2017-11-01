@@ -2,34 +2,47 @@
 get_header();
 ?>
 
-    <section id="section-title-strip">
+    <section class="section-title-strip">
         <div class="shell">
-            <h1>Search Results For "<?php the_search_query(); ?> "</h1>
+            <h1>תוצאות חיפוש עבור "<?php the_search_query(); ?> "</h1>
         </div>
     </section>
 
-    <section id="section-simple-text">
+    <section class="section-simple-text">
 
         <div class="shell">
 
-            <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+            <?php if ( have_posts() ) { while ( have_posts() ) : the_post();
+                $type = $post->post_type;
 
-                <div class="item">
-                    <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-                    <div class="text">
-                        <?php if( get_post_type() == 'products' ) {
-                            $text = get_field('content_blocks', get_the_ID())[0]['text'];
-                            if ($text != null) {
-                                    echo '<p>'.wp_trim_words($text, 25, '...').'</p>';
-                                }
-                            }
-                        ?>
+                if( $type == 'news' ) {
+                    $title = 'חדשות';
+                }elseif( $type == 'productions' ) {
+	                $title = 'הפקות מיוחדות';
+                }elseif( $type == 'shows' ) {
+	                $title = 'הופעות';
+                }elseif( $type == 'artists' ) {
+	                $title = 'אמנים';
+                }elseif( $type == 'page' ) {
+	                $title = 'עמודים';
+                }
 
-                        <?php the_excerpt(); ?>
+                if( get_the_excerpt($post->ID) != null ){
+                    $excerpt = get_the_excerpt($post->ID);
+                }else{
+                    $excerpt = wp_trim_words($post->post_content, 50, '...');
+                }
+            ?>
+
+                <a href="<?=get_permalink($post->ID); ?>" class="item">
+                    <div class="title">
+                        <h2><?php echo $post->post_title; ?></h2>
+                        <span class="type"><?=$title;?></span>
                     </div>
-                </div>
+                    <span class="excerpt"><?=$excerpt; ?></span>
+                </a>
 
-            <?php endwhile; endif; ?>
+            <?php endwhile; } ?>
 
         </div>
     </section>

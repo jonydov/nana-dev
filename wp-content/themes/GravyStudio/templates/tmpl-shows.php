@@ -23,7 +23,7 @@ get_header();
 
 			<?php if ( get_sub_field( 'items' ) != null ) { ?>
 
-				<div class="items">
+				<div class="items shows-slider-holder">
 					<?php while ( have_rows( 'items' ) ) : the_row(); ?>
 
 						<div class="item"
@@ -59,7 +59,7 @@ get_header();
 						</nav>
 
 						<div class="artists">
-							<div class="artists-slider">
+							<div class="artists-slider" dir="rtl">
 								<?php
 								$args = array(
 									'post_type' => 'artists',

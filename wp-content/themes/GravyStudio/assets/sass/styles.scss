@@ -5,6 +5,7 @@
 $green: #32faca;
 $grey: #808285;
 $icons: 'Material-Design-Iconic-Font';
+$icons-social: 'icomoon';
 $font-light: 'almoni_dl_aaalight';
 $font-reg: 'almoni_dl_aaaregular';
 $font-bold: 'almoni_dl_aaabold';
@@ -79,6 +80,57 @@ a {
   margin: auto;
 }
 
+[class^="ico"], [class*=" ico"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.ico-apple:before {
+  content: "\e901";
+}
+
+.ico-bc:before {
+  content: "\e902";
+}
+
+.ico-fb:before {
+  content: "\e903";
+}
+
+.ico-inst:before {
+  content: "\e904";
+}
+
+.ico-it:before {
+  content: "\e905";
+}
+
+.ico-spo:before {
+  content: "\e906";
+}
+
+.ico-tw:before {
+  content: "\e907";
+}
+
+.ico-web:before {
+  content: "\e908";
+}
+
+.ico-yt:before {
+  content: "\e909";
+}
+
 .zmdi-spotify {
   display: inline-block;
   background: url('assets/images/ico-spotify.svg') no-repeat;
@@ -88,6 +140,88 @@ a {
 
   &:before {
     content: '';
+  }
+}
+
+.mfp-image-holder .mfp-close {
+  font-family: $icons;
+  font-size: 10rem;
+  color: #fff;
+  @include transition(all, .2s, ease);
+  top: -40px;
+  right: -50px;
+  width: auto;
+
+  &:hover {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    cursor: pointer;
+  }
+
+  i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform-translate(-50%, -50%);
+  }
+}
+
+.mfp-arrow-right,
+.mfp-arrow-left {
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    @include transform( scale(1, 1) translateX(-50%) );
+    content: '\f2fa';
+    font-family: $icons;
+    display: block;
+    @include transition(all, .2s, ease);
+    font-size: 10rem;
+    color: #fff;
+    margin: 0px;
+    line-height: 10rem;
+    width: auto;
+    height: auto;
+    border: none;
+  }
+
+  &:hover {
+
+    &:before {
+      @include transform( scale(1.1, 1.1) translateX(-50%) );
+    }
+  }
+}
+
+.mfp-arrow-right {
+
+  &:before {
+    content: '\f2fb';
+  }
+}
+
+.mfp-arrow-left,
+.mfp-arrow-right {
+  @include transition(all, .2s, ease);
+
+  &:after {
+    display: none;
+  }
+
+  i {
+    @include transition(all, .2s, ease);
+    font-family: $icons;
+    font-size: 10rem;
+    color: #fff;
+  }
+
+  &:hover {
+
+    i {
+      transform: scale(1.1, 1.1);
+    }
   }
 }
 
@@ -474,7 +608,8 @@ section {
 
   }
 
-  &.section-news-archive, &.section-productions-archive {
+  &.section-news-archive,
+  &.section-productions-archive {
     padding-top: 0px;
     padding-bottom: 20px;
 
@@ -505,8 +640,8 @@ section {
     }
 
     .items {
-      @include transition(height, .4s, ease);
       padding-top: 40px;
+      @include transition(height, .4s, ease);
       @include flexbox();
       @include flex-flow(row wrap);
       @include justify-content(space-between);
@@ -534,7 +669,7 @@ section {
           position: relative;
           background-size: cover;
           background-position: center;
-          @include aspect-ratio(2.5, 1);
+          @include aspect-ratio(2.1, 1);
 
           &:after {
             @include pseudoElement;
@@ -881,11 +1016,17 @@ section {
           @include flexbox;
           @include justify-content(flex-start);
           @include flex-flow(row wrap);
-          padding-top: 15px;
+          padding-top: 5px;
           font-size: 2.6rem;
 
+          .ico {
+            font-size: 1.6rem;
+          }
+
           a {
-            @include flex(0 0 25%);
+            padding: 5px 0;
+            text-align: center;
+            @include flex(0 0 20%);
 
             &:hover {
               color: $green;
@@ -1327,9 +1468,13 @@ section {
       }
 
       .date {
-        font-family: $font-bold;
+        font-family: $font-black;
         color: $green;
-        font-size: 1.8rem;
+        font-size: 2rem;
+      }
+
+      .cta {
+        margin: 15px auto 0 auto;
       }
 
       &:hover {
@@ -1394,6 +1539,7 @@ section {
     }
 
     .item {
+      position: relative;
       height: 55vh;
       width: 100%;
       background-size: cover;
@@ -1415,6 +1561,38 @@ section {
           background-color: #000;
           color: #fff;
         }
+      }
+    }
+
+    .slick-arrow {
+      border: none;
+      font-size: 0px;
+      width: 40px;
+      height: 40px;
+      background: transparent url('assets/images/ico-arrow.png') no-repeat center;
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      @include transition-all(.2s);
+      @include transform-translateY(-50%);
+
+      &:focus {
+        outline: none;
+      }
+
+      &:hover {
+        cursor: pointer;
+        opacity: .6;
+      }
+
+      &.slick-next {
+        right: 0px;
+      }
+
+      &.slick-prev {
+        left: 0px;
+        -webkit-transform: translateY(-50%) rotate(-180deg);
+        transform: translateY(-50%) rotate(-180deg);
       }
     }
 
@@ -1506,14 +1684,14 @@ section {
     padding-bottom: 0px;
 
     .albums-slider-holder {
-      direction: ltr;
+      direction: rtl;
       display: none;
       opacity: 0;
 
       .slick-list {
         width: calc(100% + 30px);
         position: relative;
-        right: 30px;
+        right: 0px;
       }
 
       &.slick-initialized {
@@ -1616,14 +1794,13 @@ section {
     padding-bottom: 0px;
 
     .artist-gallery-slider-holder {
-      direction: ltr;
       display: none;
       opacity: 0;
 
       .slick-list {
         width: calc(100% + 30px);
         position: relative;
-        right: 30px;
+        right: 0px;
       }
 
       &.slick-initialized {
@@ -1703,10 +1880,32 @@ section {
         @include aspect-ratio(1, 1);
         padding: 15px;
 
+        .holder {
+
+          &:after {
+            @include transition(all, .2s, ease);
+            @include pseudoElement;
+            border-radius: 100%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0);
+            z-index: 1;
+            top: 0;
+            left: 0;
+          }
+        }
+
         &:hover {
+
           .holder {
+
+            &:after {
+              background-color: rgba(0, 0, 0, .4);
+            }
+
             .name-artist {
               opacity: 1;
+              z-index: 2;
             }
           }
         }
@@ -1727,10 +1926,11 @@ section {
             line-height: 2.4rem;
           }
         }
-
       }
     }
+
     /*mobile section-other-artists */
+
     @media (max-width: 480px) {
       .items {
         @include flex-flow(row wrap);
@@ -2157,7 +2357,6 @@ section {
       @include flex(0 0 25%);
       @include flexbox;
       @include justify-content(center);
-      overflow: hidden;
 
       .holder {
         width: calc(100% - 25px);
@@ -2167,6 +2366,7 @@ section {
       .image {
         background-size: cover;
         @include aspect-ratio(1, 1);
+        @include transition(all, .3s, ease);
 
         .holder {
           @include transition-all(.2s);
@@ -2195,13 +2395,17 @@ section {
 
       &:hover {
 
+        .image {
+          @include transform(perspective(300px) translate3d(0px, -5px, 5px));
+        }
+
         .name-artist {
           color: #000;
           background-color: $green;
         }
 
         .image .holder {
-          box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+          box-shadow: 0 10px 20px rgba(0, 0, 0, .3);
         }
       }
     }
@@ -2271,14 +2475,27 @@ section {
         font-family: $font-light;
 
       }
+
       .col {
         @include flex(0 0 50%);
       }
+
+      .col-right {
+
+        .text-about {
+          padding-top: 10px;
+          font-size: 1.6rem;
+          font-family: $font-light;
+        }
+      }
+
       .col-left {
+
         .holder {
           background-color: #000;
           padding: 30px 50px 20px 50px;
         }
+
         .form-holder {
           @include flexbox;
           @include justify-content(flex-start);
@@ -2340,6 +2557,7 @@ section {
             }
           }
         }
+
         .contact-form {
           padding-top: 14px;
           @include flex-flow(row wrap);
@@ -2443,6 +2661,7 @@ section {
           }
         }
       }
+
       .newsletter-form {
         padding-bottom: 30px;
         border-bottom: 1px solid $green;
@@ -2498,35 +2717,41 @@ section {
           border-bottom: 1px solid $green;
         }
       }
+
       .section-footer {
 
         .socials {
           position: relative;
           margin: 0px;
-          padding: 0px 80px;
-
+          padding: 15px 0 0;
           @include flexbox;
-          @include align-items(flex-end);
-          @include flex(0 0 15%);
-          @include justify-content(space-between);
+          @include justify-content(center);
+          @include flex-flow(row wrap);
+        }
 
+        li {
+          display: block;
         }
 
         a {
+          display: block;
+          padding: 0 10px;
           color: $green;
         }
+
         .section-footer-text {
           color: #fff;
           font-size: 1.2rem;
           font-family: $font-bold;
-          text-align: right;
-          padding-top: 10px;
+          text-align: center;
+          padding-top: 20px;
 
         }
       }
     }
 
     /*  mobile  section-about   */
+
     @media (max-width: 480px) {
       .holder {
         padding: 0px;
@@ -3134,9 +3359,11 @@ section {
 
     .items {
       display: block;
+      direction: rtl;
     }
 
     .item {
+      position: relative;
       display: block;
       width: 25%;
       padding: 0px;
@@ -3160,6 +3387,7 @@ section {
         margin-bottom: 25px;
         @include aspect-ratio(1, 1);
         @include transition-all(.2s);
+        overflow: hidden;
 
         .holder {
           background-size: cover;
@@ -3167,21 +3395,57 @@ section {
       }
 
       .text {
-        padding: 10px 20px;
-        color: $grey;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, .5);
+        position: absolute;
+        top: 100%;
+        left: 0px;
+        color: #fff;
         @include flexbox;
         @include align-items(center);
         @include justify-content(center);
+        @include flex-direction(column);
+        @include transition(top, .8s, ease);
 
         .name-artist {
           font-family: $font-black;
+          font-size: 3rem;
+          line-height: 3rem;
+          padding-right: 5px;
+          padding-left: 5px;
+          max-width: 90%;
+          text-align: center;
+          color: $green;
+        }
+
+        .name-album {
+          font-family: $font-light;
+          font-size: 2.4rem;
+          line-height: 2.6rem;
+          padding-top: 5px;
+        }
+
+        .date {
+          font-family: $font-bold;
           font-size: 1.8rem;
-          color: $grey;
           line-height: 2rem;
+          color: $green;
+          margin: 5px 0;
+
+          span {
+            font-family: $font-reg;
+            margin-right: 4px;
+          }
         }
       }
 
       &:hover {
+
+        .text {
+          top: 0;
+        }
+
         .name-artist {
           color: #000;
           background-color: $green;
@@ -3406,6 +3670,34 @@ span.wpcf7-not-valid-tip {
   font-size: 1rem !important;
 }
 
+/* Magnific Popups */
+
+.mfp-title {
+  direction: rtl;
+  text-align: right;
+  padding-right: 0;
+  padding-left: 36px;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    color: $green;
+  }
+}
+
+.mfp-container {
+  overflow-y: hidden;
+}
+
+.mfp-counter {
+  left: 0;
+  right: initial;
+}
+
+.mfp-image-holder .mfp-content {
+  max-width: 75% !important;
+}
+
 .mfp-zoom-in {
 
   /* start state */
@@ -3443,6 +3735,51 @@ span.wpcf7-not-valid-tip {
     }
 
   }
+}
 
+.search-results {
+
+  .section-title-strip {
+    padding: 20px 0;
+  }
+
+  .item {
+    @include flexbox;
+    @include flex-flow(row wrap);
+    margin-bottom: 15px;
+
+    .title {
+      @include flex(0 0 100%);
+      max-width: 300px;
+      @include transition(all, .2s, ease);
+    }
+
+    &:hover {
+
+      .title {
+        color: $green;
+      }
+    }
+
+    .excerpt {
+      @include flex(0 0 100%);
+    }
+
+    h2 {
+      display: inline-block;
+    }
+
+    .type {
+      background-color: $green;
+      float: left;
+      padding: 0 5px;
+      color: #000;
+      font-family: $font-black;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 

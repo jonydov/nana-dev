@@ -56,43 +56,45 @@
                     <?php if( get_field('youtube', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('youtube', 'option'); ?>">
-                              <i class="zmdi zmdi-youtube-play"></i>
+                              <i class="ico ico-yt"></i>
                             </a>
                         </li>
                     <?php } ?>
-                    <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+	                <?php if ( get_field( 'spotify', 'option' ) != null ) { ?>
                         <li>
-                            <a href="<?= get_field( 'apple', 'option' ); ?>">
-                                <i class="zmdi zmdi-apple"></i>
+                            <a target="_blank" href="<?= get_field( 'spotify', 'option' ); ?>" class="ico-social">
+                                <i class="ico ico-spo"></i>
                             </a>
                         </li>
-                    <?php } ?>
-                    <?php if( $socials['spotify'] != null ){ ?>
-                        <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
-                            <i class="zmdi zmdi-spotify"></i>
-                        </a>
-                    <?php } ?>
-                  <?php if( get_field('instagram', 'option') != null ){ ?>
+	                <?php } ?>
+                    <?php if( get_field('instagram', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('instagram', 'option'); ?>">
-                                <i class="zmdi zmdi-instagram"></i>
+                                <i class="ico ico-inst"></i>
                             </a>
                         </li>
                     <?php } ?>
                     <?php if( get_field('twitter', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('twitter', 'option'); ?>">
-                                <i class="zmdi zmdi-twitter"></i>
+                                <i class="ico ico-tw"></i>
                             </a>
                         </li>
                     <?php } ?>
                     <?php if( get_field('facebook', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('facebook', 'option'); ?>">
-                                <i class="zmdi zmdi-facebook-box"></i>
+                                <i class="ico ico-fb"></i>
                             </a>
                         </li>
                     <?php } ?>
+	                <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+                        <li>
+                            <a href="<?= get_field( 'apple', 'option' ); ?>">
+                                <i class="ico ico-it"></i>
+                            </a>
+                        </li>
+	                <?php } ?>
 
                 </ul>
 

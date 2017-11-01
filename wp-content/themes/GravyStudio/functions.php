@@ -31,14 +31,15 @@
         wp_enqueue_script('skrollr', get_template_directory_uri()."/assets/js/skrollr.min.js");
         wp_enqueue_script('bootstrap', get_template_directory_uri()."/assets/js/bootstrap.min.js");
 	    wp_enqueue_script('magnific-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
-	    wp_enqueue_script('isotope-js' , get_stylesheet_directory_uri() . '/assets/js/isotope.pkgd.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
+	    wp_enqueue_script('isotope-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.isotope.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
 	    wp_enqueue_script('functions-js' , get_stylesheet_directory_uri() . '/assets/js/functions.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
     }
     add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
 
     if( !is_admin() ){
         wp_enqueue_style('magnific-css', get_template_directory_uri()."/assets/css/magnific-popup.min.css");
-        wp_enqueue_style('slick-css', get_template_directory_uri()."/assets/css/slick.min.css");
+        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css');
+        wp_enqueue_style('animate-css', get_template_directory_uri()."/assets/css/slick.min.css");
         wp_enqueue_style('bootstrap-css', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
         wp_enqueue_style('material-css', get_template_directory_uri()."/assets/css/material-design-iconic-font.min.css");
         wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css', array(), 1.12345, false, 'all' );
@@ -243,8 +244,10 @@ function load_posts ($year, $month, $type){
 	foreach ( $items as $item ){ setup_postdata($item);
 
 		if( $i <= 4 ){
+			$words = 40;
 			$class = 'style-1';
 		}else{
+			$words = 15;
 			$class = 'style-2';
 		}
 		?>
@@ -264,7 +267,7 @@ function load_posts ($year, $month, $type){
                         <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
                         <h3><?=get_the_title($item->ID); ?></h3>
 					<?php } ?>
-					<?php echo wp_trim_words($item->post_content, 18); ?>
+					<?php echo wp_trim_words($item->post_content, $words); ?>
                 </div>
             </div>
         </a>
@@ -409,5 +412,76 @@ function ajax_shows_filter($filter_type){
 	exit();
 }
 
+add_filter( 'posts_orderby', 'order_search_by_posttype', 10, 1 );
+function order_search_by_posttype( $orderby ){
+	if( ! is_admin() && is_search() ) :
+		global $wpdb;
+		$orderby =
+			"
+            CASE WHEN {$wpdb->prefix}posts.post_type = 'news' THEN '1' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'post' THEN '2' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'shows' THEN '3' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'productions' THEN '4' 
+            ELSE {$wpdb->prefix}posts.post_type END ASC, 
+            {$wpdb->prefix}posts.post_title ASC";
+	endif;
+	return $orderby;
+}
+
+/**
+ * Extend WordPress search to include custom fields
+ *
+ * https://adambalee.com
+ */
+
+/**
+ * Join posts and postmeta tables
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_join
+ */
+function cf_search_join( $join ) {
+	global $wpdb;
+
+	if ( is_search() ) {
+		$join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+	}
+
+	return $join;
+}
+add_filter('posts_join', 'cf_search_join' );
+
+/**
+ * Modify the search query with posts_where
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_where
+ */
+function cf_search_where( $where ) {
+	global $pagenow, $wpdb;
+
+	if ( is_search() ) {
+		$where = preg_replace(
+			"/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+			"(".$wpdb->posts.".post_title LIKE $1) OR (".$wpdb->postmeta.".meta_value LIKE $1)", $where );
+	}
+
+	return $where;
+}
+add_filter( 'posts_where', 'cf_search_where' );
+
+/**
+ * Prevent duplicates
+ *
+ * http://codex.wordpress.org/Plugin_API/Filter_Reference/posts_distinct
+ */
+function cf_search_distinct( $where ) {
+	global $wpdb;
+
+	if ( is_search() ) {
+		return "DISTINCT";
+	}
+
+	return $where;
+}
+add_filter( 'posts_distinct', 'cf_search_distinct' );
 
 ?>

@@ -6,6 +6,14 @@
   transition: $type $timing $effect;
 }
 
+@mixin transform($value) {
+  -webkit-transform: $value;
+  -moz-transform: $value;
+  -o-transform: $value;
+  -ms-transform: $value;
+  transform: $value;
+}
+
 @mixin transition-all($duration) {
   @include transition(all, $duration, linear);
 }
@@ -243,7 +251,7 @@
   }
 }
 
-.isotope .isotope-item {
+.items-filter .item {
   -webkit-transition-property: right, top, -webkit-transform, opacity;
   -moz-transition-property: right, top, -moz-transform, opacity;
   -ms-transition-property: right, top, -ms-transform, opacity;

@@ -13,62 +13,57 @@
             <div class="section-body">
                 <div class="image">
                     <?php if ( has_post_thumbnail() ) { ?>
-                        <img src="<?php the_post_thumbnail_url(); ?>" />
+                        <img src="<?php the_post_thumbnail_url('thumbnail'); ?>" />
                     <?php } ?>
                     <div class="socials">
 
                         <?php $socials = get_field('links'); ?>
 
-                        <?php if( $socials['youtube'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['youtube']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-youtube-play"></i>
+                        <?php if( $socials['website'] != null ){ ?>
+                            <a href="<?=$socials['website']; ?>">
+                                <i class="ico ico-web"></i>
                             </a>
                         <?php } ?>
-                        <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
-
-                            <a href="<?= get_field( 'apple', 'option' ); ?>">
-                                <i class="zmdi zmdi-apple"></i>
-                            </a>
-
-                        <?php } ?>
-                        <?php if( $socials['spotify'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['spotify']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-spotify"></i>
-                            </a>
-                        <?php } ?>
-
-
                         <?php if( $socials['instagram'] != null ){ ?>
-                            <a href="<?=$socials['instagram']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-instagram"></i>
+                            <a href="<?=$socials['instagram']; ?>">
+                                <i class="ico ico-inst"></i>
                             </a>
                         <?php } ?>
-
                         <?php if( $socials['twitter'] != null ){ ?>
-                            <a href="<?=$socials['twitter']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-twitter"></i>
+                            <a href="<?=$socials['twitter']; ?>">
+                                <i class="ico ico-tw"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['facebook'] != null ){ ?>
-                            <a href="<?=$socials['facebook']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-facebook-box"></i>
+                            <a href="<?=$socials['facebook']; ?>">
+                                <i class="ico ico-fb"></i>
+                            </a>
+                        <?php } ?>
+                        <?php if( $socials['band_camp'] != null ){ ?>
+                            <a target="_blank" href="<?=$socials['band_camp']; ?>">
+                                <i class="ico ico-bc"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['itunes'] != null ){ ?>
-                            <a href="<?=$socials['itunes']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-itunes"></i>
+                            <a href="<?=$socials['itunes']; ?>">
+                                <i class="ico ico-it"></i>
                             </a>
                         <?php } ?>
-
                         <?php if( $socials['apple_music'] != null ){ ?>
-                            <a target="_blank" href="<?=$socials['apple_music']; ?>" class="ico-social">
-                                <i class="zmdi zmdi-apple"></i>
+                            <a target="_blank" href="<?=$socials['apple_music']; ?>">
+                                <i class="ico ico-apple"></i>
                             </a>
                         <?php } ?>
-
-
-
-
+                        <?php if( $socials['spotify'] != null ){ ?>
+                            <a target="_blank" href="<?=$socials['spotify']; ?>">
+                                <i class="ico ico-spo"></i>
+                            </a>
+                        <?php } ?>
+	                    <?php if( $socials['youtube'] != null ){ ?>
+                            <a target="_blank" href="<?=$socials['youtube']; ?>">
+                                <i class="ico ico-yt"></i>
+                            </a>
+	                    <?php } ?>
 
                     </div>
                 </div>
@@ -142,11 +137,11 @@
                 <h3>אלבומים</h3>
             </div>
 
-            <div class="section-body albums-slider-holder">
+            <div class="section-body albums-slider-holder" dir="rtl">
                 <?php
                 $args = array(
 	                'post_type' => 'albums',
-	                'posts_per_page' => 2,
+	                'posts_per_page' => -1,
 	                'meta_query'	=> array(
 		                array(
 			                'key' => 'assigned_artist',
@@ -234,7 +229,7 @@
 
         <div class="shell">
 
-            <div class="col col-music animate fade-right" data-delay="100">
+            <div class="col col-music animate fade-bottom" data-delay="100">
                 <div class="holder">
 
                     <div class="section-title">
@@ -248,7 +243,7 @@
                 </div>
              </div>
 
-             <div class="col col-clips animate fade-left" data-delay="100">
+             <div class="col col-clips animate fade-bottom" data-delay="100">
                 <div class="holder">
 
                     <div class="section-title">
@@ -307,24 +302,28 @@
                 <h3>גלריה</h3>
             </div>
 
-            <div class="section-body artist-gallery-slider-holder">
+            <div class="section-body artist-gallery-slider-holder" dir="rtl">
                 <?php
 
                     $images = get_field('gallery', $id);
 
-                    foreach ( $images as $image ) {
+                    if( $images != null ){
+
+
+                        foreach ( $images as $image ) {
 
                 ?>
 
-                    <a href="<?=$image['url']; ?>" class="item popup-img" data-effect="mfp-zoom-in">
+                        <a href="<?=$image['url']; ?>" class="item popup-img" data-effect="fadeInUp">
 
-                        <div class="holder">
-                            <div class="image" <?php if( $image != null ){
-                                echo 'style="background-image: url('.$image['sizes']['medium'].');"'; } ?>>
+                            <div class="holder">
+                                <div class="image" data-title="<?=$image['title']; ?>" data-caption="<?=$image['caption']; ?>" <?php if( $image != null ){
+                                    echo 'style="background-image: url('.$image['sizes']['medium'].');"'; } ?>>
+                                </div>
                             </div>
-                        </div>
-                    </a>
+                        </a>
 
+                    <?php } ?>
                 <?php } ?>
             </div>
         </div>

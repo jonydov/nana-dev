@@ -35,6 +35,7 @@ get_header();
 							<?php } ?>
 
                         </div>
+
 					<?php endwhile; ?>
                 </div>
 
@@ -159,6 +160,26 @@ get_header();
                                         <div class="holder" <?php if ( $img != null ) {
 											echo 'style="background-image: url(' . $img . ');"';
 										} ?>></div>
+                                        <div class="text">
+
+		                                    <?php
+		                                    $artists       = get_field( 'assigned_artist', $post->ID );
+		                                    $artists_names = array();
+		                                    foreach ( $artists as $artist ) {
+			                                    $artists_names[] = get_the_title( $artist );
+		                                    }
+		                                    ?>
+
+                                            <span class="name-artist"><?php echo implode( ', ', $artists_names ); ?></span>
+                                            <span class="name-album"><?= $post->post_title; ?></span>
+		                                    <?php
+		                                    $date = get_field( 'publish_date', $post->ID );
+		                                    $date = str_replace( '/', '<span>', $date );
+		                                    $date = str_replace( '!', '</span>', $date );
+		                                    ?>
+                                            <span class="date"><?= $date; ?></span>
+                                            <span class="cta">לאלבום</span>
+                                        </div>
                                     </div>
 
                                 </a>
