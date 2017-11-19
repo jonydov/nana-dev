@@ -148,9 +148,13 @@ $(document).ready(function () {
 
     /* Magnific Popups */
 
+    $('.mfp-close').on( "click", function() {
+        $.magnificPopup.close();
+    });
+
     $('.popup-img').magnificPopup({
         type: 'image',
-        closeMarkup:'<button title="%title%" type="button" class="mfp-close"><i class="zmdi zmdi-close"></i></button>',
+        closeMarkup:'<button class="mfp-close fa fa-times-circle"></button>',
         gallery: {
             enabled: true,
             tCounter: '<span class="mfp-counter">%curr% מתוך %total%</span>',
@@ -173,6 +177,7 @@ $(document).ready(function () {
         titleSrc: function(item) {
             return '<h3>' + item.el.attr('data-title') + '</h3>' + item.el.attr('data-caption');
         },
+        closeMarkup:'<button class="mfp-close fa fa-times-circle"></button>',
         iframe: {
             markup: '<div class="mfp-iframe-scaler">' +
             '<div class="mfp-close"><i class="zmdi zmdi-close"></i></div>' +

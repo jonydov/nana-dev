@@ -123,7 +123,6 @@ a {
   }
 }
 
-
 .shell {
   position: relative;
   max-width: 1200px;
@@ -195,12 +194,37 @@ a {
     content: '';
   }
 }
-.mfp-iframe-scaler  .mfp-close{
+
+.mfp-iframe-scaler {
+
+  .mfp-bottom-bar {
+    top: initial;
+    bottom: -25px;
+  }
+
+  .mfp-close {
+    font-family: $icons;
+    font-size: 6rem;
+    color: #fff;
+    @include transition(all, .2s, ease);
+    top: -50px;
+    width: auto;
+
+    &:hover {
+      -webkit-transform: rotate(-180deg);
+      transform: rotate(-180deg);
+      cursor: pointer;
+    }
+  }
+}
+
+.mfp-iframe-scaler .mfp-close {
   font-family: $icons;
   font-size: 6rem;
   color: #fff;
   @include transition(all, .2s, ease);
-  top: -50px;
+  top: -45px;
+  right: -35px;
   width: auto;
 
   &:hover {
@@ -209,7 +233,12 @@ a {
     cursor: pointer;
   }
 
-
+  &:before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include transform-translate(-50%, -50%);
+  }
 }
 
 .mfp-image-holder .mfp-close {
@@ -227,7 +256,7 @@ a {
     cursor: pointer;
   }
 
-  i {
+  &:before {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -243,14 +272,14 @@ a {
     top: 0;
     left: 50%;
     @include transform(scale(1, 1) translateX(-50%));
-    content: '\f2fa';
+    content: '\f053';
     font-family: $icons;
     display: block;
     @include transition(all, .2s, ease);
-    font-size: 10rem;
+    font-size: 7rem;
     color: #fff;
     margin: 0px;
-    line-height: 10rem;
+    line-height: 7rem;
     width: auto;
     height: auto;
     border: none;
@@ -267,22 +296,20 @@ a {
 .mfp-arrow-right {
 
   &:before {
-    content: '\f2fb';
+    content: '\f054';
   }
 }
 
-.mfp-bottom-bar{
+.mfp-bottom-bar {
 
   .vid {
     padding-left: 0;
-    padding-top: 60px;
-    color: #31d87a;
-    font-size: 24px;
-    font-family: "almoni_dl_aaablack";
+    color: $green;
+    font-size: 2.4rem;
+    font-family: $font-black;
   }
 
 }
-
 
 .mfp-arrow-left,
 .mfp-arrow-right {
@@ -2608,10 +2635,10 @@ section {
           padding: 30px 50px 20px 50px;
         }
 
-/*        .ajax-loader {
-          position: absolute;
+        /*        .ajax-loader {
+                  position: absolute;
 
-        }*/
+                }*/
 
         .form-holder {
           @include flexbox;
@@ -2674,19 +2701,19 @@ section {
 
             &:hover {
               background-color: #fff;
-              color: #000;
+              color: #fff;
             }
           }
         }
 
         .contact-form {
-
           padding-top: 14px;
           @include flex-flow(row wrap);
           padding-bottom: 15px;
           border-bottom: 1px solid $green;
 
           .form-holder {
+            position: relative;
 
             h3 {
               margin-top: 0px;
@@ -2707,6 +2734,10 @@ section {
 
             &.field-message {
               margin-bottom: 0px;
+
+              .wpcf7-not-valid-tip {
+                bottom: 5px;
+              }
             }
 
             &.nl-checkbox {
@@ -2758,7 +2789,7 @@ section {
                     padding-right: 10px;
                     position: relative;
                     color: #fff;
-                    font-size: 1.4rem;
+                    font-size: 1.3rem;
                     font-weight: 100;
 
                     &:before {
@@ -2777,24 +2808,27 @@ section {
             }
           }
 
+          form {
+            position: relative;
+          }
+
           span.wpcf7-not-valid-tip {
             border: none !important;
             position: absolute;
-            bottom: 2px;
+            bottom: -4px;
             left: 2px;
             font-size: 1.1rem !important;
           }
 
-          .wpcf7{
-            .wpcf7-form {
-              .wpcf7-response-output{
-                top: 165px;
-                color: white;
-                padding-right: 0px;
-              }
-            }
+          .wpcf7-response-output {
+            bottom: -50px;
+            color: white;
+            padding-right: 0px;
           }
 
+          .wpcf7-response-output {
+            font-size: 1.3rem !important;
+          }
 
           .wpcf7-textarea {
             height: 80px;
@@ -2807,7 +2841,6 @@ section {
             left: 0px;
             top: 2px;
           }
-
 
         }
 
@@ -2860,10 +2893,6 @@ section {
           }
         }
 
-
-
-
-
         .field-send-email {
           justify-content: flex-start;
           padding: 0px 0px 3px;
@@ -2878,7 +2907,7 @@ section {
           top: 160px;
         }
 
-        .wpcf7-response-output{
+        .wpcf7-response-output {
           top: 165px;
           color: white;
           padding-right: 0px;

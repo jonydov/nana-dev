@@ -427,7 +427,9 @@ function order_search_by_posttype( $orderby ){
             CASE WHEN {$wpdb->prefix}posts.post_type = 'news' THEN '1' 
                  WHEN {$wpdb->prefix}posts.post_type = 'post' THEN '2' 
                  WHEN {$wpdb->prefix}posts.post_type = 'shows' THEN '3' 
-                 WHEN {$wpdb->prefix}posts.post_type = 'productions' THEN '4' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'video-clips' THEN '4' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'albums' THEN '5' 
+                 WHEN {$wpdb->prefix}posts.post_type = 'productions' THEN '6' 
             ELSE {$wpdb->prefix}posts.post_type END ASC, 
             {$wpdb->prefix}posts.post_title ASC";
 	endif;

@@ -112,7 +112,8 @@ header {
     top: 45px;
 
     img {
-      width: 30%;
+      width: auto;
+      max-width: 100%;
       height: auto;
     }
   }

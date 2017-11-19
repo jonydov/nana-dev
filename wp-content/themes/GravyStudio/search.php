@@ -17,10 +17,14 @@ get_header();
 
                 if( $type == 'news' ) {
                     $title = 'חדשות';
+                }elseif( $type == 'albums' ) {
+	                $title = 'אלבומים';
                 }elseif( $type == 'productions' ) {
 	                $title = 'הפקות מיוחדות';
                 }elseif( $type == 'shows' ) {
 	                $title = 'הופעות';
+                }elseif( $type == 'video-clips' ) {
+	                $title = 'קליפים';
                 }elseif( $type == 'artists' ) {
 	                $title = 'אמנים';
                 }elseif( $type == 'page' ) {
