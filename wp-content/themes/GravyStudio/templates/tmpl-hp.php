@@ -13,45 +13,7 @@ get_header();
 
         <section class="section-banner">
 
-			<?php if ( get_sub_field( 'hide_artists_box' ) == false ) { ?>
-                <div class="shell">
-                    <div class="artists animate fade-top" data-delay="100">
-                        <div class="artists-slider" dir="rtl">
-							<?php
-							$args = array(
-								'post_type'      => 'artists',
-								'posts_per_page' => - 1,
-							);
-
-							$posts = get_posts( $args );
-
-							$i = 1;
-							$c = count( $posts );
-							$m = 5;
-
-							foreach ( $posts as $post ) {
-								if ( $i == 1 ) {
-									echo '<div class="col">';
-								}
-								if ( $i % 5 == 0 ) {
-									echo '</div><div class="col">';
-								}
-								echo '<a href="' . get_permalink( $post->ID ) . '"><span>' . $post->post_title . '</span></a>';
-								if ( $i == $c ) {
-									echo '</div>';
-								}
-								$i ++;
-							}
-							wp_reset_postdata();
-							?>
-                        </div>
-						<?php if ( get_sub_field( 'link_text' ) != null ) { ?>
-                            <a class="cta"
-                               href="<?= get_sub_field( 'link_url' ); ?>"><?= get_sub_field( 'link_text' ); ?></a>
-						<?php } ?>
-                    </div>
-                </div>
-			<?php } ?>
+            <?php get_template_part('includes/section-artists-slider'); ?>
 
             <div class="slider-texts-holder animate fade-right" data-delay="100">
 				<?php
@@ -216,7 +178,7 @@ get_header();
                                         }
 	                                ?>
 
-                                    <span class="name-artist"><?php echo implode( ',', $artists_names ); ?></span>
+                                    <span class="name-artist"><?php echo implode( ' ו', $artists_names ); ?></span>
                                     <span class="venue"><?= $venue; ?></span>
 
                                     <?php
@@ -297,7 +259,7 @@ get_header();
                                         <div class="content">
                                             <span class="date"><?= get_the_time( 'd <b>בF</b>, Y' ); ?></span>
                                             <h3><?= $post->post_title; ?></h3>
-                                            <div class="text"><?php echo wp_trim_words( $post->post_content, 12, '...' ); ?></div>
+                                            <div class="text"><?php echo wp_trim_words( $post->post_content, 20, '...' ); ?></div>
                                         </div>
                                     </a>
 								<?php } ?>

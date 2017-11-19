@@ -25,7 +25,9 @@ $id = get_queried_object()->ID;
 							<?php } ?>
 
 							<?php if ( $links['link_vinyl'] != null ) { ?>
-                                <a class="link link-vinyl" href="<?= $links['link_vinyl']; ?>" target="_blank">VINYL</a>
+                                <a class="link link-vinyl" href="<?= $links['link_vinyl']; ?>" target="_blank">
+                                    <i class="zmdi zmdi-album"></i>
+                                </a>
 							<?php } ?>
                         </div>
 
@@ -38,11 +40,15 @@ $id = get_queried_object()->ID;
                         <div class="links">
 							<?php if ( $links['link_itunes'] != null ) { ?>
                                 <a class="link link-itunes" href="<?= $links['link_itunes']; ?>"
-                                   target="_blank">ITUNES</a>
+                                   target="_blank">
+                                    <i class="ico ico-it"></i>
+                                </a>
 							<?php } ?>
 
 							<?php if ( $links['link_bandcamp'] != null ) { ?>
-                                <a class="link link-bc" href="<?= $links['link_bandcamp']; ?>" target="_blank">BC</a>
+                                <a class="link link-bc" href="<?= $links['link_bandcamp']; ?>" target="_blank">
+                                    <i class="fa fa-bandcamp" aria-hidden="true"></i>
+                                </a>
 							<?php } ?>
                         </div>
 
@@ -55,20 +61,21 @@ $id = get_queried_object()->ID;
                         <div class="links">
 							<?php if ( $links['link_google_play'] != null ) { ?>
                                 <a class="link link-google-play" href="<?= $links['link_google_play']; ?>"
-                                   target="_blank">GOOGLE</a>
+                                   target="_blank">
+                                    <i class="fa fa-google" aria-hidden="true"></i>
+                                </a>
 							<?php } ?>
 
 							<?php if ( $links['link_spotify'] != null ) { ?>
-                                <a class="link link-spotify" href="<?= $links['link_spotify']; ?>" target="_blank">SPOTIFY</a>
+                                <a class="link link-spotify" href="<?= $links['link_spotify']; ?>" target="_blank">
+                                    <i class="fa fa-spotify" aria-hidden="true"></i>
+                                </a>
 							<?php } ?>
 
 							<?php if ( $links['link_apple'] != null ) { ?>
-                                <a class="link link-apple" href="<?= $links['link_apple']; ?>" target="_blank">APPLE</a>
-							<?php } ?>
-
-							<?php if ( $links['link_deezer'] != null ) { ?>
-                                <a class="link link-deezer" href="<?= $links['link_deezer']; ?>"
-                                   target="_blank">DEEZER</a>
+                                <a class="link link-apple" href="<?= $links['link_apple']; ?>" target="_blank">
+                                    <i class="fa fa-apple" aria-hidden="true"></i>
+                                </a>
 							<?php } ?>
                         </div>
 
@@ -81,7 +88,13 @@ $id = get_queried_object()->ID;
                 <div class="col col-songs-list">
                     <div class="section-title">
                         <h1 class="black"><?= get_the_title( $id ); ?></h1>
-                        <div class="text"><?= get_field( 'description', $id ); ?></div>
+                        <div class="tag-list">
+		                    <?php
+		                    if ( get_the_tag_list($id) ) {
+			                    echo get_the_tag_list( '<ul><li>', '</li><li>', '</li></ul>', $id );
+		                    }
+		                    ?>
+                        </div>
                     </div>
 
                     <ul>
@@ -90,7 +103,6 @@ $id = get_queried_object()->ID;
                             <li class="item">
                                 <span class="number"><?= $i; ?>.</span>
                                 <span class="title"><?= $post['title']; ?></span>
-                                <span class="duration"><?= $post['duration']; ?></span>
                             </li>
 							<?php $i ++;
 						} ?>
@@ -113,7 +125,7 @@ $id = get_queried_object()->ID;
 
 			$args = array(
 				'post_type'      => 'albums',
-				'posts_per_page' => - 1,
+				'posts_per_page' => 9,
 				'meta_query'     => array( $meta_query ),
 			);
 
@@ -170,7 +182,10 @@ $id = get_queried_object()->ID;
     <div class="shell">
 
         <div class="section-body">
-			<?php the_field( 'text' ); ?>
+			<?php if( get_field('embed') != null ){ ?>
+                <div class="embed"><?=get_field('embed'); ?></div>
+            <?php } ?>
+            <?php the_field( 'text' ); ?>
         </div>
 
     </div>

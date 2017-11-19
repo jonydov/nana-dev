@@ -47,7 +47,7 @@
                         'depth' => 2,
                         'container' => false,
                         'fallback_cb' => 'wp_page_menu',
-                        'menu_class' => 'main-nav cf',
+                        'menu_class' => 'main-nav',
                         'walker' => new wp_bootstrap_navwalker())
                     );
                 ?>
@@ -56,45 +56,45 @@
                     <?php if( get_field('youtube', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('youtube', 'option'); ?>">
-                              <i class="ico ico-yt"></i>
+                                <i class="fa fa-youtube-play" aria-hidden="true"></i>
                             </a>
                         </li>
                     <?php } ?>
 	                <?php if ( get_field( 'spotify', 'option' ) != null ) { ?>
                         <li>
                             <a target="_blank" href="<?= get_field( 'spotify', 'option' ); ?>" class="ico-social">
-                                <i class="ico ico-spo"></i>
+                                <i class="fa fa-spotify" aria-hidden="true"></i>
+                            </a>
+                        </li>
+	                <?php } ?>
+	                <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+                        <li>
+                            <a href="<?= get_field( 'apple', 'option' ); ?>">
+                                <i class="fa fa-apple" aria-hidden="true"></i>
                             </a>
                         </li>
 	                <?php } ?>
                     <?php if( get_field('instagram', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('instagram', 'option'); ?>">
-                                <i class="ico ico-inst"></i>
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
                         </li>
                     <?php } ?>
                     <?php if( get_field('twitter', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('twitter', 'option'); ?>">
-                                <i class="ico ico-tw"></i>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                         </li>
                     <?php } ?>
                     <?php if( get_field('facebook', 'option') != null ){ ?>
                         <li>
                             <a href="<?=get_field('facebook', 'option'); ?>">
-                                <i class="ico ico-fb"></i>
+                                <i class="fa fa-facebook-official" aria-hidden="true"></i>
                             </a>
                         </li>
                     <?php } ?>
-	                <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
-                        <li>
-                            <a href="<?= get_field( 'apple', 'option' ); ?>">
-                                <i class="ico ico-it"></i>
-                            </a>
-                        </li>
-	                <?php } ?>
 
                 </ul>
 

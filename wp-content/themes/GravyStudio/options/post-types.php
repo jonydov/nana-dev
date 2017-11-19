@@ -11,7 +11,6 @@ register_post_type('artists', array(
     'rewrite' => array('slug' => 'artists'),
     'supports' => array(
 	    'title',
-	    'tags',
 	    'editor',
 	    'excerpt',
 	    'thumbnail',
@@ -27,6 +26,7 @@ register_post_type('albums', array(
 	'capability_type' => 'post',
 	'hierarchical' => false,
 	'query_var' => false,
+	'taxonomies'  => array( 'post_tag' ),
 	'rewrite' => array('slug' => 'albums'),
 	'supports' => array(
 		'title',

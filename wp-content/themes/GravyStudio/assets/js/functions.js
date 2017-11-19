@@ -154,7 +154,7 @@ $(document).ready(function () {
         gallery: {
             enabled: true,
             tCounter: '<span class="mfp-counter">%curr% מתוך %total%</span>',
-            arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%">sssss</button>'
+            arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>'
         },
         image: {
             titleSrc: function(item) {
@@ -353,6 +353,10 @@ $(document).ready(function () {
             $('.locations, .artists').removeClass('on');
             get_shows(filter_type);
         }
+    });
+
+    $('header li.artists-slider-toggle').hover(function () {
+        //$('.main-artists-slider').stop(true, true).toggleClass('animate on');
     });
 
     $('.artists-slider .artist').on('click', function (e) {

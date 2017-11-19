@@ -42,6 +42,7 @@
         wp_enqueue_style('animate-css', get_template_directory_uri()."/assets/css/slick.min.css");
         wp_enqueue_style('bootstrap-css', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
         wp_enqueue_style('material-css', get_template_directory_uri()."/assets/css/material-design-iconic-font.min.css");
+        wp_enqueue_style('font-awesome-css', get_template_directory_uri()."/assets/css/font-awesome.min.css");
         wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css', array(), 1.12345, false, 'all' );
     }
 
@@ -224,7 +225,7 @@ function isRTL( $string ) {
 function load_posts ($year, $month, $type){
 
 	$args = array(
-		'posts_per_page'   => -1,
+		'posts_per_page'   => 8,
 		'orderby'          => 'title',
 		'order'            => 'ASC',
 		'post_type'        => $type,

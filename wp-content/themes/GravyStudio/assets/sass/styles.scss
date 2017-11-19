@@ -2,9 +2,10 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 /* Variables */
-$green: #32faca;
+$green: #31d87a;
 $grey: #808285;
-$icons: 'Material-Design-Iconic-Font';
+//$icons: 'Material-Design-Iconic-Font';
+$icons: 'FontAwesome';
 $icons-social: 'icomoon';
 $font-light: 'almoni_dl_aaalight';
 $font-reg: 'almoni_dl_aaaregular';
@@ -73,6 +74,55 @@ a {
   display: inherit !important;
 }
 
+.pagination {
+  direction: rtl;
+  display: block;
+  width: 100%;
+
+  .wp-paginate {
+    @include flexbox;
+    @include justify-content(center);
+
+    li {
+      float: none;
+
+      a {
+        @include transition-all(.2s);
+
+        &:hover {
+          color: $green;
+        }
+      }
+    }
+
+    .prev,
+    .next {
+      background-color: transparent;
+      border: none;
+      color: #000;
+      font-size: 2.5rem;
+
+      i {
+        @include transform-translateY(2px);
+      }
+    }
+
+    .page {
+      margin: 0;
+      background-color: transparent;
+      border: none;
+      font-family: $font-black;
+      font-size: 2.4rem;
+      color: #000;
+
+      &.current {
+        background-color: transparent;
+        color: $green;
+      }
+    }
+  }
+}
+
 .shell {
   position: relative;
   max-width: 1200px;
@@ -82,7 +132,8 @@ a {
 
 [class^="ico"], [class*=" ico"] {
   /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'icomoon' !important;
+  //font-family: 'icomoon' !important;
+  font-family: $icons;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -113,6 +164,7 @@ a {
 
 .ico-it:before {
   content: "\e905";
+  font-family: $icons-social;
 }
 
 .ico-spo:before {
@@ -145,11 +197,11 @@ a {
 
 .mfp-image-holder .mfp-close {
   font-family: $icons;
-  font-size: 10rem;
+  font-size: 6rem;
   color: #fff;
   @include transition(all, .2s, ease);
-  top: -40px;
-  right: -50px;
+  top: -5px;
+  right: -30px;
   width: auto;
 
   &:hover {
@@ -173,7 +225,7 @@ a {
     position: absolute;
     top: 0;
     left: 50%;
-    @include transform( scale(1, 1) translateX(-50%) );
+    @include transform(scale(1, 1) translateX(-50%));
     content: '\f2fa';
     font-family: $icons;
     display: block;
@@ -190,7 +242,7 @@ a {
   &:hover {
 
     &:before {
-      @include transform( scale(1.1, 1.1) translateX(-50%) );
+      @include transform(scale(1.1, 1.1) translateX(-50%));
     }
   }
 }
@@ -646,6 +698,20 @@ section {
       @include flex-flow(row wrap);
       @include justify-content(space-between);
 
+      &.paged {
+
+        .item {
+
+          &.style-2 {
+
+            &:nth-child(6),
+            &:nth-child(5) {
+              border-top: 1px solid #808285;
+            }
+          }
+        }
+      }
+
       .item {
         position: relative;
         @include flex(0 0 calc(50% - 30px));
@@ -983,7 +1049,7 @@ section {
       }
 
       .force-overflow {
-        min-height: 250px;
+        min-height: 180px;
         direction: rtl;
         padding-right: 20px;
       }
@@ -1017,10 +1083,11 @@ section {
           @include justify-content(flex-start);
           @include flex-flow(row wrap);
           padding-top: 5px;
-          font-size: 2.6rem;
+          font-size: 2rem;
 
           .ico {
-            font-size: 1.6rem;
+            font-size: 1.9rem;
+            padding-top: 3px;
           }
 
           a {
@@ -1458,6 +1525,8 @@ section {
       .name-artist {
         font-family: $font-black;
         color: $green;
+        text-align: center;
+        line-height: 2.8rem;
         font-size: 2.6rem;
       }
 
@@ -1785,6 +1854,17 @@ section {
           font-size: 1.8rem;
           line-height: 2.2rem;
         }
+
+        .date {
+          font-family: $font-bold;
+          font-size: 2.3rem;
+          color: $green;
+
+          span {
+            font-family: $font-reg;
+            margin-right: 4px;
+          }
+        }
       }
     }
   }
@@ -2034,7 +2114,7 @@ section {
         @include flex(0 0 calc(50% - 40px));
 
         .item {
-          padding: 40px 0;
+          padding: 20px 0 40px;
           @include flexbox;
           border-bottom: 1px solid #939597;
 
@@ -2063,11 +2143,11 @@ section {
           margin: 0;
           background-size: cover;
           @include aspect-ratio(1, 1);
-          @include flex(0 0 35%);
+          @include flex(0 0 40%);
         }
 
         .content {
-          @include flex(0 0 65%);
+          @include flex(0 0 60%);
 
           .date {
             font-family: $font-bold;
@@ -2484,8 +2564,8 @@ section {
 
         .text-about {
           padding-top: 10px;
-          font-size: 1.6rem;
-          font-family: $font-light;
+          font-size: 1.7rem;
+          font-family: $font-reg;
         }
       }
 
@@ -2810,7 +2890,7 @@ section {
     .slider-texts-holder {
       direction: ltr;
       z-index: 1;
-      max-width: 930px;
+      max-width: 945px;
       margin: auto;
 
       .shell {
@@ -2890,92 +2970,6 @@ section {
       }
     }
 
-    .artists {
-      direction: ltr;
-      margin: auto;
-      max-width: 730px;
-      position: relative;
-      height: 200px;
-      z-index: 2;
-      display: block;
-      padding: 15px 100px 0;
-      background-color: rgba(0, 0, 0, .5);
-
-      .cta {
-        position: absolute;
-        bottom: 10px;
-        top: initial;
-        left: 20px;
-        height: fit-content;
-        background: $green;
-        font-family: $font-black;
-        padding: 0 15px;
-
-        &:hover {
-          background-color: #000;
-          color: #fff;
-        }
-      }
-
-      .col {
-        direction: ltr;
-      }
-
-      a {
-        text-align: right;
-        direction: rtl;
-        display: block;
-        margin: 10px 0;
-        font-family: $font-black;
-        font-size: 1.6rem;
-
-        span {
-          @include transition-all(.2s);
-          color: #fff;
-          padding: 0 5px;
-        }
-
-        &:hover {
-
-          span {
-            background-color: $green;
-            color: #000;
-          }
-        }
-      }
-
-      .slick-arrow {
-        border: none;
-        font-size: 0px;
-        width: 40px;
-        height: 40px;
-        background: transparent url('assets/images/ico-arrow.png') no-repeat center;
-        position: absolute;
-        top: 50%;
-        @include transition-all(.2s);
-        @include transform-translateY(-50%);
-
-        &:focus {
-          outline: none;
-        }
-
-        &:hover {
-          cursor: pointer;
-          opacity: .6;
-        }
-
-        &.slick-next {
-          right: -70px;
-        }
-
-        &.slick-prev {
-          left: -70px;
-          -webkit-transform: translateY(-50%) rotate(-180deg);
-          transform: translateY(-50%) rotate(-180deg);
-        }
-      }
-    }
-
     /* Mobile  .section-banner */
 
     @media (max-width: 480px) {
@@ -3031,10 +3025,27 @@ section {
     padding-top: 20px;
     font-size: 1.8rem;
     font-family: $font-light;
+
+    .embed {
+      float: right;
+      margin-left: 20px;
+      margin-bottom: 20px;
+    }
+
+    /*  mobile */
+    @media (max-width: 480px) {
+      .embed {
+        float: none;
+        margin: 0;
+
+        iframe {
+          width: 100% !important;
+        }
+      }
+    }
   }
 
   &.section-albums-info {
-
     padding-bottom: 20px;
 
     .cols3 {
@@ -3075,10 +3086,13 @@ section {
           .links {
             @include flex(0 0 50%);
             text-align: left;
+            @include flexbox;
+            @include justify-content(flex-end);
           }
 
           .link {
-            font-size: 1rem;
+            padding: 0 5px;
+            font-size: 1.6rem;
           }
 
           &:hover {
@@ -3169,6 +3183,44 @@ section {
       &.col-songs-list {
         padding: 0 25px 0 50px;
 
+        .tag-list {
+          font-family: $font-bold;
+          color: #000;
+          padding: 5px 0px 20px 0px;
+          @include flexbox();
+          @include justify-content(flex-start);
+          @include transition-all(.2s);
+
+          ul {
+            @include flexbox();
+            @include justify-content(flex-start);
+            list-style: none;
+            margin-bottom: 0px;
+
+            &:first-child {
+              padding-right: 0px;
+            }
+          }
+
+          li {
+            @include flexbox();
+            padding-left: 10px;
+
+            a {
+              font-family: $font-black;
+              background-color: $green;
+              text-align: center;
+              padding: 0px 20px;
+
+              &:focus,
+              &:hover {
+                background-color: #000;
+                color: #fff;
+              }
+            }
+          }
+        }
+
         h1 {
           margin: 0;
           font-size: 3.8rem;
@@ -3203,13 +3255,7 @@ section {
             }
 
             .title {
-              @include flex(0 0 75%);
-            }
-
-            .duration {
-              @include flex(0 0 15%);
-              text-align: left;
-              color: $green;
+              @include flex(0 0 90%);
             }
           }
         }
@@ -3225,6 +3271,7 @@ section {
         top: 50px;
       }
     }
+
     .section-title {
 
       h2 {
@@ -3509,7 +3556,7 @@ section {
 
       h3 {
         line-height: 2.4rem;
-        margin-bottom: 0px;
+        margin-bottom: 5px;
         margin-top: 10px;
         font-size: 3.1rem;
       }
@@ -3526,8 +3573,10 @@ section {
 
       .text {
         padding: 20px 0 0 10px;
-        font-family: $font-light;
+        font-family: $font-reg;
         color: #808285;
+        font-size: 1.7rem;
+        max-width: 635px;
       }
 
       .tag-list {
@@ -3559,6 +3608,7 @@ section {
             text-align: center;
             padding: 0px 20px;
 
+            &:focus,
             &:hover {
               background-color: #000;
               color: #fff;
@@ -3766,6 +3816,7 @@ span.wpcf7-not-valid-tip {
     }
 
     h2 {
+      font-size: 2.3rem;
       display: inline-block;
     }
 
@@ -3783,3 +3834,88 @@ span.wpcf7-not-valid-tip {
   }
 }
 
+.main-artists-slider {
+  direction: ltr;
+  margin: auto;
+  max-width: 100%;
+  position: relative;
+  height: 230px;
+  z-index: 2;
+  display: block;
+  padding: 15px 100px 0;
+  background-color: rgba(0, 0, 0, .5);
+
+  .cta {
+    position: absolute;
+    bottom: -50px;
+    top: initial;
+    left: 0px;
+    height: fit-content;
+    background: $green;
+    font-family: $font-black;
+    padding: 0 15px;
+
+    &:hover {
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  .col {
+    direction: ltr;
+  }
+
+  a {
+    text-align: right;
+    direction: rtl;
+    display: block;
+    margin: 10px 0;
+    font-family: $font-black;
+    font-size: 2rem;
+
+    span {
+      @include transition-all(.2s);
+      color: #fff;
+      padding: 0 5px;
+    }
+
+    &:hover {
+
+      span {
+        background-color: $green;
+        color: #000;
+      }
+    }
+  }
+
+  .slick-arrow {
+    border: none;
+    font-size: 0px;
+    width: 40px;
+    height: 40px;
+    background: transparent url('assets/images/ico-arrow.png') no-repeat center;
+    position: absolute;
+    top: 50%;
+    @include transition-all(.2s);
+    @include transform-translateY(-50%);
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      cursor: pointer;
+      opacity: .6;
+    }
+
+    &.slick-next {
+      right: -70px;
+    }
+
+    &.slick-prev {
+      left: -70px;
+      -webkit-transform: translateY(-50%) rotate(-180deg);
+      transform: translateY(-50%) rotate(-180deg);
+    }
+  }
+}

@@ -21,27 +21,27 @@
 
                         <?php if( $socials['website'] != null ){ ?>
                             <a href="<?=$socials['website']; ?>">
-                                <i class="ico ico-web"></i>
+                                <i class="fa fa-globe" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['instagram'] != null ){ ?>
                             <a href="<?=$socials['instagram']; ?>">
-                                <i class="ico ico-inst"></i>
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['twitter'] != null ){ ?>
                             <a href="<?=$socials['twitter']; ?>">
-                                <i class="ico ico-tw"></i>
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['facebook'] != null ){ ?>
                             <a href="<?=$socials['facebook']; ?>">
-                                <i class="ico ico-fb"></i>
+                                <i class="fa fa-facebook-square" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['band_camp'] != null ){ ?>
                             <a target="_blank" href="<?=$socials['band_camp']; ?>">
-                                <i class="ico ico-bc"></i>
+                                <i class="fa fa-bandcamp" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['itunes'] != null ){ ?>
@@ -51,17 +51,17 @@
                         <?php } ?>
                         <?php if( $socials['apple_music'] != null ){ ?>
                             <a target="_blank" href="<?=$socials['apple_music']; ?>">
-                                <i class="ico ico-apple"></i>
+                                <i class="fa fa-apple" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
                         <?php if( $socials['spotify'] != null ){ ?>
                             <a target="_blank" href="<?=$socials['spotify']; ?>">
-                                <i class="ico ico-spo"></i>
+                                <i class="fa fa-spotify" aria-hidden="true"></i>
                             </a>
                         <?php } ?>
 	                    <?php if( $socials['youtube'] != null ){ ?>
                             <a target="_blank" href="<?=$socials['youtube']; ?>">
-                                <i class="ico ico-yt"></i>
+                                <i class="fa fa-youtube-square" aria-hidden="true"></i>
                             </a>
 	                    <?php } ?>
 
@@ -167,6 +167,13 @@
                             <div class="text">
                                 <span class="name-artist"><?=get_the_title($id); ?></span>
                                 <span class="name-album"><?=$post->post_title; ?></span>
+	                            <?php
+	                            $date = get_field( 'publish_date', $post->ID );
+	                            $date = str_replace( '/', '<span>', $date );
+	                            $date = str_replace( '!', '</span>', $date );
+	                            $date = substr($date, -4);
+	                            ?>
+                                <span class="date"><?= $date; ?></span>
                             </div>
                         </div>
                     </a>
@@ -275,7 +282,7 @@
 
                         foreach ($videos as $post){ ?>
 
-                            <a href="<?=get_field('youtube', $post->ID); ?>" class="item popup-yt">
+                            <a href="<?=get_field('youtube', $post->ID); ?>" data-title="" data-caption="" class="item popup-yt">
                                 <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($post->ID); ?>');">
                                     <div class="holder"></div>
                                     <div class="text">
