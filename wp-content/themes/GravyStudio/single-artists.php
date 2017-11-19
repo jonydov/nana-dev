@@ -282,7 +282,7 @@
 
                         foreach ($videos as $post){ ?>
 
-                            <a href="<?=get_field('youtube', $post->ID); ?>" data-title="" data-caption="" class="item popup-yt">
+                            <a href="<?=get_field('youtube', $post->ID); ?>" data-title="<?php the_field('artist_name', $post->ID); ?>" data-caption="<?=get_the_title($post->ID); ?>" class="item popup-yt">
                                 <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($post->ID); ?>');">
                                     <div class="holder"></div>
                                     <div class="text">
