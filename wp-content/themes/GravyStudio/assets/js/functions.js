@@ -175,7 +175,7 @@ $(document).ready(function () {
         },
         iframe: {
             markup: '<div class="mfp-iframe-scaler">' +
-            '<div class="mfp-close"></div>' +
+            '<div class="mfp-close"><i class="zmdi zmdi-close"></i></div>' +
             '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
             '<div class="mfp-bottom-bar">'+
             '<div class="mfp-title vid"></div>'+

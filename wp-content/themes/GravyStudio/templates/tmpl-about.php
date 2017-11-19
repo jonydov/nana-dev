@@ -60,35 +60,35 @@ get_header();
 							<?php if ( get_field( 'youtube', 'option' ) != null ) { ?>
                                 <li>
                                     <a href="<?= get_field( 'youtube', 'option' ); ?>">
-                                        <i class="ico ico-yt"></i>
+                                        <i class="fa fa-youtube-play"></i>
                                     </a>
                                 </li>
 							<?php } ?>
 							<?php if ( get_field( 'apple', 'option' ) != null ) { ?>
                                 <li>
                                     <a href="<?= get_field( 'apple', 'option' ); ?>">
-                                        <i class="ico ico-apple"></i>
+                                        <i class="fa fa-apple"></i>
                                     </a>
                                 </li>
 							<?php } ?>
 							<?php if ( get_field( 'instagram', 'option' ) != null ) { ?>
                                 <li>
                                     <a href="<?= get_field( 'instagram', 'option' ); ?>">
-                                        <i class="ico ico-inst"></i>
+                                        <i class="fa fa-instagram"></i>
                                     </a>
                                 </li>
 							<?php } ?>
 							<?php if ( get_field( 'facebook', 'option' ) != null ) { ?>
                                 <li>
                                     <a href="<?= get_field( 'facebook', 'option' ); ?>">
-                                        <i class="ico ico-fb"></i>
+                                        <i class="fa fa-facebook-official"></i>
                                     </a>
                                 </li>
 							<?php } ?>
 							<?php if ( get_field( 'twitter', 'option' ) != null ) { ?>
                                 <li>
                                     <a href="<?= get_field( 'twitter', 'option' ); ?>">
-                                        <i class="ico ico-tw"></i>
+                                        <i class="fa fa-twitter"></i>
                                     </a>
                                 </li>
 							<?php } ?>

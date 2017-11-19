@@ -159,7 +159,7 @@ function gs_login_logo(){ ?>
         }
 
         #login h1 a, .login h1 a {
-            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/assets/images/logo.png);
+            background-image: url(<?php echo get_stylesheet_directory_uri(); ?>/wp-content/themes/GravyStudio/assets/images/logo.png);
             padding-bottom: 30px;
             width: 100%;
             height: 10px;
@@ -244,13 +244,18 @@ function load_posts ($year, $month, $type){
 
 	foreach ( $items as $item ){ setup_postdata($item);
 
-		if( $i <= 4 ){
-			$words = 40;
-			$class = 'style-1';
-		}else{
-			$words = 15;
-			$class = 'style-2';
-		}
+        if( $type=="news"  ) {
+            if ($i <= 4) {
+                $words = 40;
+                $class = 'style-1';
+            } else {
+                $words = 15;
+                $class = 'style-2';
+            }
+        }else{
+            $words = 40;
+            $class = 'style-1';
+        }
 		?>
 
         <a href="<?=get_permalink($item->ID); ?>" class="item animate fade-bottom <?=$class; ?>" data-delay="100">
@@ -398,7 +403,7 @@ function ajax_shows_filter($filter_type){
 
     	foreach ( $items as $post ){ setup_postdata($post);
 
-	    	include( 'includes/item-shows.php');
+	    	include('includes/item-shows.php');
 
 		$i++; }
 
