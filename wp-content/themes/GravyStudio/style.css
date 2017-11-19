@@ -3154,7 +3154,7 @@ section {
           display: flex; } }
       section.section-about .shell span {
         color: #000;
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         font-family: "almoni_dl_aaalight"; }
       section.section-about .shell .col {
         -webkit-box-flex: 0;
@@ -3270,8 +3270,7 @@ section {
             margin-bottom: 5px; }
           section.section-about .shell .col-left .contact-form .field {
             position: relative;
-            width: 100%;
-            margin-bottom: 10px; }
+            margin-bottom: 4px; }
             section.section-about .shell .col-left .contact-form .field.form-submit {
               margin-bottom: 0px; }
             section.section-about .shell .col-left .contact-form .field.field-message {
@@ -3342,6 +3341,16 @@ section {
                       right: -15px;
                       top: 2px;
                       background-color: #fff; }
+          section.section-about .shell .col-left .contact-form span.wpcf7-not-valid-tip {
+            border: none !important;
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            font-size: 1.1rem !important; }
+          section.section-about .shell .col-left .contact-form .wpcf7 .wpcf7-form .wpcf7-response-output {
+            top: 165px;
+            color: white;
+            padding-right: 0px; }
           section.section-about .shell .col-left .contact-form .wpcf7-textarea {
             height: 80px;
             width: 100%;
@@ -3353,6 +3362,18 @@ section {
       section.section-about .shell .newsletter-form {
         padding-bottom: 30px;
         border-bottom: 1px solid #31d87a; }
+        section.section-about .shell .newsletter-form .form-holder .field-desc {
+          justify-content: center;
+          -webkit-box-flex: 0;
+          -webkit-flex: 0 0 100%;
+          -moz-box-flex: 0;
+          -moz-flex: 0 0 100%;
+          -ms-flex: 0 0 100%;
+          flex: 0 0 100%;
+          line-height: 1.7rem;
+          color: #fff;
+          margin-bottom: 20px;
+          /* font-size:1.7rem;*/ }
         @media (min-width: 768px) {
           section.section-about .shell .newsletter-form .form-holder .field {
             display: -webkit-flex;
@@ -3386,21 +3407,13 @@ section {
           -ms-flex: 0 0 30%;
           flex: 0 0 30%;
           padding: 0; }
-        section.section-about .shell .newsletter-form .field-desc {
-          justify-content: center;
-          -webkit-box-flex: 0;
-          -webkit-flex: 0 0 100%;
-          -moz-box-flex: 0;
-          -moz-flex: 0 0 100%;
-          -ms-flex: 0 0 100%;
-          flex: 0 0 100%;
-          line-height: 1.7rem;
-          color: #fff;
-          margin-bottom: 20px;
-          font-size: 1.7rem; }
-        section.section-about .shell .newsletter-form .field-name {
+        section.section-about .shell .newsletter-form .form-holder .field-name {
           padding-bottom: 4px;
-          width: 60%;
+          width: 70%;
+          -webkit-box-pack: start;
+          -ms-flex-pack: start;
+          -webkit-justify-content: flex-start;
+          -moz-justify-content: flex-start;
           justify-content: flex-start; }
         section.section-about .shell .newsletter-form .field-send-email {
           justify-content: flex-start;
@@ -3425,6 +3438,10 @@ section {
         section.section-about .shell .newsletter-form .ajax-loader {
           left: 50px;
           top: 160px; }
+        section.section-about .shell .newsletter-form .wpcf7-response-output {
+          top: 165px;
+          color: white;
+          padding-right: 0px; }
       section.section-about .shell .section-footer .socials {
         position: relative;
         margin: 0px;

@@ -2582,7 +2582,7 @@ section {
 
       span {
         color: #000;
-        font-size: 1.8rem;
+        font-size: 1.7rem;
         font-family: $font-light;
 
       }
@@ -2680,6 +2680,7 @@ section {
         }
 
         .contact-form {
+
           padding-top: 14px;
           @include flex-flow(row wrap);
           padding-bottom: 15px;
@@ -2691,12 +2692,13 @@ section {
               margin-top: 0px;
               margin-bottom: 5px;
             }
+
           }
 
           .field {
+
             position: relative;
-            width: 100%;
-            margin-bottom: 10px;
+            margin-bottom: 4px;
 
             &.form-submit {
               margin-bottom: 0px;
@@ -2775,6 +2777,25 @@ section {
             }
           }
 
+          span.wpcf7-not-valid-tip {
+            border: none !important;
+            position: absolute;
+            bottom: 2px;
+            left: 2px;
+            font-size: 1.1rem !important;
+          }
+
+          .wpcf7{
+            .wpcf7-form {
+              .wpcf7-response-output{
+                top: 165px;
+                color: white;
+                padding-right: 0px;
+              }
+            }
+          }
+
+
           .wpcf7-textarea {
             height: 80px;
             width: 100%;
@@ -2787,6 +2808,7 @@ section {
             top: 2px;
           }
 
+
         }
 
       }
@@ -2797,6 +2819,14 @@ section {
 
         .form-holder {
 
+          .field-desc {
+            justify-content: center;
+            @include flex(0 0 100%);
+            line-height: 1.7rem;
+            color: #fff;
+            margin-bottom: 20px;
+            /* font-size:1.7rem;*/
+          }
           .field {
             @include flexbox;
 
@@ -2819,23 +2849,20 @@ section {
                 padding: 0;
               }
             }
+
+          }
+
+          .field-name {
+            padding-bottom: 4px;
+            width: 70%;
+
+            @include justify-content (flex-start);
           }
         }
 
-        .field-desc {
-          justify-content: center;
-          @include flex(0 0 100%);
-          line-height: 1.7rem;
-          color: #fff;
-          margin-bottom: 20px;
-          font-size:1.7rem;
-        }
 
-        .field-name {
-          padding-bottom: 4px;
-          width: 60%;
-          justify-content: flex-start;
-        }
+
+
 
         .field-send-email {
           justify-content: flex-start;
@@ -2851,6 +2878,11 @@ section {
           top: 160px;
         }
 
+        .wpcf7-response-output{
+          top: 165px;
+          color: white;
+          padding-right: 0px;
+        }
       }
 
       .section-footer {
