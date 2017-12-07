@@ -22,41 +22,48 @@
 
                 <div class ="holder-col holder-social">
                     <ul class="socials">
-                        <?php if ( get_field( 'youtube', 'option' ) != null ) { ?>
+	                    <?php if( get_field('youtube', 'option') != null ){ ?>
                             <li>
-                                <a href="<?= get_field( 'youtube', 'option' ); ?>">
-                                    <i class="zmdi zmdi-youtube-play"></i>
+                                <a href="<?=get_field('youtube', 'option'); ?>">
+                                    <i class="fa fa-youtube-play" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        <?php } ?>
-                        <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
+	                    <?php } ?>
+	                    <?php if ( get_field( 'spotify', 'option' ) != null ) { ?>
+                            <li>
+                                <a target="_blank" href="<?= get_field( 'spotify', 'option' ); ?>" class="ico-social">
+                                    <i class="fa fa-spotify" aria-hidden="true"></i>
+                                </a>
+                            </li>
+	                    <?php } ?>
+	                    <?php if ( get_field( 'apple', 'option' ) != null ) { ?>
                             <li>
                                 <a href="<?= get_field( 'apple', 'option' ); ?>">
-                                    <i class="zmdi zmdi-apple"></i>
+                                    <i class="fa fa-apple" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        <?php } ?>
-                        <?php if ( get_field( 'instagram', 'option' ) != null ) { ?>
+	                    <?php } ?>
+	                    <?php if( get_field('instagram', 'option') != null ){ ?>
                             <li>
-                                <a href="<?= get_field( 'instagram', 'option' ); ?>">
-                                    <i class="zmdi zmdi-instagram"></i>
+                                <a href="<?=get_field('instagram', 'option'); ?>">
+                                    <i class="fa fa-instagram" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        <?php } ?>
-                        <?php if ( get_field( 'twitter', 'option' ) != null ) { ?>
+	                    <?php } ?>
+	                    <?php if( get_field('twitter', 'option') != null ){ ?>
                             <li>
-                                <a href="<?= get_field( 'twitter', 'option' ); ?>">
-                                    <i class="zmdi zmdi-twitter"></i>
+                                <a href="<?=get_field('twitter', 'option'); ?>">
+                                    <i class="fa fa-twitter" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        <?php } ?>
-                        <?php if ( get_field( 'facebook', 'option' ) != null ) { ?>
+	                    <?php } ?>
+	                    <?php if( get_field('facebook', 'option') != null ){ ?>
                             <li>
-                                <a href="<?= get_field( 'facebook', 'option' ); ?>">
-                                    <i class="zmdi zmdi-facebook-box"></i>
+                                <a href="<?=get_field('facebook', 'option'); ?>">
+                                    <i class="fa fa-facebook-official" aria-hidden="true"></i>
                                 </a>
                             </li>
-                        <?php } ?>
+	                    <?php } ?>
 
                     </ul>
                 </div>

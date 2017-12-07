@@ -1,3 +1,54 @@
+/* AJAX Load More */
+
+function loadMore() {
+
+    var baseURL = $('header .logo').attr('href');
+    var postType = $('.items-filter').attr('data-post-type');
+    var offset = $('.items-filter').attr('data-offset');
+    var itemsNumber = $('.items-filter').attr('data-items-number');
+    var multiplyer = $('.items-filter').attr('data-items-multiplyer');
+
+    $.ajax({
+
+        cache: false,
+        url: baseURL + '/wp-admin/admin-ajax.php',
+        type: "POST",
+        data: {action: 'load-more', offset: offset, itemsNumber: itemsNumber, multiplyer: multiplyer, postType: postType},
+
+        beforeSend: function () {
+            $('#ajax-response').html('Loading');
+        },
+
+        success: function (data, textStatus, jqXHR) {
+
+            var $ajax_response = $(data);
+            console.log($ajax_response.selector);
+
+            var $newItems = $($ajax_response);
+            if ($ajax_response.selector == 'no-more') {
+                $('#load-more').text('אין עוד אלבומים').addClass('no-more');
+            } else {
+
+                $('.items-filter').append($newItems).isotope('reloadItems').isotope({sortBy: 'original-order'});
+            }
+
+            offset = Number(offset) + Number(multiplyer);
+            $('.items-filter').attr('data-offset', offset);
+            //console.log('offset=' + offset);
+
+        },
+
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.log('The following error occured: ' + textStatus, errorThrown);
+        },
+
+        complete: function (jqXHR, textStatus) {
+
+        }
+
+    });
+}
+
 var scrollAnimate = {
     elements: [],
     init: function () {
@@ -97,8 +148,8 @@ $(document).ready(function () {
 
     /* Isotope JS */
 
-    $.Isotope.prototype._positionAbs = function( x, y ) {
-        return { right: x, top: y };
+    $.Isotope.prototype._positionAbs = function (x, y) {
+        return {right: x, top: y};
     };
 
     var $grid = $('.items-filter').isotope({
@@ -148,25 +199,25 @@ $(document).ready(function () {
 
     /* Magnific Popups */
 
-    $('.mfp-close').on( "click", function() {
+    $('.mfp-close').on("click", function () {
         $.magnificPopup.close();
     });
 
     $('.popup-img').magnificPopup({
         type: 'image',
-        closeMarkup:'<button class="mfp-close fa fa-times-circle"></button>',
+        closeMarkup: '<button class="mfp-close fa fa-times-circle"></button>',
         gallery: {
             enabled: true,
             tCounter: '<span class="mfp-counter">%curr% מתוך %total%</span>',
             arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>'
         },
         image: {
-            titleSrc: function(item) {
+            titleSrc: function (item) {
                 return '<h3>' + item.el.find('.image').attr('data-title') + '</h3>' + item.el.find('.image').attr('data-caption');
             }
         },
         callbacks: {
-            beforeOpen: function() {
+            beforeOpen: function () {
                 this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure animated ' + this.st.el.attr('data-effect'));
             }
         }
@@ -174,17 +225,17 @@ $(document).ready(function () {
 
     $('.popup-yt').magnificPopup({
         type: 'iframe',
-        titleSrc: function(item) {
+        titleSrc: function (item) {
             return '<h3>' + item.el.attr('data-title') + '</h3>' + item.el.attr('data-caption');
         },
-        closeMarkup:'<button class="mfp-close fa fa-times-circle"></button>',
+        closeMarkup: '<button class="mfp-close fa fa-times-circle"></button>',
         iframe: {
             markup: '<div class="mfp-iframe-scaler">' +
             '<div class="mfp-close"><i class="zmdi zmdi-close"></i></div>' +
             '<iframe class="mfp-iframe" frameborder="0" allowfullscreen></iframe>' +
-            '<div class="mfp-bottom-bar">'+
-            '<div class="mfp-title vid"></div>'+
-            '</div>'+
+            '<div class="mfp-bottom-bar">' +
+            '<div class="mfp-title vid"></div>' +
+            '</div>' +
             '</div>', // HTML markup of popup, `mfp-close` will be replaced by the close button
             patterns: {
                 youtube: {
@@ -214,7 +265,7 @@ $(document).ready(function () {
             srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
         },
         callbacks: {
-            markupParse: function(template, values, item) {
+            markupParse: function (template, values, item) {
                 values.title = item.el.attr('data-title');
             }
         },
@@ -432,6 +483,18 @@ $(document).ready(function () {
         });
     }
 
+    $('#load-more').on('click', function () {
+        loadMore();
+        $('.items-filter .hidden .item').unwrap();
+        var $newItems = $('.items-filter .hidden').html();
+        $('.items-filter').append($newItems).isotope('reloadItems').isotope({sortBy: 'original-order'});
+
+        setTimeout(function () {
+            $('.items-filter .item.off').removeClass('off');
+            loadMore();
+        }, 1000);
+    });
+
 
     /* productions or news - AJAX Load archive */
 
@@ -599,4 +662,11 @@ $(window).load(function () {
 $(window).scroll(function () {
 
     whiteBG();
+});
+
+$(window).load(function () {
+
+    if ($('#load-more').length) {
+        loadMore();
+    }
 });

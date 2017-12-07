@@ -1,122 +1,126 @@
 <?php
 
-    define('TMPL_URL', dirname(__FILE__) . DIRECTORY_SEPARATOR);
+define( 'TMPL_URL', dirname( __FILE__ ) . DIRECTORY_SEPARATOR );
 
-    if( function_exists('acf_add_options_page') ) {
+if ( function_exists( 'acf_add_options_page' ) ) {
 
-        acf_add_options_page(array(
-            'page_title' 	=> 'Theme General Settings',
-            'menu_title'	=> 'הגדרות תבנית',
-            'menu_slug' 	=> 'theme-general-settings',
-            'capability'	=> 'edit_posts',
-            'redirect'		=> false
-        ));
-    }
+	acf_add_options_page( array(
+		'page_title' => 'Theme General Settings',
+		'menu_title' => 'הגדרות תבנית',
+		'menu_slug'  => 'theme-general-settings',
+		'capability' => 'edit_posts',
+		'redirect'   => false
+	) );
+}
 
-    register_sidebar( array(
-        'id'          => 'news-archives',
-        'name'        => __( 'News Archives' ),
-        'description' => __( 'This sidebar is located above the age logo.'),
-    ) );
+register_sidebar( array(
+	'id'          => 'news-archives',
+	'name'        => __( 'News Archives' ),
+	'description' => __( 'This sidebar is located above the age logo.' ),
+) );
 
-    register_sidebar( array(
-        'id'          => 'productions-archives',
-        'name'        => __( 'Productions Archives' ),
-        'description' => __( 'This sidebar is located above the age logo.'),
-    ) );
+register_sidebar( array(
+	'id'          => 'productions-archives',
+	'name'        => __( 'Productions Archives' ),
+	'description' => __( 'This sidebar is located above the age logo.' ),
+) );
 
-    function gs_enqueue_scripts() {
-        wp_enqueue_script('jQuery', get_template_directory_uri()."/assets/js/jquery-2.2.4.min.js");
-        wp_enqueue_script('slick', get_template_directory_uri()."/assets/js/slick.min.js");
-        wp_enqueue_script('skrollr', get_template_directory_uri()."/assets/js/skrollr.min.js");
-        wp_enqueue_script('bootstrap', get_template_directory_uri()."/assets/js/bootstrap.min.js");
-	    wp_enqueue_script('magnific-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
-	    wp_enqueue_script('isotope-js' , get_stylesheet_directory_uri() . '/assets/js/jquery.isotope.min.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
-	    wp_enqueue_script('functions-js' , get_stylesheet_directory_uri() . '/assets/js/functions.js', array('jquery'),  filemtime(getcwd().'/wp-content/themes/GravyStudio/assets/js/functions.js') , false );
-    }
-    add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
+function gs_enqueue_scripts() {
+	wp_enqueue_script( 'jQuery', get_template_directory_uri() . "/assets/js/jquery-2.2.4.min.js" );
+	wp_enqueue_script( 'slick', get_template_directory_uri() . "/assets/js/slick.min.js" );
+	wp_enqueue_script( 'skrollr', get_template_directory_uri() . "/assets/js/skrollr.min.js" );
+	wp_enqueue_script( 'bootstrap', get_template_directory_uri() . "/assets/js/bootstrap.min.js" );
+	wp_enqueue_script( 'magnific-js', get_stylesheet_directory_uri() . '/assets/js/jquery.magnific-popup.min.js', array( 'jquery' ), filemtime( getcwd() . '/wp-content/themes/GravyStudio/assets/js/functions.js' ), false );
+	wp_enqueue_script( 'isotope-js', get_stylesheet_directory_uri() . '/assets/js/jquery.isotope.min.js', array( 'jquery' ), filemtime( getcwd() . '/wp-content/themes/GravyStudio/assets/js/functions.js' ), false );
+	wp_enqueue_script( 'functions-js', get_stylesheet_directory_uri() . '/assets/js/functions.js', array( 'jquery' ), filemtime( getcwd() . '/wp-content/themes/GravyStudio/assets/js/functions.js' ), false );
+}
 
-    if( !is_admin() ){
-        wp_enqueue_style('magnific-css', get_template_directory_uri()."/assets/css/magnific-popup.min.css");
-        wp_enqueue_style('slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css');
-        wp_enqueue_style('animate-css', get_template_directory_uri()."/assets/css/slick.min.css");
-        wp_enqueue_style('bootstrap-css', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css");
-        wp_enqueue_style('material-css', get_template_directory_uri()."/assets/css/material-design-iconic-font.min.css");
-        wp_enqueue_style('font-awesome-css', get_template_directory_uri()."/assets/css/font-awesome.min.css");
-        wp_enqueue_style('style', get_stylesheet_directory_uri() . '/style.css', array(), 1.12345, false, 'all' );
-    }
+add_action( 'wp_enqueue_scripts', 'gs_enqueue_scripts' );
 
-    // Clean up the <head>
-	function removeHeadLinks() {
-    	remove_action('wp_head', 'rsd_link');
-    	remove_action('wp_head', 'wlwmanifest_link');
-    }
-    add_action('init', 'removeHeadLinks');
-    remove_action('wp_head', 'wp_generator');
+if ( ! is_admin() ) {
+	wp_enqueue_style( 'magnific-css', get_template_directory_uri() . "/assets/css/magnific-popup.min.css" );
+	wp_enqueue_style( 'slick-css', 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.0/animate.min.css' );
+	wp_enqueue_style( 'animate-css', get_template_directory_uri() . "/assets/css/slick.min.css" );
+	wp_enqueue_style( 'bootstrap-css', "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" );
+	wp_enqueue_style( 'material-css', get_template_directory_uri() . "/assets/css/material-design-iconic-font.min.css" );
+	wp_enqueue_style( 'font-awesome-css', get_template_directory_uri() . "/assets/css/font-awesome.min.css" );
+	wp_enqueue_style( 'style', get_stylesheet_directory_uri() . '/style.css', array(), 1.12345, false, 'all' );
+}
 
-	require_once('wp_bootstrap_navwalker.php');
+// Clean up the <head>
+function removeHeadLinks() {
+	remove_action( 'wp_head', 'rsd_link' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+}
 
-	if ( function_exists( 'add_theme_support' ) ) {
-		add_theme_support( 'post-thumbnails' );
-	}
+add_action( 'init', 'removeHeadLinks' );
+remove_action( 'wp_head', 'wp_generator' );
 
-	add_post_type_support( 'page', 'excerpt' );
+require_once( 'wp_bootstrap_navwalker.php' );
 
-    # Attach Custom Post Types and Custom Taxonomies
-    add_action('init', 'attach_post_types_and_taxonomies', 0);
-    function attach_post_types_and_taxonomies()
-    {
-        # Attach Custom Post Types
-        include_once(TMPL_URL . 'options/post-types.php');
+if ( function_exists( 'add_theme_support' ) ) {
+	add_theme_support( 'post-thumbnails' );
+}
 
-        # Attach Nav Menus
-        include_once(TMPL_URL . 'options/nav-menus.php');
+add_post_type_support( 'page', 'excerpt' );
 
-        # Attach Custom Taxonomies
-        include_once(TMPL_URL . 'options/taxonomies.php');
-        include_once(TMPL_URL . 'options/post-types.php');
+# Attach Custom Post Types and Custom Taxonomies
+add_action( 'init', 'attach_post_types_and_taxonomies', 0 );
+function attach_post_types_and_taxonomies() {
+	# Attach Custom Post Types
+	include_once( TMPL_URL . 'options/post-types.php' );
 
-    }
+	# Attach Nav Menus
+	include_once( TMPL_URL . 'options/nav-menus.php' );
+
+	# Attach Custom Taxonomies
+	include_once( TMPL_URL . 'options/taxonomies.php' );
+	include_once( TMPL_URL . 'options/post-types.php' );
+
+}
 
 // image sizes
 //add_image_size( 'location-home-thumb', 194, 171, true );
 
 // add friendly page class names
-function custom_body_classes($classes) {
-    $classes[] = preg_replace( '/\.php/', '', basename( get_page_template() ) );
-    return $classes;
+function custom_body_classes( $classes ) {
+	$classes[] = preg_replace( '/\.php/', '', basename( get_page_template() ) );
+
+	return $classes;
 }
-add_filter('body_class', 'custom_body_classes');
+
+add_filter( 'body_class', 'custom_body_classes' );
 
 // display image tag for custom image field
 function acf_img( $name, $is_sub = false, $classes = "", $size = "" ) {
-    if ($is_sub) {
-        $img = get_sub_field($name);
-    }
-    else {
-        $img = get_field($name);
-    }
+	if ( $is_sub ) {
+		$img = get_sub_field( $name );
+	} else {
+		$img = get_field( $name );
+	}
 
-    if ($img) {
-        $url = $size ? $img['sizes'][$size] : $img['url'];
-        $width = $size ? $img['sizes'][$size .'-width'] : $img['width'];
-        $height = $size ? $img['sizes'][$size .'-height'] : $img['height'];
-        $alt = htmlspecialchars( $img['alt'] );
+	if ( $img ) {
+		$url    = $size ? $img['sizes'][ $size ] : $img['url'];
+		$width  = $size ? $img['sizes'][ $size . '-width' ] : $img['width'];
+		$height = $size ? $img['sizes'][ $size . '-height' ] : $img['height'];
+		$alt    = htmlspecialchars( $img['alt'] );
 
-        echo "<img class='$classes' src='$url' width='$width' height='$height' alt='$alt'>";
-    }
+		echo "<img class='$classes' src='$url' width='$width' height='$height' alt='$alt'>";
+	}
 }
 
 // allow SVG uploads
 function add_svg_to_upload_mimes( $upload_mimes ) {
-    $upload_mimes['ogv'] = 'image/svg+xml';
-    $upload_mimes['svg'] = 'application/json';
-    $upload_mimes['svgz'] = 'image/svg+xml';
-    return $upload_mimes;
+	$upload_mimes['ogv']  = 'image/svg+xml';
+	$upload_mimes['svg']  = 'application/json';
+	$upload_mimes['svgz'] = 'image/svg+xml';
+
+	return $upload_mimes;
 }
+
 add_filter( 'upload_mimes', 'add_svg_to_upload_mimes', 10, 1 );
 
-function gs_login_logo(){ ?>
+function gs_login_logo() { ?>
     <style type="text/css">
 
         @font-face {
@@ -184,45 +188,48 @@ function gs_login_logo(){ ?>
     </style>
 <?php }
 
-add_action('login_enqueue_scripts', 'gs_login_logo');
+add_action( 'login_enqueue_scripts', 'gs_login_logo' );
 
 function admin_style() {
-    wp_enqueue_style('admin-styles', get_template_directory_uri().'/style-admin.css');
+	wp_enqueue_style( 'admin-styles', get_template_directory_uri() . '/style-admin.css' );
 }
-add_action('admin_enqueue_scripts', 'admin_style');
+
+add_action( 'admin_enqueue_scripts', 'admin_style' );
 
 function gs_wp_is_mobile() {
-    static $is_mobile;
+	static $is_mobile;
 
-    if ( isset($is_mobile) )
-        return $is_mobile;
+	if ( isset( $is_mobile ) ) {
+		return $is_mobile;
+	}
 
-    if ( empty($_SERVER['HTTP_USER_AGENT']) ) {
-        $is_mobile = false;
-    } elseif (
-        strpos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Silk/') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Kindle') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'BlackBerry') !== false
-        || strpos($_SERVER['HTTP_USER_AGENT'], 'Opera Mini') !== false ) {
-        $is_mobile = true;
-    } elseif (strpos($_SERVER['HTTP_USER_AGENT'], 'Mobile') !== false && strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') == false) {
-        $is_mobile = true;
-    } elseif (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== false) {
-        $is_mobile = false;
-    } else {
-        $is_mobile = false;
-    }
+	if ( empty( $_SERVER['HTTP_USER_AGENT'] ) ) {
+		$is_mobile = false;
+	} elseif (
+		strpos( $_SERVER['HTTP_USER_AGENT'], 'Android' ) !== false
+		|| strpos( $_SERVER['HTTP_USER_AGENT'], 'Silk/' ) !== false
+		|| strpos( $_SERVER['HTTP_USER_AGENT'], 'Kindle' ) !== false
+		|| strpos( $_SERVER['HTTP_USER_AGENT'], 'BlackBerry' ) !== false
+		|| strpos( $_SERVER['HTTP_USER_AGENT'], 'Opera Mini' ) !== false ) {
+		$is_mobile = true;
+	} elseif ( strpos( $_SERVER['HTTP_USER_AGENT'], 'Mobile' ) !== false && strpos( $_SERVER['HTTP_USER_AGENT'], 'iPad' ) == false ) {
+		$is_mobile = true;
+	} elseif ( strpos( $_SERVER['HTTP_USER_AGENT'], 'iPad' ) !== false ) {
+		$is_mobile = false;
+	} else {
+		$is_mobile = false;
+	}
 
-    return $is_mobile;
+	return $is_mobile;
 }
 
 function isRTL( $string ) {
 	$rtl_chars_pattern = '/[\x{0590}-\x{05ff}\x{0600}-\x{06ff}]/u';
-	return preg_match($rtl_chars_pattern, $string);
+
+	return preg_match( $rtl_chars_pattern, $string );
 }
 
-function load_posts ($year, $month, $type){
+function load_posts( $year, $month, $type ) {
 
 	$args = array(
 		'posts_per_page'   => 8,
@@ -231,7 +238,7 @@ function load_posts ($year, $month, $type){
 		'post_type'        => $type,
 		'post_status'      => 'publish',
 		'suppress_filters' => true,
-		'date_query' => array(
+		'date_query'       => array(
 			array(
 				'year'  => $year,
 				'month' => $month
@@ -240,65 +247,67 @@ function load_posts ($year, $month, $type){
 	);
 
 	$items = get_posts( $args );
-	$i = 1;
+	$i     = 1;
 
-	foreach ( $items as $item ){ setup_postdata($item);
+	foreach ( $items as $item ) {
+		setup_postdata( $item );
 
-        if( $type=="news"  ) {
-            if ($i <= 4) {
-                $words = 40;
-                $class = 'style-1';
-            } else {
-                $words = 15;
-                $class = 'style-2';
-            }
-        }else{
-            $words = 40;
-            $class = 'style-1';
-        }
+		if ( $type == "news" ) {
+			if ( $i <= 4 ) {
+				$words = 40;
+				$class = 'style-1';
+			} else {
+				$words = 15;
+				$class = 'style-2';
+			}
+		} else {
+			$words = 40;
+			$class = 'style-1';
+		}
 		?>
 
-        <a href="<?=get_permalink($item->ID); ?>" class="item animate fade-bottom <?=$class; ?>" data-delay="100">
+        <a href="<?= get_permalink( $item->ID ); ?>" class="item animate fade-bottom <?= $class; ?>" data-delay="100">
             <div class="holder">
-                <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($item->ID); ?>');">
+                <div class="image" style="background-image: url('<?= get_the_post_thumbnail_url( $item->ID ); ?>');">
                     <div class="holder">
-						<?php if( $class == 'style-1'){ ?>
-                            <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
-                            <h3><?=get_the_title($item->ID); ?></h3>
+						<?php if ( $class == 'style-1' ) { ?>
+                            <span class="meta"><?= get_the_time( 'd בF Y', $item->ID ); ?></span>
+                            <h3><?= get_the_title( $item->ID ); ?></h3>
 						<?php } ?>
                     </div>
                 </div>
                 <div class="text">
-					<?php if( $class == 'style-2'){ ?>
-                        <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
-                        <h3><?=get_the_title($item->ID); ?></h3>
+					<?php if ( $class == 'style-2' ) { ?>
+                        <span class="meta"><?= get_the_time( 'd בF Y', $item->ID ); ?></span>
+                        <h3><?= get_the_title( $item->ID ); ?></h3>
 					<?php } ?>
-					<?php echo wp_trim_words($item->post_content, $words); ?>
+					<?php echo wp_trim_words( $item->post_content, $words ); ?>
                 </div>
             </div>
         </a>
 
-		<?php $i++; }
+		<?php $i ++;
+	}
 }
 
 add_action( 'wp_ajax_nopriv_load-archive', 'ajax_load_archive' );
 add_action( 'wp_ajax_load-archive', 'ajax_load_archive' );
 
-function ajax_load_archive($year, $month, $post_type){
-    $month = $_POST['month'];
-    $year = $_POST['year'];
-    $post_type= $_POST['post_type'];
+function ajax_load_archive( $year, $month, $post_type ) {
+	$month     = $_POST['month'];
+	$year      = $_POST['year'];
+	$post_type = $_POST['post_type'];
 
 	ob_start();
 
 	$args = array(
-		'posts_per_page'   => -1,
+		'posts_per_page'   => - 1,
 		'orderby'          => 'title',
 		'order'            => 'ASC',
 		'post_type'        => $post_type,
 		'post_status'      => 'publish',
 		'suppress_filters' => true,
-		'date_query' => array(
+		'date_query'       => array(
 			array(
 				'year'  => $year,
 				'month' => $month
@@ -307,38 +316,40 @@ function ajax_load_archive($year, $month, $post_type){
 	);
 
 	$items = get_posts( $args );
-	$i = 1;
+	$i     = 1;
 
-	foreach ( $items as $item ){ setup_postdata($item);
+	foreach ( $items as $item ) {
+		setup_postdata( $item );
 
-		if( $i <= 4 ){
+		if ( $i <= 4 ) {
 			$class = 'style-1';
-		}else{
+		} else {
 			$class = 'style-2';
 		}
 		?>
 
-        <a href="<?=get_permalink($item->ID); ?>" class="item animate fade-bottom <?=$class; ?>" data-delay="100">
+        <a href="<?= get_permalink( $item->ID ); ?>" class="item animate fade-bottom <?= $class; ?>" data-delay="100">
             <div class="holder">
-                <div class="image" style="background-image: url('<?=get_the_post_thumbnail_url($item->ID); ?>');">
+                <div class="image" style="background-image: url('<?= get_the_post_thumbnail_url( $item->ID ); ?>');">
                     <div class="holder">
-						<?php if( $class == 'style-1'){ ?>
-                            <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
-                            <h3><?=get_the_title($item->ID); ?></h3>
+						<?php if ( $class == 'style-1' ) { ?>
+                            <span class="meta"><?= get_the_time( 'd בF Y', $item->ID ); ?></span>
+                            <h3><?= get_the_title( $item->ID ); ?></h3>
 						<?php } ?>
                     </div>
                 </div>
                 <div class="text">
-					<?php if( $class == 'style-2'){ ?>
-                        <span class="meta"><?=get_the_time('d בF Y' ,$item->ID); ?></span>
-                        <h3><?=get_the_title($item->ID); ?></h3>
+					<?php if ( $class == 'style-2' ) { ?>
+                        <span class="meta"><?= get_the_time( 'd בF Y', $item->ID ); ?></span>
+                        <h3><?= get_the_title( $item->ID ); ?></h3>
 					<?php } ?>
-					<?php echo wp_trim_words($item->post_content, 18); ?>
+					<?php echo wp_trim_words( $item->post_content, 18 ); ?>
                 </div>
             </div>
         </a>
 
-		<?php $i++; }
+		<?php $i ++;
+	}
 
 	$response = ob_get_contents();
 	ob_end_clean();
@@ -350,43 +361,43 @@ function ajax_load_archive($year, $month, $post_type){
 add_action( 'wp_ajax_nopriv_shows-filter', 'ajax_shows_filter' );
 add_action( 'wp_ajax_shows-filter', 'ajax_shows_filter' );
 
-function ajax_shows_filter($filter_type){
+function ajax_shows_filter( $filter_type ) {
 	$filter_type = $_POST['filter_type'];
 
 	ob_start();
 
-	if( $filter_type == 'date'){
+	if ( $filter_type == 'date' ) {
 
-	    $args = array(
-			'posts_per_page'   => -1,
+		$args = array(
+			'posts_per_page'   => - 1,
 			'post_type'        => 'shows',
 			'post_status'      => 'publish',
 			'suppress_filters' => true,
-			'meta_key' => 'date',
-			'orderby' => 'meta_value',
+			'meta_key'         => 'date',
+			'orderby'          => 'meta_value',
 			'order'            => 'ASC'
-	    );
+		);
 
-    }elseif( $filter_type == 'location'){
+	} elseif ( $filter_type == 'location' ) {
 
 		$location = $_POST['location'];
 
 		$args = array(
 			'post_type'      => 'shows',
-			'location' => $location,
-            'posts_per_page' => - 1,
+			'location'       => $location,
+			'posts_per_page' => - 1,
 		);
 
-    }elseif( $filter_type == 'artist'){
+	} elseif ( $filter_type == 'artist' ) {
 
-		$artist = $_POST['artist'];
+		$artist     = $_POST['artist'];
 		$meta_query = array( 'relation' => 'OR' );
 
-        $meta_query[] = array(
-            'key'     => 'assigned_artist',
-            'value'   => $artist,
-            'compare' => 'LIKE',
-        );
+		$meta_query[] = array(
+			'key'     => 'assigned_artist',
+			'value'   => $artist,
+			'compare' => 'LIKE',
+		);
 
 		$args = array(
 			'post_type'      => 'shows',
@@ -399,17 +410,19 @@ function ajax_shows_filter($filter_type){
 
 	rewind_posts();
 
-	if( $items != null ){
+	if ( $items != null ) {
 
-    	foreach ( $items as $post ){ setup_postdata($post);
+		foreach ( $items as $post ) {
+			setup_postdata( $post );
 
-	    	include('includes/item-shows.php');
+			include( 'includes/item-shows.php' );
 
-		$i++; }
+			$i ++;
+		}
 
-	}else{
-	    echo 'No Results';
-    }
+	} else {
+		echo 'No Results';
+	}
 
 	$response = ob_get_contents();
 	ob_end_clean();
@@ -419,8 +432,8 @@ function ajax_shows_filter($filter_type){
 }
 
 add_filter( 'posts_orderby', 'order_search_by_posttype', 10, 1 );
-function order_search_by_posttype( $orderby ){
-	if( ! is_admin() && is_search() ) :
+function order_search_by_posttype( $orderby ) {
+	if ( ! is_admin() && is_search() ) :
 		global $wpdb;
 		$orderby =
 			"
@@ -433,6 +446,7 @@ function order_search_by_posttype( $orderby ){
             ELSE {$wpdb->prefix}posts.post_type END ASC, 
             {$wpdb->prefix}posts.post_title ASC";
 	endif;
+
 	return $orderby;
 }
 
@@ -451,12 +465,13 @@ function cf_search_join( $join ) {
 	global $wpdb;
 
 	if ( is_search() ) {
-		$join .=' LEFT JOIN '.$wpdb->postmeta. ' ON '. $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
+		$join .= ' LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
 	}
 
 	return $join;
 }
-add_filter('posts_join', 'cf_search_join' );
+
+add_filter( 'posts_join', 'cf_search_join' );
 
 /**
  * Modify the search query with posts_where
@@ -468,12 +483,13 @@ function cf_search_where( $where ) {
 
 	if ( is_search() ) {
 		$where = preg_replace(
-			"/\(\s*".$wpdb->posts.".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
-			"(".$wpdb->posts.".post_title LIKE $1) OR (".$wpdb->postmeta.".meta_value LIKE $1)", $where );
+			"/\(\s*" . $wpdb->posts . ".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
+			"(" . $wpdb->posts . ".post_title LIKE $1) OR (" . $wpdb->postmeta . ".meta_value LIKE $1)", $where );
 	}
 
 	return $where;
 }
+
 add_filter( 'posts_where', 'cf_search_where' );
 
 /**
@@ -490,6 +506,101 @@ function cf_search_distinct( $where ) {
 
 	return $where;
 }
+
 add_filter( 'posts_distinct', 'cf_search_distinct' );
+
+function ajax_load_more_posts() {
+
+	ob_start();
+
+	$offset      = $_POST['offset'];
+	$type        = $_POST['postType'];
+	$itemsNumber = $_POST['itemsNumber'];
+
+	$args = array(
+		'post_type'        => $type,
+		'posts_per_page'   => $itemsNumber,
+		'offset'           => $offset,
+		'meta_key'         => 'publish_date',
+		'orderby'          => 'meta_value',
+		'order'            => 'DESC',
+		'post_status'      => 'publish',
+		'suppress_filters' => true
+	);
+
+	$posts_array = get_posts( $args );
+	$i           = $offset + 1;
+	if ( empty($posts_array)) {
+		echo 'no-more';
+	} else {
+		echo '<div class="hidden">';
+		foreach ( $posts_array as $post ) {
+			setup_postdata( $post );
+
+			$img    = get_the_post_thumbnail_url( $post->ID );
+			$terms  = wp_get_post_terms( $post->ID, 'album-type' );
+			$terms2 = wp_get_post_terms( $post->ID, 'year' );
+
+			$types = array();
+
+			foreach ( $terms as $term ) {
+				$types[] = $term->slug;
+			}
+
+			$years = array();
+
+			foreach ( $terms2 as $term ) {
+				$years[] = 'year-' . $term->slug;
+			}
+			?>
+
+            <a href="<?= get_permalink( $post->ID ); ?>"
+               class="item off cf <?php echo implode( ' ', $types ); ?> <?php echo implode( ' ', $years ); ?>">
+                <div class="image">
+                    <div class="holder" <?php if ( $img != null ) {
+						echo 'style="background-image: url(' . $img . ');"';
+					} ?>></div>
+                    <div class="text">
+
+						<?php
+						$artists       = get_field( 'assigned_artist', $post->ID );
+						$artists_names = array();
+						foreach ( $artists as $artist ) {
+							$artists_names[] = get_the_title( $artist );
+						}
+						?>
+
+                        <span class="name-artist"><?php echo implode( ', ', $artists_names ); ?></span>
+                        <span class="name-album"><?= $post->post_title; ?></span>
+						<?php
+						$date = get_field( 'publish_date', $post->ID );
+						$date = str_replace( '/', '<span>', $date );
+						$date = str_replace( '!', '</span>', $date );
+						if ( get_field( 'only_year' ) == 1 ) {
+							$date = substr( $date, - 4 );
+						}
+						?>
+                        <span class="date"><?= $date; ?></span>
+                        <span class="cta">לאלבום</span>
+                    </div>
+                </div>
+
+            </a>
+
+			<?php $i ++;
+		}
+		echo '</div>';
+	}
+	wp_reset_postdata();
+
+	$response = ob_get_contents();
+	ob_end_clean();
+
+	echo $response;
+	exit();
+}
+
+add_action( 'wp_ajax_nopriv_load-more', 'ajax_load_more_posts' );
+add_action( 'wp_ajax_load-more', 'ajax_load_more_posts' );
 
 ?>

@@ -861,6 +861,7 @@ section {
 
           .holder {
             @include flexbox;
+            @include align-items(flex-start);
           }
 
           .image {
@@ -3616,6 +3617,49 @@ section {
       }
     }
 
+    #load-more {
+      display: block;
+      margin: auto;
+      border: none;
+      position: relative;
+      background-color: transparent;
+      font-family: $font-black;
+      color: $green;
+      font-size: 3.1rem;
+      @include transition(all, .2s, ease);
+      @include transform(translateX(15px));
+
+      &.no-more {
+
+        &:before {
+          content: "\f119";
+          bottom: -40px;
+        }
+      }
+
+      &:before {
+        display: block;
+        font-family: $icons;
+        position: absolute;
+        content: "\f107";
+        color: $green;
+        left: 50%;
+        bottom: -30px;
+        @include transition(all, .2s, ease);
+        @include transform-translateX(-50%);
+        font-size: 3.4rem;
+      }
+
+      &:hover {
+        color: #000;
+
+        &:before {
+          color: #000;
+          bottom: -35px;
+        }
+      }
+    }
+
     /*  mobile section-albums-list */
     @media (max-width: 480px) {
 
@@ -3723,6 +3767,7 @@ section {
             background-color: $green;
             text-align: center;
             padding: 0px 20px;
+            font-size: 1.8rem;
 
             &:focus,
             &:hover {

@@ -83,6 +83,7 @@ get_header();
 	                    } wp_reset_postdata();
 
                         $years_arr = array_unique ($years_arr);
+
 						foreach ( $years_arr as $item ) {
 
 							echo '<li class="cat year" data-filter=".year-' . $item . '"><span>' . $item . '</span></li>';
@@ -141,12 +142,12 @@ get_header();
                             </ul>
                         </nav>
 
-                        <div class="items items-filter cf">
+                        <div class="items items-filter cf" data-post-type="albums" data-items-multiplyer="8" data-offset="12" data-items-number="8">
 
 							<?php
 
 							$args = array(
-								'posts_per_page'   => - 1,
+								'posts_per_page'   => 12,
 								'meta_key'         => 'publish_date',
 								'orderby'          => 'meta_value',
 								'order'            => 'DESC',
@@ -217,6 +218,8 @@ get_header();
 
                         </div>
                     </div>
+
+                    <button id="load-more">הצג עוד</button>
 
                 </div>
             </div>

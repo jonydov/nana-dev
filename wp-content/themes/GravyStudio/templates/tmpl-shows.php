@@ -120,11 +120,19 @@ get_header();
 
 							<?php
 
+                                date_default_timezone_set('Israel/Jerusalem');
+                                //Today's date
+                                $date_1 = date('Ymd', strtotime("now"));
+							    $date_2 = date('Ymd', strtotime("+12 months"));
+
                                 $args = array(
                                     'post_type' => 'shows',
                                     'posts_per_page' => -1,
                                     'meta_key' => 'date',
-                                    'orderby' => 'meta_value',
+                                    'meta_compare' => 'BETWEEN',
+                                    'meta_type' => 'numeric',
+                                    'meta_value' => array($date_1, $date_2),
+                                    'orderby' => 'meta_value_num',
                                     'order' => 'ASC'
                                 );
 

@@ -131,6 +131,9 @@ footer {
         @include justify-content(space-between);
 
         li {
+          @include flexbox;
+          @include align-self(center);
+          @include justify-content(center);
           @include flex(0 0 10%);
 
           a {
